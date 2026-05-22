@@ -1,0 +1,117 @@
+\documentclass{plotweaver}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[base]{babel}
+\usepackage{lipsum}
+  
+\title{Plotweaver \LaTeX~Document Class}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+I wanted to make a \LaTeX~class for Cosmere RPG and other Plotweaver RPG games. I've tried to emulate the style of the books and character sheets with this document class, though it is not perfect yet. Contributions to its development are welcome!
+
+\section{Documentation}
+This document class provides styling and several commands to make formatting Plotweaver RPG homebrew a little easier.
+
+\subsection{Feature Boxes}
+Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, and \texttt{rightBox}. You can also use the command \texttt{statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
+
+\subsection{Talent Paths}
+TikZ is used to make the talent paths. You can add a photo as the background, if desired. Check the \texttt{example.tex} for a sample talent path.
+
+\subsection{Icons}
+Icons for activations and plot die are specified with \texttt{forever}, \texttt{freeAction}, \texttt{action}, \texttt{doubleAction}, \texttt{tripleAction}, \texttt{reaction}, \texttt{opportunity}, and \texttt{complication}. They look like this:
+\begin{center}
+    \forever \freeAction \action \doubleAction \tripleAction \reaction \, \opportunity \complication
+\end{center}
+The complication commands can take a number or be left blank. Numbers look like this: \complication[2]. You can also make larger complication symbols with \texttt{complicationDice}:
+\begin{center}
+    \complicationDice \complicationDice[2] \complicationDice[4]
+\end{center}
+
+\begin{center}
+\noindent
+\begin{featureBox}{Feature}
+    \lipsum[1][1-7]
+    \tcblower
+    \tcbsubtitle{Sub Feature}
+    \lipsum[1][1-3]
+\end{featureBox}
+\statBox{Stat One}{
+    These boxes can have different content...
+}%
+{Stat Two}{
+    ...and still end up the same height! Even when one is multiple lines.
+}
+\vspace{\baselineskip}
+\end{center}
+
+\newpage
+
+\begin{figure*}
+\begin{center}
+\begin{tikzpicture}
+ [node distance=1em and -4em,
+ start chain=going below, overlay, remember picture, background rectangle/.style={fill=DodgerBlue4}, show background rectangle]
+
+    \node (kt) [fill=none] at (0,0) {
+        \keyTalent{Key Talent}{
+        This is how you make a Key Talent.
+        }
+    };
+
+    \node (ta1) [talent, below left = of kt] {
+        \talent{\forever Forever}{
+            This is how you make a Talent box.
+        }
+    };
+
+    \node (ta2) [talent, below = of ta1] {
+        \talent{\freeAction Free Action}[Prerequisite: Statistic +2]{
+            You can also specify a prerequisite for a Talent.
+        }
+    };
+
+    \node (ta3) [talent, below = of ta2] {
+        \talent{\action Action}{
+            You can specify complications with a number \complication[2] or with no numbers \complication. You can also make dice style complications like this \complicationDice[4]
+        }
+    };
+
+    \node (tb1) [talent, below right = of kt] {
+        \talent{\doubleAction Double Action}{
+            You can also specify when \opportunity opportunities happen. 
+        }
+    };
+
+    \node (tb2) [talent, below = of tb1] {
+        \talent{\tripleAction Triple Action}{
+        To make a Talent Tree, first specify all of the Talent nodes.
+        }
+    };
+
+    \node (tb3) [talent, below = of tb2] {
+        \talent{\reaction Reaction}{
+        Then, you can use lines to connect the nodes.
+        }
+    };
+
+% Connectors
+\begin{pgfonlayer}{lines}
+    \draw [connector] (kt.west) ++(0.15,0) -| (ta1);
+    \draw [connector] (ta1) -- (ta2);
+    \draw [connector] (ta2) -- (ta3);
+    \draw [connector] (kt.east) ++(-0.25,0) -| (tb1);
+    \draw [connector] (tb1) -- (tb2);
+    \draw [connector] (tb2) -- (tb3);
+    \draw [connector] (tb2.west) -| ++(-1.25,0) |- (ta3.east);
+\end{pgfonlayer}
+\end{tikzpicture}
+\end{center}
+\end{figure*}
+
+\end{document}
