@@ -42,10 +42,10 @@ The complication commands can take a number or be left blank. Numbers look like 
     \lipsum[1][1-3]
 \end{featureBox}
 \statBox{Stat One}{
-    These boxes can have different content...
+    \normalsize These boxes can have different content...
 }%
 {Stat Two}{
-    ...and still end up the same height! Even when one is multiple lines.
+    \normalsize ...and still end up the same height! Even when one is multiple lines.
 }
 \vspace{\baselineskip}
 \end{center}
@@ -113,5 +113,18 @@ The complication commands can take a number or be left blank. Numbers look like 
 \end{tikzpicture}
 \end{center}
 \end{figure*}
+
+\null\newpage
+
+\subsection{Timelines}
+Timelines can be created using the \texttt{timeline} environment. You can pass in arguments to determine the spacing between major and minor ticks with \texttt{major tick pattern} and adjust the overall scale with \texttt{scale}. Within the timeline environment, the start and end years are specified with the \texttt{era} command. Specific events are added aftwards with the \texttt{event} command. This allows for multiple eras to be chained together in a single timeline. 
+\begin{figure}
+    \begin{timeline}[major tick pattern=5, scale=0.2]
+        \era{start=1700, end=1760, prefix=XX}  
+        \event{year=1702}{An important event happened here.}
+        \event{year=1750, prefix={The Beginning of an Era --- }}{Prefixes give different colored headings.}
+        \event{year=1757}{Another important event happened here.}
+    \end{timeline}
+\end{figure}
 
 \end{document}

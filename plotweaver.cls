@@ -1,8 +1,28 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{plotweaver}[2026 LaTeX Plotweaver class]
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions\relax
-\LoadClass[twocolumn,twoside]{article}
+\DeclareKeys[plotweaver]
+{
+    article.if = @plotweaver@articletype,
+    article.usage = load,
+    standalone.if = @plotweaver@standalonetype,
+    standalone.usage = load,
+}
+\ProcessKeyOptions
+\if@plotweaver@standalonetype
+    \DeclareUnknownKeyHandler{\PassOptionsToClass{\CurrentOption}{standalone}}
+    \LoadClass[tikz]{standalone}
+\else
+    \if@plotweaver@articletype
+        \DeclareUnknownKeyHandler{\PassOptionsToClass{\CurrentOption}{article}}
+        \LoadClass{article}
+    \else
+        \DeclareUnknownKeyHandler{\PassOptionsToClass{\CurrentOption}{article}}
+        \LoadClass{article}
+        \gdef\@plotweaver@articletype{true}
+    \fi
+\fi
+
+\if@plotweaver@articletype
 \RequirePackage{geometry}
 \geometry{
     paper=letterpaper,
@@ -12,14 +32,20 @@
     right=1in,
     includeheadfoot
 }
-\renewcommand{\normalsize}{\fontsize{10pt}{12pt}\selectfont}
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{8in}
 \pagenumbering{arabic}
+\else
+\fi
 
-\RequirePackage{xparse}
+\renewcommand{\normalsize}{\fontsize{10pt}{12pt}\selectfont}
 
-\RequirePackage[x11names]{xcolor}
+\RequirePackage[x11names,table]{xcolor}
+\definecolor{ink}{RGB}{34,26,74}
+\definecolor{spruce}{RGB}{26,74,34}
+\definecolor{crimson}{RGB}{165, 52, 29}
+\definecolor{chestnut}{RGB}{74,34,26}
+\definecolor{mustard}{RGB}{206,126,0}
 \newcommand{\maincolor}{DodgerBlue4!85!black}
 \newcommand{\headlinecolor}{\color{\maincolor}}
 \newcommand{\underlinecolor}{\color{Gold3}}
@@ -34,11 +60,11 @@
 
 \RequirePackage{amsmath}
 \RequirePackage{bm}
-\RequirePackage{bbding}
-\let\orig@chooseSymbol\@chooseSymbol
-\renewcommand{\@chooseSymbol}[1]{\raisebox{-0.5ex}[1.0ex][0pt]{\orig@chooseSymbol{#1}}}
 
+\if@plotweaver@articletype
 \RequirePackage{titlesec}
+\else
+\fi
 
 \RequirePackage{tikz}
 \RequirePackage{tcolorbox}
@@ -47,71 +73,98 @@
 \pgfdeclarelayer{foreground}
 \pgfdeclarelayer{lines}
 \pgfsetlayers{background,lines,main,foreground}
+\RequirePackage{varwidth}
+\tikzset{
+    max width/.style={
+        % Wraps the node content in a varwidth environment dynamically
+        execute at begin node={\begin{varwidth}{#1}},
+        execute at end node={\end{varwidth}}
+    },
+    invclip/.style={
+        clip,
+        insert path={(-1em,-1em) rectangle (1em,1em)}
+    }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%             TITLE & SECTIONS              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if@plotweaver@articletype
+    \renewcommand{\maketitle}{\par
+        \begingroup
+        \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+        \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+        \long\def\@makefntext##1{\parindent 1em\noindent
+                \hb@xt@1.8em{%
+                    \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+        \ifnum \col@number=\@ne
+            \scshape\headlinecolor\@maketitle
+        \else
+            \twocolumn[\scshape\headlinecolor\@maketitle]%
+        \fi
+        \thispagestyle{plain}\@thanks
+        \endgroup
+        \setcounter{footnote}{0}%
+        \global\let\thanks\relax
+        \global\let\maketitle\relax
+        \global\let\@maketitle\relax
+        \global\let\@thanks\@empty
+        \global\let\@author\@empty
+        \global\let\@date\@empty
+        \global\let\@title\@empty
+        \global\let\title\relax
+        \global\let\author\relax
+        \global\let\date\relax
+        \global\let\and\relax
+    }
 
-\renewcommand{\maketitle}{\par
-    \begingroup
-      \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
-      \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
-      \long\def\@makefntext##1{\parindent 1em\noindent
-              \hb@xt@1.8em{%
-                \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
-      \ifnum \col@number=\@ne
-        \scshape\headlinecolor\@maketitle
-      \else
-        \twocolumn[\scshape\headlinecolor\@maketitle]%
-      \fi
-      \thispagestyle{plain}\@thanks
-    \endgroup
-    \setcounter{footnote}{0}%
-    \global\let\thanks\relax
-    \global\let\maketitle\relax
-    \global\let\@maketitle\relax
-    \global\let\@thanks\@empty
-    \global\let\@author\@empty
-    \global\let\@date\@empty
-    \global\let\@title\@empty
-    \global\let\title\relax
-    \global\let\author\relax
-    \global\let\date\relax
-    \global\let\and\relax
-}
+    \def\@maketitle{%
+    \newpage
+    \null
+    \vskip 2em%
+    \begin{center}%
+    \let \footnote \thanks
+        {\huge \@title \par}%
+        \vskip 1.5em%
+        {\large
+        \lineskip .5em%
+        \begin{tabular}[t]{c}%
+            \@author
+        \end{tabular}\par}%
+        \vskip 1em%
+        {\large \@date}%
+    \end{center}%
+    \par
+    \vskip 1.5em}
 
-\def\@maketitle{%
-  \newpage
-  \null
-  \vskip 2em%
-  \begin{center}%
-  \let \footnote \thanks
-    {\huge \@title \par}%
-    \vskip 1.5em%
-    {\large
-      \lineskip .5em%
-      \begin{tabular}[t]{c}%
-        \@author
-      \end{tabular}\par}%
-    \vskip 1em%
-    {\large \@date}%
-  \end{center}%
-  \par
-  \vskip 1.5em}
+    \renewcommand{\section}{%
+        \@startsection
+        {section}{1}{0pt}{-1.5ex plus -1ex minus -.2ex}%
+        {1ex plus .2ex}{\normalfont\LARGE\scshape\headlinecolor}%
+    }
+    \setcounter{secnumdepth}{0}
 
-\renewcommand{\section}{%
-    \@startsection
-    {section}{1}{0pt}{-1.5ex plus -1ex minus -.2ex}%
-    {1ex plus .2ex}{\normalfont\LARGE\scshape\headlinecolor}%
-}
-\setcounter{secnumdepth}{0}
+    \titleformat{\subsection}
+    {\normalfont\Large\scshape\headlinecolor}
+    {\thesection}
+    {1em}
+    {}
+    [{\underlinecolor\titlerule[1pt]}]
 
-\titleformat{\subsection}
-  {\normalfont\Large\scshape\headlinecolor}
-  {\thesection}
-  {1em}
-  {}
-  [{\underlinecolor\titlerule[1pt]}]
+        \setcounter{secnumdepth}{0}
+
+        \titleformat{\subsubsection}
+        {\normalfont\large\scshape\headlinecolor}
+        {\thesection}
+        {}
+        {}
+
+        \titlespacing*{\subsubsection}
+        {0pt}
+        {1em} 
+        {0.5em}  
+\else
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  BOXES                    %%
@@ -317,10 +370,14 @@
 \NewDocumentCommand{\statBox}{mmmm}{
     \begin{tcbraster}[raster columns=2, raster equal height]
         \begin{leftBox}{#1}
-            #2
+            \begin{center}
+                \huge#2
+            \end{center}
         \end{leftBox}
         \begin{rightBox}{#3}
-            #4
+            \begin{center}
+                \huge#4
+            \end{center}
         \end{rightBox}
     \end{tcbraster}
 }
@@ -330,69 +387,111 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Action
-\NewDocumentCommand{\action}{}{\text{\hspace{0.1em}\raisebox{0.45ex}{\rotatebox[origin=c]{90}{\normalfont\tiny\TriangleDown}} }}
+\NewDocumentCommand{\action}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+    }
+}
 
 % Double Action
-\NewDocumentCommand{\doubleAction}{}{\ooalign{\action\hspace{-0.35em}\action}}
+\NewDocumentCommand{\doubleAction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (4pt,0) {};
+    }
+}
 
 % Triple Action
-\NewDocumentCommand{\tripleAction}{}{\ooalign{\action\hspace{-0.35em}\action\hspace{-0.35em}\action}}
+\NewDocumentCommand{\tripleAction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (4pt,0) {};
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (8pt,0) {};
+    }
+}
 
 % Free Action
-\NewDocumentCommand{\freeAction}{}{\raisebox{1pt}{\(\bm{\triangleright}\)} }
+\NewDocumentCommand{\freeAction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[draw=textcolor, very thick, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+    }
+}
 
 % Reaction
 \NewDocumentCommand{\reaction}{}{%
-  \tikz[baseline=-0.2ex]{
-      \draw[{Triangle[length=0.5em, width=0.5em]}-,line width=0.125em] 
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.2ex]{%
+        \draw[color=textcolor,{Triangle[length=0.5em, width=0.5em]}-,line width=0.125em] 
             (0,0.15) -- (0.3,0.15) 
             arc (90:-90:0.075cm) 
             -- (0.1,0);
-  }~%
+  }
 }
 
 % Forever
 \NewDocumentCommand{\forever}{}{%
-  \tikz[baseline=-0.6ex]{
-    \draw[domain=0:359, smooth, samples=100, line width=0.125em] 
-        plot ({0.2*cos(\x)/(1+sin(\x)^2)}, {0.2*sin(\x)*cos(\x)/(1+sin(\x)^2)}) -- cycle;
-  }~%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.6ex]{%
+        \draw[color=textcolor, domain=0:359, smooth, samples=100, line width=0.125em] 
+            plot ({0.2*cos(\x)/(1+sin(\x)^2)}, {0.2*sin(\x)*cos(\x)/(1+sin(\x)^2)}) -- cycle;
+    }
 }
 
 % Complication
-\NewDocumentCommand{\complication}{o}{
-  \hspace{-0.15em}%
-  \tikz[baseline=-0.65ex]{
-    \node[fill=Firebrick2, shape=star, star points=9, star point height=0.25em, star point ratio=2, minimum size=1.1em, inner sep=0pt, anchor=center, rotate=20] at (0,0) {};
-    \node[fill=white, shape=star, star points=9, star point height=0.25em, star point ratio=2, minimum size=0.9em, inner sep=0pt, anchor=center] at (0,0) {};
-  }%
-  \IfNoValueTF{#1}{}{\,{\color{Firebrick2}#1}}
+\NewDocumentCommand{\complication}{o}{%
+    \tikz[baseline=-0.65ex]{%
+        \begin{scope}
+            \begin{pgfinterruptboundingbox}
+            \path[clip, invclip] (67.5:0.4em) -- (202.5:0.4em) -- (337.5:0.4em) -- (112.5:0.4em) -- (247.5:0.4em) -- (382.5:0.4em) -- (157.5:0.4em) -- (292.5:0.4em) -- (67.5:0.4em) -- cycle;
+            \path[invclip] (0,0) circle (0.22em);
+            \end{pgfinterruptboundingbox}
+            
+            \fill[Firebrick2] (45:0.5em) -- (180:0.5em) -- (315:0.5em) -- (90:0.5em) -- (225:0.5em) -- (360:0.5em) -- (135:0.5em) -- (270:0.5em) -- (45:0.5em) -- cycle;
+        \end{scope}
+    }%
+    \IfNoValueTF{#1}{}{\,{\color{Firebrick2}#1}}
 }
 
 % Complication Dice
-\NewDocumentCommand{\complicationDice}{o}{
-  \hspace{-0.15em}%
-  \tikz[baseline=-0.65ex]{
-    \node[fill=Firebrick2, shape=star, star points=9, star point height=0.25em, star point ratio=2, minimum size=1.4em, inner sep=0pt, anchor=center, rotate=20] at (0,0) {};
-    \node[fill=white, shape=star, star points=9, star point height=0.25em, star point ratio=2, minimum size=1.1em, inner sep=0pt, anchor=center] at (0,0) {\IfNoValueTF{#1}{}{\color{Firebrick2}\tiny #1}};
-  }~%
+\NewDocumentCommand{\complicationDice}{o}{%
+    \tikz[baseline=-0.65ex]{%
+        \begin{scope}
+            \begin{pgfinterruptboundingbox}
+            \path[clip, invclip] (67.5:0.5em) -- (202.5:0.5em) -- (337.5:0.5em) -- (112.5:0.5em) -- (247.5:0.5em) -- (382.5:0.5em) -- (157.5:0.5em) -- (292.5:0.5em) -- (67.5:0.5em) -- cycle;
+            \path[invclip] (0,0) circle (0.27em);
+            \end{pgfinterruptboundingbox}
+            
+            \fill[Firebrick2] (45:0.6em) -- (180:0.6em) -- (315:0.6em) -- (90:0.6em) -- (225:0.6em) -- (360:0.6em) -- (135:0.6em) -- (270:0.6em) -- (45:0.6em) -- cycle;
+        \end{scope}
+        \node[inner sep=0pt, outer sep=0pt, anchor=center, text=Firebrick2] at (0,0) {\IfNoValueTF{#1}{}{\sffamily\tiny #1}};
+    }
 }
 
 % Opportunity
-\NewDocumentCommand{\opportunity}{}{
-  \hspace{-0.5em}%
-  \tikz[baseline=-0.65ex]{
+\NewDocumentCommand{\opportunity}{}{%
+  \tikz[baseline=-0.65ex]{%
     \draw[color=\maincolor, line width=0.075em, sharp corners, anchor=center] 
         (0:0.15) .. controls (22.5:0.025) and (67.5:0.025) .. (90:0.15)
         .. controls (112.5:0.025) and (157.5:0.025) .. (180:0.15)
         .. controls (202.5:0.025) and (247.5:0.025) .. (270:0.15)
         .. controls (292.5:0.025) and (337.5:0.025) .. cycle;
-    \draw[color=\maincolor, line width=0.075em, anchor=center] (0,0) circle (0.3em);
-  }~%
+    \begin{scope}
+        \draw[color=\maincolor, line width=0.075em, anchor=center] (0,0) circle (0.3em);
+    \end{scope}
+  }
 }
 
 % Key Talent Star
-\newcommand{\key}{\raisebox{0.075em}{\normalfont\FiveStar~}}
+\NewDocumentCommand{\key}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.6ex]{%
+        \node[fill, color=textcolor, shape=star, star points=5, star point height=0.3em, minimum height=1em, inner sep=0pt, outer sep=0pt, anchor=center] at (0,0) {};
+    }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%               TALENT TREE                 %%
@@ -416,4 +515,138 @@
   {\color{\maincolor}\bfseries\scshape\hspace{-0.6em} #1}\\
   \IfNoValueTF{#2}{}{{\color{black!50}\footnotesize\itshape #2}\\}
   {\color{black}\small #3}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                TIMELINE                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% makes a new timeline base
+\DeclareKeys[erakeys] {
+    start  .store = \startyearkey,
+    end  .store = \endyearkey,
+    prefix  .store = \timelineprefix,
+    prefix  .initial:n = {},
+    major color  .store = \timelinecolor,
+    major color  .initial:n = {spruce!85!black},
+    minor color  .store = \minortimelinecolor,
+    minor color  .initial:n = {spruce!90!white},
+}
+
+\NewDocumentCommand{\era}{m}{
+    \SetKeys[erakeys]{#1}
+    \pgfmathsetmacro{\startyear}{\startyearkey}
+    \pgfmathsetmacro{\endyear}{\endyearkey}
+    \pgfmathtruncatemacro{\numnodes}{abs(\endyear - \startyear)}
+    \pgfmathsetmacro{\direction}{sign(\endyear - \startyear)}
+    
+    % Calculate scaled positions
+    \pgfmathsetmacro{\scaledstart}{\timelineend * \timescale}
+    \pgfmathsetmacro{\scaledend}{\scaledstart - \numnodes * \timescale}
+
+    % Draw nodes
+    \foreach \i in {0,...,\numnodes} {
+        \pgfmathtruncatemacro{\major}{mod(\i,\tickpattern)}
+        \pgfmathsetmacro{\currentyear}{\startyear + \i*\direction}
+        \pgfmathsetmacro{\ypos}{\scaledstart - \i*\timescale}
+        \ifnum\major=0
+            \node[draw, line width=1pt, color=\timelinecolor, minimum width=1.5em, minimum height=0pt, inner ysep=0pt, inner xsep=2pt] at (0,\ypos) {};
+            \node[left, color=\timelinecolor] at (-0.25,\ypos) {\timelineprefix\space\pgfmathprintnumber[assume math mode=true, precision=0]{\currentyear}};
+        \else
+            \node[draw, line width=0.5pt, color=\minortimelinecolor, minimum width=1em, minimum height=0pt, inner ysep=0pt, inner xsep=2pt] at (0,\ypos) {};
+        \fi
+    }
+
+    % Draw vertical line with gap
+    \pgfmathtruncatemacro{\gapcheck}{abs(sign(\timelineend))}
+    \ifnum\gapcheck=1
+        \node[draw, very thick, color=\timelinecolor, minimum width=1.5em, minimum height=0pt, inner ysep=0pt, inner xsep=2pt] at (0,\scaledstart) {};
+    \fi
+    \draw[thick, color=\timelinecolor] (0,\scaledstart) -- (0,\scaledend);
+    
+    % Update endpoint for chaining (unscaled)
+    \pgfmathsetmacro{\newtimelineend}{\timelineend - \numnodes - 1}
+    \global\edef\timelineend{\newtimelineend}
+    
+    % Update start year for events
+    \pgfmathsetmacro{\newerastart}{\endyear + \direction}
+    \global\edef\erastart{\newerastart}
+}
+
+% event command
+\DeclareKeys[eventkeys] {
+    year  .store = \eventyear,
+    prefix  .store = \eventprefix,
+    prefix  .initial:n = {},
+    dot color  .store = \eventdotcolor,
+    dot color  .initial:n = {chestnut},
+    line color  .store = \eventlinecolor,
+    line color  .initial:n = {chestnut!70!white},
+    year color  .store = \eventyearcolor,
+    year color  .initial:n = {chestnut},
+    prefix color  .store = \eventprefixcolor,
+    prefix color  .initial:n = {crimson},
+}
+
+\NewDocumentCommand{\reseteventkeys}{}{
+    \SetKeys[eventkeys]{
+        year = 0,
+        prefix = {},
+        dot color = chestnut,
+        line color = chestnut!70!white,
+        year color = chestnut,
+        prefix color = crimson
+    }
+}
+
+\if@plotweaver@standalonetype
+  \gdef\timelinewidth{15cm}
+\else
+  \gdef\timelinewidth{0.8\textwidth}
+\fi
+
+\NewDocumentCommand{\event}{m m O{}}{
+    \reseteventkeys
+    \SetKeys[eventkeys]{#1}
+    \pgfmathsetmacro{\ypos}{(\timelineend + \erastart - \eventyear) * \timescale}
+
+    \node[fill, circle, inner sep=1.5pt, color=\eventdotcolor] (year-marker) at (0,\ypos) {};
+    \def\tempa{}%
+    \ifx\eventprefix\tempa
+        \node[right, max width=\timelinewidth, below={#3} of event-\number\numexpr\value{eventcounter}-1\relax.south west, anchor=north west] (event-\number\value{eventcounter}) {\leavevmode{\color{\eventyearcolor}\textbf{\pgfmathprintnumber[assume math mode=true, precision=0]{\eventyear}~--- }}#2};
+    \else
+        \node[right, max width=\timelinewidth, below={#3} of event-\number\numexpr\value{eventcounter}-1\relax.south west, anchor=north west] (event-\number\value{eventcounter}) {\leavevmode{\color{\eventprefixcolor}\textbf{\pgfmathprintnumber[assume math mode=true, precision=0]{\eventyear}~--- \eventprefix}}#2};
+    \fi
+    \draw[thin, color=\eventlinecolor, shorten <=-0.2pt] (year-marker) -- ($(event-\number\value{eventcounter}.north west) - (0, 0.75em)$);
+    \stepcounter{eventcounter}
+}
+
+% timeline environment
+\DeclareKeys[timelinekeys] {
+  scale  .store = \timescale,
+  scale  .initial:n = 0.1,
+  major tick pattern  .store = \majortickpattern,
+  major tick pattern  .initial:n = 1,
+  event xshift  .store = \eventxshift,
+  event xshift  .initial:n = 3cm,
+}
+
+\NewDocumentEnvironment{timeline}{o}{
+    \SetKeys[timelinekeys]{#1}
+    % Initialize timeline start and end position
+    \gdef\timelineend{0}
+    \gdef\erastart{0}
+    % Initialize first event node position
+    \ifcsname c@eventcounter\endcsname
+    \else
+        \newcounter{eventcounter}
+    \fi
+    \setcounter{eventcounter}{0}
+    % Tick pattern
+    \gdef\tickpattern{\majortickpattern}
+    \begin{tikzpicture}
+        \node[xshift=\eventxshift] (event-\the\value{eventcounter}) at (0,0) {};
+        \stepcounter{eventcounter}
+}{
+    \end{tikzpicture}
 }
