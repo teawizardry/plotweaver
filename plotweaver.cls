@@ -227,14 +227,16 @@
     enhanced,
     nobeforeafter,
     colback=white,
+    colbacktitle=white,
+    titlerule=-0.5pt,
     boxsep=1em,
     frame code={%
         \begin{pgfonlayer}{foreground}
             % outer box
             \begin{scope}
                 \clip (frame.south west) rectangle (frame.north east);
-                \draw[line width = 1.5pt, color = black] (frame.south west) circle (1em);
-                \draw[line width = 1.5pt, color = black] (frame.north west) circle (1em);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.south west) circle (1em);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.north west) circle (1em);
             \end{scope}
             \draw[line width = 1.5pt, color = black] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
             \draw[line width = 1.5pt, color = black] ($(frame.north east) + (0pt, 0.075em)$) -- ($(frame.south east) + (0pt, -0.075em)$);
@@ -271,14 +273,16 @@
     enhanced,
     nobeforeafter,
     colback=white,
+    colbacktitle=white,
+    titlerule=-0.5pt,
     boxsep=1em,
     frame code={%
         \begin{pgfonlayer}{foreground}
             % outer box
             \begin{scope}
                 \clip (frame.south west) rectangle (frame.north east);
-                \draw[line width = 1.5pt, color = black] (frame.north east) circle (1em);
-                \draw[line width = 1.5pt, color = black] (frame.south east) circle (1em);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.north east) circle (1em);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.south east) circle (1em);
             \end{scope}
             \draw[line width = 1.5pt, color = black] ($(frame.north west) + (0pt, 0.075em)$) -- ($(frame.south west) + (0pt, -0.075em)$);
             \draw[line width = 1.5pt, color = black] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
