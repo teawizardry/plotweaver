@@ -1,3 +1,5 @@
 # A Plotweaver LaTeX Document Class
 
-Please read `example.pdf` and refer to `example.tex` for details.
+Documentation can be found in `plotweaver.pdf`. For example usage, see `example.pdf` and its source `example.tex`.
+
+This document class is currently under active development. Feedback or contributions are welcome.

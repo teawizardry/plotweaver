@@ -1,4 +1,4 @@
-\documentclass[article]{plotweaver}
+\documentclass[article,stormlight]{plotweaver}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage[base]{babel}
@@ -33,6 +33,22 @@ The complication commands can take a number or be left blank. Numbers look like 
     \complicationDice\space \complicationDice[2] \complicationDice[4]
 \end{center}
 
+\subsection{Tables}
+Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} under the hood.
+\begin{table}
+    \centering
+    \begin{plotable}{llll}
+        Heading 1 & Heading 2 & Heading 3 & Heading 4 \\
+        Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
+        Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
+        Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
+        Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
+    \end{plotable}
+\end{table}
+
+\subsection{Color Schemes}
+You can switch color schemes by passing an option to the document class. The default is \texttt{stormlight}. You can also use \texttt{mistborn}, with more to come. You can also define your own color schemes.
+
 \begin{center}
 \noindent
 \begin{featureBox}{Feature}
@@ -56,7 +72,7 @@ The complication commands can take a number or be left blank. Numbers look like 
 \begin{center}
 \begin{tikzpicture}
  [node distance=1em and -4em,
- start chain=going below, overlay, remember picture, background rectangle/.style={fill=DodgerBlue4}, show background rectangle]
+ start chain=going below, overlay, remember picture, background rectangle/.style={fill=cscolor}, show background rectangle]
 
     \node (kt) [fill=none] at (0,0) {
         \keyTalent{Key Talent}{

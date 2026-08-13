@@ -1,5 +1,5 @@
 \PassOptionsToPackage{all}{tcolorbox}
-\documentclass[article]{plotweaver}
+\documentclass[article,mistborn]{plotweaver}
 \usepackage{listings}
 \usepackage{lipsum}
 \usepackage{graphicx}
@@ -33,6 +33,7 @@
 }
 
 \NewDocumentCommand{\dispcmd}{m}{\textcolor{Definition}{\bfseries\texttt{\textbackslash#1}}}
+\NewDocumentCommand{\dispvar}{m}{\textcolor{Option!80!cscolor}{\bfseries\texttt{#1}}}
 \NewDocumentCommand{\disptxt}{m}{\textbf{\texttt{#1}}}
 
 \title{Plotweaver \LaTeX~Document Class}
@@ -154,5 +155,40 @@ This is a series of custom boxes that will stay the same height regardless of co
 }
 \end{dispExample*}
 \end{docEnvironment}
+
+\newpage
+
+\section{Tables}
+Tables can be created using \dispcmd{plotable}. This uses \disptxt{nicematrix} under the hood. See the \disptxt{nicematrix} documentation for more information.
+
+\begin{docEnvironment}[doc new=2026-08-12]{plotable}{\marg{column spec}\oarg{options}}
+This is a custom \disptxt{NiceTabular} environment. It simply a wrapper that defines the styling for the table.
+\begin{dispExample*}{sidebyside}
+\begin{plotable}{cl}
+        Level & Feature \\
+        1 & Cool abilities \\
+        2 & Even cooler abilities \\
+        3 & The coolest abilities \\
+    \end{plotable}
+\end{dispExample*}
+\end{docEnvironment}
+
+\section{Color Schemes}
+\tcbdocmarginnote{\tcbdocnew{2026-08-12}}
+This document class currently provides two predefined color schemes: \dispvar{stormlight} and \dispvar{mistborn}. The default is \dispvar{stormlight}. The color scheme is selected by passing its name into the document class options. Additionally, custom color schemes can be defined by overriding the following color definitions with~\dispcmd{colorlet}:
+\begin{itemize}
+    \item \dispvar{cspapercolor}: The background color of the page.
+    \item \dispvar{cstextcolor}: The color of the text.
+    \item \dispvar{cscolor}: The main color used for headings, borders, etc.
+    \item \dispvar{csaccent}: The accent color used for underlines, borders, etc.
+    \item \dispvar{csdim}: Dimmed color used for notes and other subtle text.
+    \item \dispvar{cstblheaderbg}: The background color of table headers.
+    \item \dispvar{cstblheadertext}: The text color of table headers.
+    \item \dispvar{cstblrowa}: Lighter background color for table rows.
+    \item \dispvar{cstblrowb}: Darker background color for table rows.
+    \item \dispvar{cscalloutheaderbg}: The background color of callout headers.
+    \item \dispvar{cscalloutheadertext}: The text color of callout headers.
+    \item \dispvar{cscalloutbg}: The background color of callouts.
+\end{itemize}
 
 \end{document}

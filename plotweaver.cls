@@ -6,6 +6,12 @@
     article.usage = load,
     standalone.if = @plotweaver@standalonetype,
     standalone.usage = load,
+    stormlight.if = @plotweaver@stormlightcs,
+    stormlight.usage = general,
+    mistborn.if = @plotweaver@mistborncs,
+    mistborn.usage = general,
+    ariandor.if = @plotweaver@ariandorcs,
+    ariandor.usage = general,
 }
 \ProcessKeyOptions
 \if@plotweaver@standalonetype
@@ -40,22 +46,110 @@
 
 \renewcommand{\normalsize}{\fontsize{10pt}{12pt}\selectfont}
 
+% Colors
 \RequirePackage[x11names,table]{xcolor}
 \definecolor{ink}{RGB}{34,26,74}
 \definecolor{spruce}{RGB}{26,74,34}
 \definecolor{crimson}{RGB}{165, 52, 29}
 \definecolor{chestnut}{RGB}{74,34,26}
 \definecolor{mustard}{RGB}{206,126,0}
+
+\definecolor{plotweavergray}{RGB}{179,179,179}
+\definecolor{opportunityblue}{RGB}{16,82,161}
+\definecolor{complicationred}{RGB}{160,18,19}
+
+\definecolor{stormingink}{RGB}{0,0,0}
+\definecolor{stormingpaper}{RGB}{235,236,239}
+\definecolor{stormingblue}{RGB}{30,60,96}
+\definecolor{stormingbluedim}{RGB}{119,141,168}
+\definecolor{storminggold}{RGB}{208,164,82}
+\definecolor{stormingtblrowa}{RGB}{229,231,235}
+\definecolor{stormingtblrowb}{RGB}{249,249,250}
+\definecolor{stormingcalloutbg}{RGB}{227,231,235}
+
+\definecolor{rustingink}{RGB}{0,0,0}
+\definecolor{rustingpaper}{RGB}{247,245,245}
+\definecolor{rustingred}{RGB}{82,48,43}
+\definecolor{rustingreddim}{RGB}{95,83,83}
+\definecolor{rustingsilver}{RGB}{122,121,121}
+\definecolor{rustingtblrowa}{RGB}{229,231,235}
+\definecolor{rustingtblrowb}{RGB}{249,249,250}
+\definecolor{rustingcalloutbg}{RGB}{230,226,226}
+
 \newcommand{\maincolor}{DodgerBlue4!85!black}
-\newcommand{\headlinecolor}{\color{\maincolor}}
-\newcommand{\underlinecolor}{\color{Gold3}}
+
+% stormlight colorscheme
+\if@plotweaver@stormlightcs
+    \colorlet{cspapercolor}{stormingpaper}
+    \colorlet{cstextcolor}{stormingink}
+    \colorlet{cscolor}{stormingblue}
+    \colorlet{csaccent}{storminggold}
+    \colorlet{csdim}{stormingbluedim}
+    % table colors
+    \colorlet{cstblheaderbg}{stormingblue}
+    \colorlet{cstblheadertext}{white}
+    \colorlet{cstblrowa}{stormingtblrowa}
+    \colorlet{cstblrowb}{stormingtblrowb}
+    % callout colors
+    \colorlet{cscalloutheaderbg}{stormingblue}
+    \colorlet{cscalloutheadertext}{white}
+    \colorlet{cscalloutbg}{stormingcalloutbg}
+\else
+\fi
+
+\if@plotweaver@mistborncs
+    \colorlet{cspapercolor}{rustingpaper}
+    \colorlet{cstextcolor}{rustingink}
+    \colorlet{cscolor}{rustingred}
+    \colorlet{csaccent}{rustingsilver}
+    \colorlet{csdim}{rustingreddim}
+    % table colors
+    \colorlet{cstblheaderbg}{rustingreddim}
+    \colorlet{cstblheadertext}{white}
+    \colorlet{cstblrowa}{rustingtblrowa}
+    \colorlet{cstblrowb}{rustingtblrowb}
+    % callout colors
+    \colorlet{cscalloutheaderbg}{rustingreddim}
+    \colorlet{cscalloutheadertext}{white}
+    \colorlet{cscalloutbg}{rustingcalloutbg}
+\else
+    \colorlet{cspapercolor}{stormingpaper}
+    \colorlet{cstextcolor}{stormingink}
+    \colorlet{cscolor}{stormingblue}
+    \colorlet{csaccent}{storminggold}
+    \colorlet{csdim}{stormingbluedim}
+    % table colors
+    \colorlet{cstblheaderbg}{stormingblue}
+    \colorlet{cstblheadertext}{white}
+    \colorlet{cstblrowa}{stormingtblrowa}
+    \colorlet{cstblrowb}{stormingtblrowb}
+    % callout colors
+    \colorlet{cscalloutheaderbg}{stormingblue}
+    \colorlet{cscalloutheadertext}{white}
+    \colorlet{cscalloutbg}{stormingcalloutbg}
+\fi
+
+% Table definitions
+\RequirePackage{nicematrix}
+\NewDocumentEnvironment{plotable}{m o}{%
+    \sffamily
+    \begin{NiceTabular}{#1}[#2]
+        \CodeBefore
+            \rowcolor{cscolor}{1}
+            \rowcolors{2}{cstblrowa}{cstblrowb}
+        \Body
+        \RowStyle[nb-rows=1,color=white]{\bfseries}
+}{%
+    \end{NiceTabular}
+}
+\renewcommand{\arraystretch}{1.5}
 
 \RequirePackage{fontspec}
 \setmainfont{TeX Gyre Schola}
 \setsansfont{Noto Sans}
 
 \AtBeginDocument{
-  \pagecolor{DodgerBlue4!03!white}
+  \pagecolor{cspapercolor}
 }
 
 \RequirePackage{amsmath}
@@ -86,6 +180,8 @@
     }
 }
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%             TITLE & SECTIONS              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,9 +194,9 @@
                 \hb@xt@1.8em{%
                     \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
         \ifnum \col@number=\@ne
-            \scshape\headlinecolor\@maketitle
+            \scshape\color{cscolor}\@maketitle
         \else
-            \twocolumn[\scshape\headlinecolor\@maketitle]%
+            \twocolumn[\scshape\color{cscolor}\@maketitle]%
         \fi
         \thispagestyle{plain}\@thanks
         \endgroup
@@ -140,21 +236,21 @@
     \renewcommand{\section}{%
         \@startsection
         {section}{1}{0pt}{-1.5ex plus -1ex minus -.2ex}%
-        {1ex plus .2ex}{\normalfont\LARGE\scshape\headlinecolor}%
+        {1ex plus .2ex}{\normalfont\LARGE\scshape\color{cscolor}}%
     }
     \setcounter{secnumdepth}{0}
 
     \titleformat{\subsection}
-    {\normalfont\Large\scshape\headlinecolor}
+    {\normalfont\Large\scshape\color{cscolor}}
     {\thesection}
     {1em}
     {}
-    [{\underlinecolor\titlerule[1pt]}]
+    [{\color{csaccent}\titlerule[1pt]}]
 
         \setcounter{secnumdepth}{0}
 
         \titleformat{\subsubsection}
-        {\normalfont\large\scshape\headlinecolor}
+        {\normalfont\large\scshape\color{cscolor}}
         {\thesection}
         {}
         {}
@@ -174,7 +270,7 @@
     enhanced,
     sharp corners,
     colback=white,
-    colframe=white,
+    colframe=black,
     colbacktitle=white,
     titlerule=-0.5pt,
     boxsep=1em,
@@ -329,33 +425,33 @@
     frame code={%
         \begin{pgfonlayer}{foreground}
             % outer box
-            \draw[line width = 1.5pt, color = Gold3, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
-            \draw[line width = 1.5pt, color = Gold3, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
-            \draw[line width = 1.5pt, color = Gold3, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] ($(frame.north west) + (0.925em, 0pt)$) -- ($(frame.north east) + (-0.925em, 0pt)$);
-            \draw[line width = 1.5pt, color = Gold3, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(frame.south west) + (0.925em, 0pt)$) -- ($(frame.south east) + (-0.925em, 0pt)$);
+            \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
+            \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
+            \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] ($(frame.north west) + (0.925em, 0pt)$) -- ($(frame.north east) + (-0.925em, 0pt)$);
+            \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(frame.south west) + (0.925em, 0pt)$) -- ($(frame.south east) + (-0.925em, 0pt)$);
 
             % round corners
             \begin{scope}
                 \clip (frame.south west) rectangle (frame.north east);
-                \draw[line width = 1.5pt, color = Gold3] (frame.south west) circle (1em);
-                \draw[line width = 1.5pt, color = Gold3] (frame.north west) circle (1em);
-                \draw[line width = 1.5pt, color = Gold3] (frame.north east) circle (1em);
-                \draw[line width = 1.5pt, color = Gold3] (frame.south east) circle (1em);
+                \draw[line width = 1.5pt, color = csaccent] (frame.south west) circle (1em);
+                \draw[line width = 1.5pt, color = csaccent] (frame.north west) circle (1em);
+                \draw[line width = 1.5pt, color = csaccent] (frame.north east) circle (1em);
+                \draw[line width = 1.5pt, color = csaccent] (frame.south east) circle (1em);
             \end{scope}
 
             % inner box
-            \draw[line width = 1pt, color=Gold3] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
+            \draw[line width = 1pt, color=csaccent] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
         \end{pgfonlayer}
     },
     title={#1},
-    coltitle=\maincolor,
+    coltitle=cscolor,
     fonttitle=\sffamily\scshape\large,
     halign title=flush left,
     bottomtitle = -1.5em,
     fontupper=\sffamily,
     segmentation code={
         \begin{pgfonlayer}{foreground}
-            \draw[line width = 1.5pt, color = Gold3] ($(segmentation.west) + (-0.2em, 0pt)$) -- ($(segmentation.east) + (0.2em, 0pt)$);
+            \draw[line width = 1.5pt, color = csaccent] ($(segmentation.west) + (-0.2em, 0pt)$) -- ($(segmentation.east) + (0.2em, 0pt)$);
         \end{pgfonlayer}
     },
     subtitle style={
@@ -454,10 +550,10 @@
             \path[invclip] (0,0) circle (0.22em);
             \end{pgfinterruptboundingbox}
             
-            \fill[Firebrick2] (45:0.5em) -- (180:0.5em) -- (315:0.5em) -- (90:0.5em) -- (225:0.5em) -- (360:0.5em) -- (135:0.5em) -- (270:0.5em) -- (45:0.5em) -- cycle;
+            \fill[complicationred] (45:0.5em) -- (180:0.5em) -- (315:0.5em) -- (90:0.5em) -- (225:0.5em) -- (360:0.5em) -- (135:0.5em) -- (270:0.5em) -- (45:0.5em) -- cycle;
         \end{scope}
     }%
-    \IfNoValueTF{#1}{}{\,{\color{Firebrick2}#1}}
+    \IfNoValueTF{#1}{}{\,{\color{complicationred}#1}}
 }
 
 % Complication Dice
@@ -469,22 +565,22 @@
             \path[invclip] (0,0) circle (0.27em);
             \end{pgfinterruptboundingbox}
             
-            \fill[Firebrick2] (45:0.6em) -- (180:0.6em) -- (315:0.6em) -- (90:0.6em) -- (225:0.6em) -- (360:0.6em) -- (135:0.6em) -- (270:0.6em) -- (45:0.6em) -- cycle;
+            \fill[complicationred] (45:0.6em) -- (180:0.6em) -- (315:0.6em) -- (90:0.6em) -- (225:0.6em) -- (360:0.6em) -- (135:0.6em) -- (270:0.6em) -- (45:0.6em) -- cycle;
         \end{scope}
-        \node[inner sep=0pt, outer sep=0pt, anchor=center, text=Firebrick2] at (0,0) {\IfNoValueTF{#1}{}{\sffamily\tiny #1}};
+        \node[inner sep=0pt, outer sep=0pt, anchor=center, text=complicationred] at (0,0) {\IfNoValueTF{#1}{}{\sffamily\tiny #1}};
     }
 }
 
 % Opportunity
 \NewDocumentCommand{\opportunity}{}{%
   \tikz[baseline=-0.65ex]{%
-    \draw[color=\maincolor, line width=0.075em, sharp corners, anchor=center] 
+    \draw[color=opportunityblue, line width=0.075em, sharp corners, anchor=center] 
         (0:0.15) .. controls (22.5:0.025) and (67.5:0.025) .. (90:0.15)
         .. controls (112.5:0.025) and (157.5:0.025) .. (180:0.15)
         .. controls (202.5:0.025) and (247.5:0.025) .. (270:0.15)
         .. controls (292.5:0.025) and (337.5:0.025) .. cycle;
     \begin{scope}
-        \draw[color=\maincolor, line width=0.075em, anchor=center] (0,0) circle (0.3em);
+        \draw[color=opportunityblue, line width=0.075em, anchor=center] (0,0) circle (0.3em);
     \end{scope}
   }
 }
@@ -516,8 +612,8 @@
 
 % Normal Talent
 \NewDocumentCommand{\talent}{mom}{
-  {\color{\maincolor}\bfseries\scshape\hspace{-0.6em} #1}\\
-  \IfNoValueTF{#2}{}{{\color{black!50}\footnotesize\itshape #2}\\}
+  {\color{cscolor}\bfseries\scshape\hspace{-0.6em} #1}\\
+  \IfNoValueTF{#2}{}{{\color{plotweavergray}\footnotesize\itshape #2}\\}
   {\color{black}\small #3}
 }
 
