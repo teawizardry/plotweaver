@@ -130,6 +130,20 @@
 \fi
 
 % Table definitions
+\RequirePackage{caption}
+\captionsetup{
+    format = hang,
+    justification = raggedright,
+    singlelinecheck=off,
+    font = {Large,sf,sc,bf},
+    skip = 0.25em,
+    position = above,
+}
+\NewDocumentCommand{\lowercaption}{m}{
+    \par\vspace{0.5em}
+    % \leftskip 1pt
+    \textcolor{csdim}{\uppercase{\small\bfseries\sffamily #1}}
+}
 \RequirePackage{nicematrix}
 \NewDocumentEnvironment{plotable}{m o}{%
     \sffamily

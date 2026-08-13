@@ -6,3 +6,4 @@
 *.tcbtemp
 *.hd
 *.out
+.DS_Store

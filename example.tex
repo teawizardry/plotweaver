@@ -34,9 +34,9 @@ The complication commands can take a number or be left blank. Numbers look like 
 \end{center}
 
 \subsection{Tables}
-Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} under the hood.
+Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} under the hood. Like usual, you can refer to Table~\ref{tab:example} with a label.
 \begin{table}
-    \centering
+    \caption{Example Table}
     \begin{plotable}{llll}
         Heading 1 & Heading 2 & Heading 3 & Heading 4 \\
         Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
@@ -44,6 +44,8 @@ Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} und
         Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
         Lipsum & Lorem ipsum dolor sit amet, consectetur adipiscing elit. & 1234 & 5678 \\
     \end{plotable}
+    \lowercaption{This is a caption that is placed below the table}
+    \label{tab:example}
 \end{table}
 
 \subsection{Color Schemes}

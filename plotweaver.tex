@@ -164,14 +164,22 @@ Tables can be created using \dispcmd{plotable}. This uses \disptxt{nicematrix} u
 \begin{docEnvironment}[doc new=2026-08-12]{plotable}{\marg{column spec}\oarg{options}}
 This is a custom \disptxt{NiceTabular} environment. It simply a wrapper that defines the styling for the table.
 \begin{dispExample*}{sidebyside}
-\begin{plotable}{cl}
-        Level & Feature \\
-        1 & Cool abilities \\
-        2 & Even cooler abilities \\
-        3 & The coolest abilities \\
-    \end{plotable}
+  \begin{plotable}{cl}
+    Level & Feature \\
+    1 & Cool abilities \\
+    2 & Even cooler abilities \\
+    3 & The coolest abilities \\
+  \end{plotable}
 \end{dispExample*}
 \end{docEnvironment}
+
+\begin{docCommand}[
+    doc name        = lowercaption,
+    doc new         = 2026-08-13,
+    doc parameter   = \marg{caption text},
+  ]{}{}
+  This command formats a caption to sit below a table. It sets the text to uppercase and uses the \dispvar{csdim} color.
+\end{docCommand}
 
 \section{Color Schemes}
 \tcbdocmarginnote{\tcbdocnew{2026-08-12}}
