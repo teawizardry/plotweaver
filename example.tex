@@ -51,14 +51,17 @@ Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} und
 \subsection{Color Schemes}
 You can switch color schemes by passing an option to the document class. The default is \texttt{stormlight}. You can also use \texttt{mistborn}, with more to come. You can also define your own color schemes.
 
+\subsection{Character Sheets}
+You can make a character sheet using the \texttt{MakeCharacterSheet} command. Currently, this only prints a one page sheet, but more complex sheets are in the works. See \texttt{character\_sheet.tex} for an example of how to use this command.
+
 \begin{center}
 \noindent
-\begin{featureBox}{Feature}
+\begin{tcolorbox}[featureBox,, title={Feature Box}]
     \lipsum[1][1-7]
     \tcblower
     \tcbsubtitle{Sub Feature}
     \lipsum[1][1-3]
-\end{featureBox}
+\end{tcolorbox}
 \statBox{Stat One}{
     \normalsize These boxes can have different content...
 }%
@@ -67,6 +70,69 @@ You can switch color schemes by passing an option to the document class. The def
 }
 \vspace{\baselineskip}
 \end{center}
+
+\clearpage
+\thispagestyle{empty}
+
+\MakeCharacterSheet{
+    name = Nomodin,
+    ancestry = Human (Natan),
+    level = 3,
+    paths = Envoy (Faithful),
+    maxHealth = 20,
+    maxEssence = 0,
+    recoveryDie = 1d8,
+    liftingCapacity = 100lbs,
+    movement = 25ft,
+    sensesRange = 10ft,
+    strength = 0,
+    speed = 1,
+    intellect = 3,
+    willpower = 4,
+    awareness = 2,
+    presence = 3,
+    phyDefenseBonus = 2,
+    cogDefenseBonus = 0,
+    spiDefenseBonus = 2,
+    agility = 0,
+    athletics = 0,
+    heavyweaponry = 0,
+    lightweaponry = 0,
+    stealth = 1,
+    finesse = 0,
+    crafting = 0,
+    deduction = 1,
+    discipline = 2,
+    intimidation = 0,
+    knowledge = 2,
+    medicine = 1,
+    deception = 0,
+    insight = 0,
+    leadership = 1,
+    perception = 0,
+    persuasion = 1,
+    survival = 0
+}[
+    \centering
+    \begin{NiceTabular}{ll}
+        Natan & Thaylen \\
+        Uniform & Staff \\
+        Religion & Literature
+    \end{NiceTabular}
+][
+    \action Rousing Presence: Choose an ally you can influence. They become Determined until they benefit from that condition or until the scene ends.
+][
+    \begin{CharTable}{\linewidth}{cccXX}
+        Type & Damage & Range & Traits & Expert Traits \\
+        Staff & 1d6+1 impact & Melee & Two-handed, Discreet & Defensive \\
+        Unarmed & 1 impact & Melee & - & -
+    \end{CharTable}
+][
+    \begin{CharTable}{\linewidth}{ccXX}
+        Type & Deflect & Traits & Expert Traits \\
+        Uniform & 0 & Presentable & - \\
+    \end{CharTable}
+]
 
 \newpage
 

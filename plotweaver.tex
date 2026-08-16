@@ -33,6 +33,7 @@
 }
 
 \NewDocumentCommand{\dispcmd}{m}{\textcolor{Definition}{\bfseries\texttt{\textbackslash#1}}}
+\NewDocumentCommand{\dispred}{m}{\textcolor{Definition}{\bfseries\texttt{#1}}}
 \NewDocumentCommand{\dispvar}{m}{\textcolor{Option!80!cscolor}{\bfseries\texttt{#1}}}
 \NewDocumentCommand{\disptxt}{m}{\textbf{\texttt{#1}}}
 
@@ -135,17 +136,17 @@ These commands produce commonly used icons. All of the icons are implemented usi
 
 \section{Feature Boxes}
 
-\begin{docEnvironment}{featureBox}{\oarg{options}}
-  This is a custom tcolorbox and works as such. Under the hood, it is defined by \dispcmd{newtcolorbox}. See the \disptxt{tcolorbox} documentation for more information. 
+\begin{docKey}[tcb][doc updated = 2026-08-16]{featureBox}{=\meta{text}}{}
+  The tcolorbox key containing the styling for feature boxes. See the \disptxt{tcolorbox} documentation for more information. 
   \begin{dispExample*}{sidebyside}
-    \begin{featureBox}{Feature}
+  \begin{tcolorbox}[featureBox, title={Feature Box}]
       \lipsum[1][1-3]
-  \end{featureBox}
+  \end{tcolorbox}
   \end{dispExample*}
-\end{docEnvironment}
+\end{docKey}
 
 \begin{docEnvironment}[doc updated=2026-08-11]{statBox}{\marg{heading 1}\marg{content 1}\marg{heading 2}\marg{content 2}}
-This is a series of custom boxes that will stay the same height regardless of content length. They are always of equal width. You can use each half of \dispcmd{statBox} separately by using \dispcmd{leftBox} and \dispcmd{rightBox}. These follow the same documentation as \dispcmd{featureBox}.
+This is a series of custom boxes that will stay the same height regardless of content length. They are always of equal width. You can use each half of \dispred{statBox} separately by using the \dispvar{leftBox} and \dispvar{rightBox} style keys. These follow the same documentation as \dispred{/tcb/featureBox}.
 \begin{dispExample*}{sidebyside}
 \statBox{Stat One}{
     10
@@ -159,7 +160,7 @@ This is a series of custom boxes that will stay the same height regardless of co
 \newpage
 
 \section{Tables}
-Tables can be created using \dispcmd{plotable}. This uses \disptxt{nicematrix} under the hood. See the \disptxt{nicematrix} documentation for more information.
+Tables can be created using \dispred{plotable}. This uses \disptxt{nicematrix} under the hood. See the \disptxt{nicematrix} documentation for more information.
 
 \begin{docEnvironment}[doc new=2026-08-12]{plotable}{\marg{column spec}\oarg{options}}
 This is a custom \disptxt{NiceTabular} environment. It simply a wrapper that defines the styling for the table.
@@ -180,6 +181,207 @@ This is a custom \disptxt{NiceTabular} environment. It simply a wrapper that def
   ]{}{}
   This command formats a caption to sit below a table. It sets the text to uppercase and uses the \dispvar{csdim} color.
 \end{docCommand}
+
+\section{Character Sheets}
+One page character sheets can be made using the \dispcmd{MakeCharacterSheet} command. This command takes in a series of key-value pairs and generates the sheet and any derived statistics. See \disptxt{character\_sheet.tex} for an example sheet. Multipage character sheets are in development.
+
+\begin{docCommand}[doc new = 2026-08-16]{MakeCharacterSheet}{\marg{key-value pairs}\oarg{expertises}\oarg{talents}\oarg{weapons}\oarg{armor}}
+Generates a one page character sheet. The optional arguments fill the boxes for expertises, talents, weapons, and armor.
+\end{docCommand}
+
+\begin{docKeys}[
+  doc keypath = charsheet,
+  doc parameter = {=\meta{text}},
+]
+{
+{
+  doc new = 2026-08-16,
+  doc name = name,
+  doc description = name of the character,
+},
+{
+  doc name = ancestry,
+  doc description = ancestry or lineage,
+},
+{
+  doc name = level,
+  doc description = level,
+},
+{
+  doc name = paths,
+  doc description = paths or talent trees,
+},
+{
+  doc name = maxHealth,
+  doc description = maximum health,
+},
+{
+  doc name = maxEssence,
+  doc description = maximum essence or investiture,
+},
+{
+  doc name = recoveryDie,
+  doc description = the die used for recovery rolls,
+},
+{
+  doc name = liftingCapacity,
+  doc description = lifting capacity,
+},
+{
+  doc name = movement,
+  doc description = movement speed,
+},
+{
+  doc name = sensesRange,
+  doc description = senses range,
+},
+{
+  doc name = strength,
+  doc description = strength attribute,
+},
+{
+  doc name = speed,
+  doc description = speed attribute,
+},
+{
+  doc name = intellect,
+  doc description = intellect attribute,
+},
+{
+  doc name = willpower,
+  doc description = willpower attribute,
+},
+{
+  doc name = awareness,
+  doc description = awareness attribute,
+},
+{
+  doc name = presence,
+  doc description = presence attribute,
+},
+{
+  doc name = phyDefenseBonus,
+  doc description = physical defense bonus,
+},
+{
+  doc name = cogDefenseBonus,
+  doc description = cognitive defense bonus,
+},
+{
+  doc name = spiDefenseBonus,
+  doc description = spiritual defense bonus,
+},
+{
+  doc name = agility,
+  doc description = ranks in agility,
+},
+{
+  doc name = athletics,
+  doc description = ranks in athletics,
+},
+{
+  doc name = heavyweaponry,
+  doc description = ranks in heavy weaponry,
+},
+{
+  doc name = lightweaponry,
+  doc description = ranks in light weaponry,
+},
+{
+  doc name = stealth,
+  doc description = ranks in stealth,
+},
+{
+  doc name = finesse,
+  doc description = ranks in finesse,
+},
+{
+  doc name = crafting,
+  doc description = ranks in crafting,
+},
+{
+  doc name = deduction,
+  doc description = ranks in deduction,
+},
+{
+  doc name = discipline,
+  doc description = ranks in discipline,
+},
+{
+  doc name = intimidation,
+  doc description = ranks in intimidation,
+},
+{
+  doc name = knowledge,
+  doc description = ranks in knowledge,
+},
+{
+  doc name = medicine,
+  doc description = ranks in medicine,
+},
+{
+  doc name = deception,
+  doc description = ranks in deception,
+},
+{
+  doc name = insight,
+  doc description = ranks in insight,
+},
+{
+  doc name = leadership,
+  doc description = ranks in leadership,
+},
+{
+  doc name = perception,
+  doc description = ranks in perception,
+},
+{
+  doc name = persuasion,
+  doc description = ranks in persuasion,
+},
+{
+  doc name = survival,
+  doc description = ranks in survival
+},
+{
+  doc name = phyStatName,
+  doc description = optional physical stat name,
+},
+{
+  doc name = phyStatRanks,
+  doc description = optional physical stat ranks,
+},
+{
+  doc name = cogStatName,
+  doc description = optional cognitive stat name,
+},
+{
+  doc name = phyStatBase,
+  doc description = optional physical stat base,
+},
+{
+  doc name = cogStatRanks,
+  doc description = optional cognitive stat ranks,
+},
+{
+  doc name = cogStatBase,
+  doc description = optional cognitive stat base,
+},
+{
+  doc name = spiStatName,
+  doc description = optional spiritual stat name,
+},
+{
+  doc name = spiStatRanks,
+  doc description = optional spiritual stat ranks,
+},
+{
+  doc name = spiStatBase,
+  doc description = optional spiritual stat base,
+},
+}
+The keys used for making a character sheet. These are all initialized as empty. Other attributes, like physical defense, are derived from the provided key-value pairs.
+\end{docKeys}
 
 \section{Color Schemes}
 \tcbdocmarginnote{\tcbdocnew{2026-08-12}}
