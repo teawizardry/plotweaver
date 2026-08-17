@@ -8,7 +8,8 @@
 
 \begin{document}
     \MakeCharacterSheet{
-        name = Nomodin,
+        stormlight,
+        name = Nomodan,
         ancestry = Human (Natan),
         level = 3,
         paths = Envoy (Faithful),
@@ -44,27 +45,90 @@
         leadership = 1,
         perception = 0,
         persuasion = 1,
-        survival = 0
-    }[
-        \centering
-        \begin{NiceTabular}{ll}
-            Natan & Thaylen \\
-            Uniform & Staff \\
-            Religion & Literature
-        \end{NiceTabular}
-    ][
-        \action Rousing Presence: Choose an ally you can influence. They become Determined until they benefit from that condition or until the scene ends.
-    ][
-        \begin{CharTable}{\linewidth}{cccXX}
-            Type & Damage & Range & Traits & Expert Traits \\
-            Staff & 1d6+1 impact & Melee & Two-handed, Discreet & Defensive \\
-            Unarmed & 1 impact & Melee & - & -
-        \end{CharTable}
-    ][
-        \begin{CharTable}{\linewidth}{ccXX}
-            Type & Deflect & Traits & Expert Traits \\
-            Uniform & 0 & Presentable & - \\
-        \end{CharTable}
-    ]
+        survival = 0,
+        phyStatName = {Custom Skill (spd)},
+        phyStatRanks = 1,
+        phyStatBase = 0,
+        image = {nomodan.png},
+        expertises = {
+            \centering
+            \begin{NiceTabular}{ll}
+                Natan & Thaylen \\
+                Uniform & Staff \\
+                Religion & Literature
+            \end{NiceTabular}
+        },
+        frontTalents = {
+            \action Rousing Presence: Choose an ally you can influence. They become Determined until they benefit from that condition or until the scene ends.
+        },
+        weapons = {
+            \begin{CharTable}{\linewidth}{cccXX}
+                Type & Damage & Range & Traits & Expert Traits \\
+                Staff & 1d6+1 impact & Melee & Two-handed, Discreet & Defensive \\
+                Unarmed & 1 impact & Melee & - & -
+            \end{CharTable}
+        },
+        armor = {
+            \begin{CharTable}{\linewidth}{ccXX}
+                Type & Deflect & Traits & Expert Traits \\
+                Uniform & 0 & Presentable & - \\
+            \end{CharTable}
+        },
+        goals = {
+            \renewcommand{\arraystretch}{2.75}
+            \begin{NiceTabularX}{\linewidth}{Xl}
+                \GoalRow[Soulcasting][2] \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+                \GoalRow \\
+            \end{NiceTabularX}
+        },
+        description = {
+            Nomodan is a short, stocky woman with blue skin. She has white curly hair that she keeps buzzed short. She has a variety of piercings, with gemstones representing each of the ten essences.
+        },
+        backstory = {
+            Nomodan is an ardent from New Natanan, though she's not particularly good at it.
+        },
+        purpose = {
+            The Devotary of Sincerity
+        },
+        obstacle = {
+            Nonconfrontational to a fault
+        },
+        connections = {
+            Vexla (singer contact)
+        },
+        notes = {
+            She has been seeing a cultivationspren.
+        },
+        rewards = {
+            Faulty soulcaster
+        },
+        currency = {\Huge5},
+        conditions = None,
+        inventory = {
+            Antiseptic (weak, 5 doses)
+            \newline
+            Flint and Steel
+            \newline
+            Uniform
+            \newline
+            Staff
+        },
+        secondTalents = {
+            \key Devoted Presence: When you use your Rousing Presence on one or more allies, you can spend 1 focus per target to remove one or more of the following conditions from them: Prone, Slowed, Stunned, Surprised.
+            \newline
+            \key Stalwart Presence: When you use Rousing Presence, you can spend 1 focus to increase one of the target's defenses (your choice) by 2 until the end of your next turn.
+        },
+        thirdTalents = {
+            \forever Customary Garb: While you're wearing Presentable armor, your Physical and Spiritual defenses increase by 2.
+        }
+    }
 
 \end{document}

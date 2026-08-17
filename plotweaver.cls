@@ -809,13 +809,40 @@
     survival    .store = \charSurvival, 
     phyStatName     .store = \charPhyStatName,
     phyStatRanks    .store = \charPhyStatRanks,
+    phyStatRanks    .initial:n = 0,
     phyStatBase     .store = \charPhyStatBase,
+    phyStatBase     .initial:n = 0,
     cogStatName     .store = \charCogStatName,
     cogStatRanks    .store = \charCogStatRanks,
+    cogStatRanks    .initial:n = 0,
     cogStatBase     .store = \charCogStatBase,
+    cogStatBase     .initial:n = 0,
     spiStatName     .store = \charSpiStatName,
     spiStatRanks    .store = \charSpiStatRanks,
+    spiStatRanks    .initial:n = 0,
     spiStatBase     .store = \charSpiStatBase,
+    spiStatBase     .initial:n = 0,
+    image   .store = \charImage,
+    hideBlanks.if = charHideBlanks,
+    stormlight.if = charStormlight,
+    mistborn.if = charMistborn,
+    expertises .store = \charExpertises,
+    frontTalents .store = \charFrontTalents,
+    secondTalents .store = \charSecondTalents,
+    thirdTalents  .store = \charThirdTalents,
+    weapons .store = \charWeapons,
+    armor   .store = \charArmor,
+    goals   .store = \charGoals,
+    conditions .store = \charConditions,
+    inventory .store = \charInventory,
+    currency .store = \charCurrency,
+    description .store = \charDescription,
+    backstory .store = \charBackstory,
+    connections .store = \charConnections,
+    rewards .store = \charRewards,
+    purpose .store = \charPurpose,
+    obstacle .store = \charObstacle,
+    notes .store = \charNotes,
 }
 
 % #1 - stat name, #2 - stat ranks, #3 - stat base
@@ -836,9 +863,40 @@
     }
 }
 
+% #1 - goal name, #2 - goal ranks
+\NewDocumentCommand{\GoalRow}{o O{0}}{%
+    \IfNoValueTF{#1}{\rule{11.25em}{1pt}}{\large#1} &
+    \tikz[baseline=-0.9em]{%
+        \foreach \x in {0,1,2}{
+            \ifnum\x<\numexpr#2\relax
+                \node[circle, draw, line width=1pt, minimum size=0.75em, inner sep=0pt, fill=black] at (\x*1em,0) {};
+            \else
+                \node[circle, draw, line width=1pt, minimum size=0.75em, inner sep=0pt, fill=white] at (\x*1em,0) {};
+            \fi
+        }
+    }
+}
+
 % #1 - keys, #2 - expertises, #3 - talents, #4 - weapons, #5 - armor
-\NewDocumentCommand{\MakeCharacterSheet}{moooo}{%
+\NewDocumentCommand{\MakeCharacterSheet}{m}{%
     \SetKeys[charsheet]{#1}
+
+    \ifcharStormlight
+        \charMistbornfalse
+        \def\finesseName{Thievery}
+        \def\essenceName{Investiture}
+        \def\currencyName{Marks}
+    \else
+        \ifcharMistborn
+            \def\finesseName{Thievery}
+            \def\essenceName{Investiture}
+            \def\currencyName{Boxings}
+        \else
+            \def\finesseName{Finesse}
+            \def\essenceName{Essence}
+            \def\currencyName{Currency}
+        \fi
+    \fi
 
     \begin{tcbposter}[
         coverage = {spread},
@@ -872,6 +930,17 @@
         
         \posterbox[leftBox={\small Recovery Die}]{name=recovery,column=5,span=1.022,below=paths,rowspan=0.5}{\centering\Huge\scripty \charRecoveryDie}
         \posterbox[rightBox={\small Senses Range}]{name=senses,column*=6,span=1.022,below=level,rowspan=0.5}{\centering\Huge\scripty \charSensesRange}
+        % \posterbox[featureBox={},boxsep=0.5em]{name=senses,column*=6,below=top,span=2, rowspan=1}{
+        %     \small\centering
+        %     \setlength{\tabcolsep}{0pt}
+        %     \begin{NiceTabularX}{\linewidth}{X|X}
+        %         Movement & Recovery Die \\
+        %         \charMovement & \charRecoveryDie \\
+        %         \hline
+        %         Lifting Capacity & Senses Range \\
+        %         \charLiftingCapacity & \charSensesRange
+        %     \end{NiceTabularX}
+        % }
 
         % stats
         \posterbox[featureBox={Physical},frame empty,opacityback=0,opacitybacktitle=0]{name=physical,column=1,span=2,below=character,rowspan=1.1,yshift=0.2cm}{}
@@ -917,14 +986,14 @@
         \posterbox[halign=center,valign=center,square,circular arc,colback=white,colframe=black,width=1.4cm,boxsep=0pt,left=0pt,right=0pt]{name=spiDefense,below=character,column=5,yshift=-0.895cm,xshift=2.65cm}{
             \sffamily\LARGE \the\numexpr10+\charAwareness+\charPresence+\charSpiDefenseBonus\relax
         }
-        \posterbox[adjusted title={Essence}, fonttitle=\sffamily\scshape\large, halign title=flush center, frame empty, opacityback=0, coltitle=black, boxsep=0pt]{name=essencetitle,column=5,below=strength,span=2,rowspan=0.14,yshift=2mm}{}
+        \posterbox[adjusted title={\essenceName}, fonttitle=\sffamily\scshape\large, halign title=flush center, frame empty, opacityback=0, coltitle=black, boxsep=0pt]{name=essencetitle,column=5,below=strength,span=2,rowspan=0.14,yshift=2mm}{}
         \posterbox[sideBox={\setlength{\tabcolsep}{0pt}\begin{NiceTabularX}{\linewidth}{*2{>{\centering}X}}Maximum & Current\end{NiceTabularX}},height=1.5cm]{name=essence,column=5,below=healthtitle,span=1.5,xshift=0.04166666667\textwidth}{
             \centering\huge\scripty \charMaxEssence
             \tcblower
         }
 
         % skills
-        \posterbox[fontupper=\sffamily\scshape,frame empty,boxsep=0pt,left=0pt,right=0pt,top=0.25em,bottom=0.25em,colback=white]{name=phyStats,column=1,span=2,below=health,rowspan=1.67}{
+        \posterbox[fontupper=\sffamily\scshape,frame empty,boxsep=0pt,left=0pt,right=0pt,top=0.25em,bottom=0.25em,colback=white]{name=phyStats,column=1,span=2,below=health,rowspan=\ifcharHideBlanks 1.47 \else 1.67 \fi}{
             \setlength{\tabcolsep}{0pt}
             \begin{NiceTabularX}{\textwidth}[cell-space-limits=3pt]{c@{\hspace{0.25em}}X@{\hspace{0.25em}}r}
                 \StatRow[Agility (spd)][\charAgility][\charSpeed] \\
@@ -932,11 +1001,18 @@
                 \StatRow[Heavy Weaponry (str)][\charHeavyweaponry][\charStrength] \\
                 \StatRow[Light Weaponry (spd)][\charLightweaponry][\charSpeed] \\
                 \StatRow[Stealth (spd)][\charStealth][\charSpeed] \\
-                \StatRow[Finesse (spd)][\charFinesse][\charSpeed] \\
-                \StatRow \\
+                \StatRow[\finesseName~(spd)][\charFinesse][\charSpeed] \\
+                \ifcharHideBlanks
+                \else
+                    \ifx\charPhyStatName\@empty
+                        \StatRow \\
+                    \else
+                        \StatRow[\charPhyStatName][\charPhyStatRanks][\charPhyStatBase] \\
+                    \fi
+                \fi
             \end{NiceTabularX}
         }
-        \posterbox[fontupper=\sffamily\scshape,frame empty,boxsep=0pt,left=0pt,right=0pt,top=0.25em,bottom=0.25em,colback=white]{name=cogStats,column=3,span=2,below=focus,rowspan=1.67}{
+        \posterbox[fontupper=\sffamily\scshape,frame empty,boxsep=0pt,left=0pt,right=0pt,top=0.25em,bottom=0.25em,colback=white]{name=cogStats,column=3,span=2,below=focus,rowspan=\ifcharHideBlanks 1.47 \else 1.67 \fi}{
             \setlength{\tabcolsep}{0pt}
             \begin{NiceTabularX}{\textwidth}[cell-space-limits=3pt]{c@{\hspace{0.25em}}X@{\hspace{0.25em}}r}
                 \StatRow[Crafting (int)][\charCrafting][\charIntellect] \\
@@ -945,10 +1021,17 @@
                 \StatRow[Intimidation (wil)][\charIntimidation][\charWillpower] \\
                 \StatRow[Knowledge (int)][\charKnowledge][\charIntellect] \\
                 \StatRow[Medicine (int)][\charMedicine][\charIntellect] \\
-                \StatRow \\
+                \ifcharHideBlanks
+                \else
+                    \ifx\charCogStatName\@empty
+                        \StatRow \\
+                    \else
+                        \StatRow[\charCogStatName][\charCogStatRanks][\charCogStatBase] \\
+                    \fi
+                \fi
             \end{NiceTabularX}
         }
-        \posterbox[fontupper=\sffamily\scshape,frame empty,boxsep=0pt,left=0pt,right=0pt,top=0.25em,bottom=0.25em,colback=white]{name=spiStats,column=5,span=2,below=essence,rowspan=1.67}{
+        \posterbox[fontupper=\sffamily\scshape,frame empty,boxsep=0pt,left=0pt,right=0pt,top=0.25em,bottom=0.25em,colback=white]{name=spiStats,column=5,span=2,below=essence,rowspan=\ifcharHideBlanks 1.47 \else 1.67 \fi}{
             \setlength{\tabcolsep}{0pt}
             \begin{NiceTabularX}{\textwidth}[cell-space-limits=3pt]{c@{\hspace{0.25em}}X@{\hspace{0.25em}}r}
                 \StatRow[Deception (pre)][\charDeception][\charPresence] \\
@@ -957,22 +1040,29 @@
                 \StatRow[Perception (awa)][\charPerception][\charAwareness] \\
                 \StatRow[Persuasion (pre)][\charPersuasion][\charPresence] \\
                 \StatRow[Survival (awa)][\charSurvival][\charAwareness] \\
-                \StatRow \\
+                \ifcharHideBlanks
+                \else
+                    \ifx\charSpiStatName\@empty
+                        \StatRow \\
+                    \else
+                        \StatRow[\charSpiStatName][\charSpiStatRanks][\charSpiStatBase] \\
+                    \fi
+                \fi
             \end{NiceTabularX}
         }
 
         % bottom part
         \posterbox[featureBox={\small Weapons}]{name=weapons,column*=6,span=4,below=cogStats}{
-            #4
+            \charWeapons
             \tcblower
             \tcbsubtitle{\small Armor}
             \vspace{-0.5em}
-            #5
+            \charArmor
         }
 
         \posterbox[featureBox={\small Talents}]{name=talents,column*=6,span=4,between=weapons and bottom}{
                 \scripty\Large
-                #3
+                \charFrontTalents
         }
 
         \posterbox[featureBox={\small Basic Actions},boxsep=0.25em,top=1.5em,toptitle=0.25em]{name=basic,column=1,span=2,above=bottom,rowspan=1.3}{
@@ -991,7 +1081,181 @@
             }
         }
         \posterbox[featureBox={\small Expertises}]{name=expertises,column=1,span=2,between=phyStats and basic}{
-            \scripty\large #2
+            \scripty\large \charExpertises
+        }
+
+    \end{tcbposter}
+
+    \begin{tcbposter}[
+        coverage = {spread},
+        poster = {columns=6,rows=6,spacing=1em},
+        ]
+        \posterbox[featureBox={\normalsize Character Name},valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=0.5}{
+            \centering\Huge\scripty 
+            \charName
+            % {Damien
+            % \\[-0.5em]
+            % Simmyns}
+        }
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+
+        \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
+            \centering\huge\scripty 
+            \charPaths
+        }
+
+        \posterbox[featureBox={Talents}]{name=talents,column=1,span=3.5,below=character,rowspan=5.5}{
+            \Large\scripty
+            \charSecondTalents
+        }
+
+        \posterbox[featureBox={Conditions \& Injuries}]{name=conditions,column*=6,span=2.5,below=level,rowspan=1.3}{
+            \Huge\scripty\centering
+            \charConditions
+        }
+
+        \posterbox[featureBox={Conditions}]{name=conditions,column*=6,span=2.5,below=conditions,rowspan=4.2}{
+            \textbf{Afflicted\textsuperscript{\ast}:} Take some amount of damage at the end of your turn.
+
+            \textbf{Determined:} When you fail a test, add an \opportunity to the result.
+
+            \textbf{Diminished\textsuperscript{\dagger}:} The effected attribute is temporarily reduced by some amount.
+
+            \textbf{Disoriented:} You can't use \reaction, your senses are obscured, and you have disadvantage on Perception tests.
+
+            \textbf{Enhanced\textsuperscript{\dagger}:} The effected attribute is temporarily increased by some amount.
+
+            \textbf{Exhausted\textsuperscript{\dagger}:} Apply the specified penalty to skill tests. Reduce the penalty by 1 after a long rest.
+
+            \textbf{Focused:} Focus costs are reduced by 1.
+
+            \textbf{Immobilized:} Your movement rate becomes 0, and you can't move or be moved.
+
+            \textbf{Prone:} You are Slowed, and melee attacks against you gain advantage. Brace can be used without cover. Standing up costs 5 movement.
+
+            \textbf{Restrained:} Your movement rate becomes 0, and you have disadvantage on all tests other than to escape.
+
+            \textbf{Severed:} You cannot recover the specified resource.
+
+            \textbf{Slowed:} Remaining movement rate is halved.
+
+            \textbf{Stunned:} You cannot use or regain \reaction and lose 2 \action per turn.
+
+            \textbf{Surprised:} You cannot use or regain \reaction, you cannot take fast turns, and lose 1 \action per turn.
+
+            \textbf{Unconscious:} You always take slow turns, but cannot do anything on your turn. You can regain consciousness as \freeAction at the end of your turn and gain 1 Health or when healed with at least 1 Health.
+
+            {\small
+                \ast : This condition can be combined with other conditions.
+                
+                \dagger : This condition can be applied multiple times.
+            }
+        }
+    \end{tcbposter}
+
+
+    \begin{tcbposter}[
+        coverage = {spread},
+        poster = {columns=6,rows=6,spacing=1em},
+        ]
+        \posterbox[featureBox={\normalsize Character Name},valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=0.5}{
+            \centering\Huge\scripty 
+            \charName
+            % {Damien
+            % \\[-0.5em]
+            % Simmyns}
+        }
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+
+        \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
+            \centering\huge\scripty 
+            \charPaths
+        }
+
+        \posterbox[featureBox={Inventory},split=0.9]{name=inventory,column*=6,span=2.5,below=paths,rowspan=4.2}{
+            \Large\scripty
+            \charInventory
+            \tcblower
+            \tcbsubtitle{\currencyName}
+            \Huge\scripty\centering
+            \charCurrency
+        }
+
+        \posterbox[featureBox={Opportunities}]{name=opportunities,column*=6,span=2.5,between=inventory and bottom}{
+
+        \textbf{Aid an Ally.} An ally of your choice gains advantage on thier next test.
+
+        \textbf{Collect Yourself.} You recover 1 focus.
+
+        \textbf{Critically Hit.} You change a hit into a critical hit.
+
+        \textbf{Influence the Narrative.} Your actions result in a positive narrative effect of your choice.
+
+        \textbf{Trigger Special Ability.} Some talents provide additional ways to spend an \opportunity.
+        }
+
+        \posterbox[featureBox={Talents}]{name=notes,column=1,span=3.5,below=character,rowspan=5.5}{
+            \Large\scripty
+            \charThirdTalents
+        }
+    \end{tcbposter}
+
+    \begin{tcbposter}[
+        coverage = {spread},
+        poster = {columns=6,rows=6,spacing=1em},
+        ]
+        \posterbox[featureBox={\normalsize Character Name},valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=0.5}{
+            \centering\Huge\scripty 
+            \charName
+            % {Damien
+            % \\[-0.5em]
+            % Simmyns}
+        }
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+
+        \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
+            \centering\huge\scripty 
+            \charPaths
+        }
+
+        \posterbox[featureBox={Purpose},split=0.5]{name=purpose,column*=6,span=2,below=paths,rowspan=2.5}{
+            \Large\scripty
+            \charPurpose
+            \tcblower
+            \tcbsubtitle{Obstacle}
+            \Large\scripty
+            \charObstacle
+        }
+
+        \posterbox[featureBox={Goals},left=0.3em,right=0.25em,valign=center]{name=goals,column*=6,span=2,between=purpose and bottom}{
+            \charGoals
+        }
+
+        \posterbox[featureBox={Appearance},square]{name=appearance,column=1,span=2,below=character}{
+            \IfValueT{\charImage}{
+                \includegraphics[width=\linewidth]{\charImage}
+            }
+        }
+        \posterbox[featureBox={Description},split=0.5]{name=description,column=1,span=2,between=appearance and bottom}{
+            \Large\scripty
+            \charDescription
+            \tcblower
+            \tcbsubtitle{Backstory}
+            \Large\scripty
+            \charBackstory
+        }
+
+        \posterbox[featureBox={Connections},split=0.5]{name=connections,column=3,span=2,below=paths,rowspan=2.5}{
+            \Large\scripty
+            \charConnections
+            \tcblower
+            \tcbsubtitle{Rewards}
+            \Large\scripty
+            \charRewards
+        }
+        \posterbox[featureBox={Notes}]{name=notes,column=3,span=2,between=connections and bottom}{
+            \Large\scripty
+            \charNotes
         }
 
     \end{tcbposter}
