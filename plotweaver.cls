@@ -827,7 +827,7 @@
     stormlight.if = charStormlight,
     mistborn.if = charMistborn,
     expertises .store = \charExpertises,
-    frontTalents .store = \charFrontTalents,
+    firstTalents .store = \charfirstTalents,
     secondTalents .store = \charSecondTalents,
     thirdTalents  .store = \charThirdTalents,
     weapons .store = \charWeapons,
@@ -1062,7 +1062,7 @@
 
         \posterbox[featureBox={\small Talents}]{name=talents,column*=6,span=4,between=weapons and bottom}{
                 \scripty\Large
-                \charFrontTalents
+                \charfirstTalents
         }
 
         \posterbox[featureBox={\small Basic Actions},boxsep=0.25em,top=1.5em,toptitle=0.25em]{name=basic,column=1,span=2,above=bottom,rowspan=1.3}{

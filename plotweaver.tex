@@ -185,15 +185,14 @@ This is a custom \disptxt{NiceTabular} environment. It simply a wrapper that def
 \section{Character Sheets}
 One page character sheets can be made using the \dispcmd{MakeCharacterSheet} command. This command takes in a series of key-value pairs and generates the sheet and any derived statistics. See \disptxt{character\_sheet.tex} for an example sheet. Multipage character sheets are in development.
 
-\begin{docCommand}[doc new = 2026-08-16]{MakeCharacterSheet}{\marg{key-value pairs}\oarg{expertises}\oarg{talents}\oarg{weapons}\oarg{armor}}
-Generates a one page character sheet. The optional arguments fill the boxes for expertises, talents, weapons, and armor.
+\begin{docCommand}[doc new = 2026-08-16]{MakeCharacterSheet}{\marg{key-value pairs}}
+Generates a page character sheet. Each value is set by a key-value pair that is passed into the command.
 \end{docCommand}
 
 \begin{docKeys}[
   doc keypath = charsheet,
   doc parameter = {=\meta{text}},
-]
-{
+]{
 {
   doc new = 2026-08-16,
   doc name = name,
@@ -341,7 +340,7 @@ Generates a one page character sheet. The optional arguments fill the boxes for 
 },
 {
   doc name = survival,
-  doc description = ranks in survival
+  doc description = ranks in survival,
 },
 {
   doc name = phyStatName,
@@ -379,8 +378,96 @@ Generates a one page character sheet. The optional arguments fill the boxes for 
   doc name = spiStatBase,
   doc description = optional spiritual stat base,
 },
+{
+  doc name = expertises,
+  doc description = content for expertises box,
+},
+{
+  doc name = firstTalents,
+  doc description = content for talents on the first page,
+},
+{
+  doc name = secondTalents,
+  doc description = content for talents on the second page,
+},
+{
+  doc name = thirdTalents,
+  doc description = content for talents on the third page,
+},
+{
+  doc name = weapons,
+  doc description = content for weapons box,
+},
+{
+  doc name = armor,
+  doc description = content for armor box,
+},
+{
+  doc name = inventory,
+  doc description = content for inventory box,
+},
+{
+  doc name = currency,
+  doc description = content for currency box,
+},
+{
+  doc name = conditions,
+  doc description = content for conditions and injuries box,
+},
+{
+  doc name = purpose,
+  doc description = content for purpose box,
+},
+{
+  doc name = image,
+  doc description = path to character image,
+},
+{
+  doc name = description,
+  doc description = content for description box,
+},
+{
+  doc name = backstory,
+  doc description = content for backstory box,
+},
+{
+  doc name = obstacle,
+  doc description = content for obstacle box,
+},
+{
+  doc name = goals,
+  doc description = content for goals box,
+},
+{
+  doc name = connections,
+  doc description = content for connections box,
+},
+{
+  doc name = rewards,
+  doc description = content for rewards box,
+},
+{
+  doc name = notes,
+  doc description = content for notes box,
+},
+{
+  doc name = hideBlanks,
+  doc description = hide blank boxes on the character sheet,
+  doc key choices* = {true,false},
+},
+{
+  doc name = stormlight,
+  doc description = use Stormlight Archive terminology,
+  doc key choices* = {true,false},
+},
+{
+  doc name = mistborn,
+  doc description = use Mistborn terminology,
+  doc key choices* = {true,false},
 }
-The keys used for making a character sheet. These are all initialized as empty. Other attributes, like physical defense, are derived from the provided key-value pairs.
+}
+
+The keys used for making a character sheet. These are all initialized as empty, other than the boolean switches. Other attributes, like physical defense, are derived from the provided key-value pairs.
 \end{docKeys}
 
 \section{Color Schemes}
