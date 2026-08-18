@@ -161,7 +161,7 @@
 \RequirePackage{fontspec}
 \setmainfont{TeX Gyre Schola}
 \setsansfont{Noto Sans}
-\newfontface\scripty{QT Handwriting}
+\newfontface\scripty[Scale=1.5]{QT Handwriting}
 
 \AtBeginDocument{
   \pagecolor{cspapercolor}
@@ -178,7 +178,7 @@
 \RequirePackage{tikz}
 \RequirePackage[poster]{tcolorbox}
 \tcbuselibrary{skins, raster}
-\usetikzlibrary{calc, chains, backgrounds, positioning, arrows.meta,bending,shapes.geometric}
+\usetikzlibrary{calc, chains, backgrounds, positioning, arrows.meta, bending, shapes.geometric, shadings}
 \pgfdeclarelayer{foreground}
 \pgfdeclarelayer{lines}
 \pgfsetlayers{background,lines,main,foreground}
@@ -826,6 +826,7 @@
     hideBlanks.if = charHideBlanks,
     stormlight.if = charStormlight,
     mistborn.if = charMistborn,
+    handwritten.if = charHandwritten,
     expertises .store = \charExpertises,
     firstTalents .store = \charfirstTalents,
     secondTalents .store = \charSecondTalents,
@@ -848,7 +849,7 @@
 % #1 - stat name, #2 - stat ranks, #3 - stat base
 \NewDocumentCommand{\StatRow}{o O{0} O{0}}{%
     \tikz[baseline=-0.5ex]{%
-        \node[rounded corners=0.25em, rectangle, draw, line width=1pt, minimum width=2.5em, minimum height=2.25em]{\IfNoValueF{#1}{\Huge\scripty \number\numexpr#2+#3\relax}};
+        \node[rounded corners=0.25em, rectangle, draw, line width=1pt, minimum width=2.5em, minimum height=2.25em]{\IfNoValueF{#1}{\large\charFont \number\numexpr#2+#3\relax}};
     }
     & 
     \IfNoValueTF{#1}{\underline{\hspace{7em}} (\underline{\hspace{2em}})}{#1} &
@@ -881,6 +882,12 @@
 \NewDocumentCommand{\MakeCharacterSheet}{m}{%
     \SetKeys[charsheet]{#1}
 
+    \ifcharHandwritten
+        \def\charFont{\scripty}
+    \else
+        \def\charFont{\sffamily}
+    \fi
+
     \ifcharStormlight
         \charMistbornfalse
         \def\finesseName{Thievery}
@@ -903,33 +910,42 @@
         poster = {columns=6,rows=6,spacing=1em},
     ]
         % top part
-        \posterbox[frame empty, interior style={top color=white,middle color=plotweavergray,bottom color=plotweavergray},boxsep=0pt]{name=C,column=1,span=6,below=top,rowspan=1.5,yshift=-3.2cm}{}
+        \posterbox[enhanced,sharp corners,frame empty,borderline={2.5pt}{4pt}{white},interior style={top color=white,middle color=plotweavergray,bottom color=plotweavergray},boxsep=0pt,
+        underlay first={%
+        \shade[
+            draw=none,
+            top color=white,
+            middle color=plotweavergray,
+            bottom color=plotweavergray,
+        ] ([xshift=-5pt, yshift=5pt]frame.north west) 
+            rectangle ([xshift=5pt, yshift=-5pt]frame.south east);
+        }]{name=C,column=1,span=7,below=top,rowspan=2.24,xshift=-1cm}{}
 
         \posterbox[featureBox={\normalsize Character Name},split=0.9,valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=1}{
-            \centering\Huge\scripty 
+            \centering\huge\charFont 
             \charName
             % {Damien
             % \\[-0.5em]
             % Simmyns}
             \tcblower
             \tcbsubtitle[after skip=1em]{\small Ancestry}
-            \centering\huge\scripty
+            \centering\large\charFont
             \charAncestry
         }
         
-        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\charFont \charLevel}
 
         \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
 
-            \centering\huge\scripty 
+            \centering\Large\charFont 
             \charPaths
         }
             
-        \posterbox[leftBox={\small Lifting Capacity}]{name=capacity,column=3,span=1.022,below=paths,rowspan=0.5}{\centering\Huge\scripty \charLiftingCapacity}
-        \posterbox[rightBox={\small Movement}]{name=movement,column*=4,span=1.022,below=paths,rowspan=0.5}{\centering\Huge\scripty \charMovement}
+        \posterbox[leftBox={\small Lifting Capacity}]{name=capacity,column=3,span=1.022,below=paths,rowspan=0.5}{\centering\Large\charFont \charLiftingCapacity}
+        \posterbox[rightBox={\small Movement}]{name=movement,column*=4,span=1.022,below=paths,rowspan=0.5}{\centering\Large\charFont \charMovement}
         
-        \posterbox[leftBox={\small Recovery Die}]{name=recovery,column=5,span=1.022,below=paths,rowspan=0.5}{\centering\Huge\scripty \charRecoveryDie}
-        \posterbox[rightBox={\small Senses Range}]{name=senses,column*=6,span=1.022,below=level,rowspan=0.5}{\centering\Huge\scripty \charSensesRange}
+        \posterbox[leftBox={\small Recovery Die}]{name=recovery,column=5,span=1.022,below=paths,rowspan=0.5}{\centering\Large\charFont \charRecoveryDie}
+        \posterbox[rightBox={\small Senses Range}]{name=senses,column*=6,span=1.022,below=level,rowspan=0.5}{\centering\Large\charFont \charSensesRange}
         % \posterbox[featureBox={},boxsep=0.5em]{name=senses,column*=6,below=top,span=2, rowspan=1}{
         %     \small\centering
         %     \setlength{\tabcolsep}{0pt}
@@ -945,50 +961,50 @@
         % stats
         \posterbox[featureBox={Physical},frame empty,opacityback=0,opacitybacktitle=0]{name=physical,column=1,span=2,below=character,rowspan=1.1,yshift=0.2cm}{}
         \posterbox[statBoxRight={Speed}]{name=speed,column*=2,span=1,below=character,yshift=-0.6cm,xshift=-3pt}{
-            \huge \charSpeed
+            \Huge \charSpeed
         }
         \posterbox[statBoxLeft={Strength}]{name=strength,column=1,span=1,below=character,yshift=-0.6cm,xshift=3pt}{
-            \huge \charStrength
+            \Huge \charStrength
         }
         \posterbox[halign=center,valign=center,square,circular arc,colback=white,colframe=black,width=1.4cm,boxsep=0pt,left=0pt,right=0pt]{name=phyDefense,below=character,column=1,yshift=-0.895cm,xshift=2.65cm}{
             \sffamily\LARGE \the\numexpr10+\charStrength+\charSpeed+\charPhyDefenseBonus\relax
         }
         \posterbox[adjusted title={Health}, fonttitle=\sffamily\scshape\large, halign title=flush center, frame empty, opacityback=0, coltitle=black, boxsep=0pt]{name=healthtitle,column=1,below=strength,span=2,rowspan=0.14,yshift=2mm}{}
         \posterbox[sideBox={\setlength{\tabcolsep}{0pt}\begin{NiceTabularX}{\linewidth}{*2{>{\centering}X}}Maximum & Current\end{NiceTabularX}},height=1.5cm]{name=health,column=1,below=healthtitle,span=1.5,xshift=0.04166666667\textwidth}{
-            \centering\huge\scripty \charMaxHealth
+            \centering\huge\charFont \charMaxHealth
             \tcblower
         }
 
         
         \posterbox[featureBox={Cognitive},frame empty,opacityback=0,opacitybacktitle=0]{name=cognitive,column=3,span=2,below=character,rowspan=1,yshift=0.2cm}{}
         \posterbox[statBoxRight={Intellect}]{name=intellect,column*=4,span=1,below=character,yshift=-0.6cm,xshift=-3pt}{
-            \huge \charIntellect
+            \Huge \charIntellect
         }
         \posterbox[statBoxLeft={Willpower}]{name=willpower,column=3,span=1,below=character,yshift=-0.6cm,xshift=3pt}{
-            \huge \charWillpower
+            \Huge \charWillpower
         }
         \posterbox[halign=center,valign=center,square,circular arc,colback=white,colframe=black,width=1.4cm,boxsep=0pt,left=0pt,right=0pt]{name=cogDefense,below=character,column=3,yshift=-0.895cm,xshift=2.65cm}{
             \sffamily\LARGE \the\numexpr10+\charIntellect+\charWillpower+\charCogDefenseBonus\relax
         }
         \posterbox[adjusted title={Focus}, fonttitle=\sffamily\scshape\large, halign title=flush center, frame empty, opacityback=0, coltitle=black, boxsep=0pt]{name=focustitle,column=3,below=strength,span=2,rowspan=0.14,yshift=2mm}{}
         \posterbox[sideBox={\setlength{\tabcolsep}{0pt}\begin{NiceTabularX}{\linewidth}{*2{>{\centering}X}}Maximum & Current\end{NiceTabularX}},height=1.5cm]{name=focus,column=3,below=focustitle,span=1.5,xshift=0.04166666667\textwidth}{
-            \centering\huge\scripty \the\numexpr2+\charWillpower\relax
+            \centering\huge\charFont \the\numexpr2+\charWillpower\relax
             \tcblower
         }
 
         \posterbox[featureBox={Spiritual},frame empty,opacityback=0,opacitybacktitle=0]{name=spiritual,column=5,span=2,below=character,rowspan=1,yshift=0.2cm}{}
         \posterbox[statBoxRight={Awareness}]{name=awareness,column*=6,span=1,below=character,yshift=-0.6cm,xshift=-3pt}{
-            \huge \charAwareness
+            \Huge \charAwareness
         }
         \posterbox[statBoxLeft={Presence}]{name=presence,column=5,span=1,below=character,yshift=-0.6cm,xshift=3pt}{
-            \huge \charPresence
+            \Huge \charPresence
         }
         \posterbox[halign=center,valign=center,square,circular arc,colback=white,colframe=black,width=1.4cm,boxsep=0pt,left=0pt,right=0pt]{name=spiDefense,below=character,column=5,yshift=-0.895cm,xshift=2.65cm}{
             \sffamily\LARGE \the\numexpr10+\charAwareness+\charPresence+\charSpiDefenseBonus\relax
         }
         \posterbox[adjusted title={\essenceName}, fonttitle=\sffamily\scshape\large, halign title=flush center, frame empty, opacityback=0, coltitle=black, boxsep=0pt]{name=essencetitle,column=5,below=strength,span=2,rowspan=0.14,yshift=2mm}{}
         \posterbox[sideBox={\setlength{\tabcolsep}{0pt}\begin{NiceTabularX}{\linewidth}{*2{>{\centering}X}}Maximum & Current\end{NiceTabularX}},height=1.5cm]{name=essence,column=5,below=healthtitle,span=1.5,xshift=0.04166666667\textwidth}{
-            \centering\huge\scripty \charMaxEssence
+            \centering\huge\charFont \charMaxEssence
             \tcblower
         }
 
@@ -1061,7 +1077,7 @@
         }
 
         \posterbox[featureBox={\small Talents}]{name=talents,column*=6,span=4,between=weapons and bottom}{
-                \scripty\Large
+                \charFont\large
                 \charfirstTalents
         }
 
@@ -1081,7 +1097,7 @@
             }
         }
         \posterbox[featureBox={\small Expertises}]{name=expertises,column=1,span=2,between=phyStats and basic}{
-            \scripty\large \charExpertises
+            \charFont\large \charExpertises
         }
 
     \end{tcbposter}
@@ -1091,26 +1107,26 @@
         poster = {columns=6,rows=6,spacing=1em},
         ]
         \posterbox[featureBox={\normalsize Character Name},valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=0.5}{
-            \centering\Huge\scripty 
+            \centering\LARGE\charFont 
             \charName
             % {Damien
             % \\[-0.5em]
             % Simmyns}
         }
-        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\charFont \charLevel}
 
         \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
-            \centering\huge\scripty 
+            \centering\Large\charFont 
             \charPaths
         }
 
         \posterbox[featureBox={Talents}]{name=talents,column=1,span=3.5,below=character,rowspan=5.5}{
-            \Large\scripty
+            \Large\charFont
             \charSecondTalents
         }
 
         \posterbox[featureBox={Conditions \& Injuries}]{name=conditions,column*=6,span=2.5,below=level,rowspan=1.3}{
-            \Huge\scripty\centering
+            \Large\charFont\centering
             \charConditions
         }
 
@@ -1159,25 +1175,25 @@
         poster = {columns=6,rows=6,spacing=1em},
         ]
         \posterbox[featureBox={\normalsize Character Name},valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=0.5}{
-            \centering\Huge\scripty 
+            \centering\LARGE\charFont 
             \charName
             % {Damien
             % \\[-0.5em]
             % Simmyns}
         }
-        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\charFont \charLevel}
 
         \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
-            \centering\huge\scripty 
+            \centering\Large\charFont 
             \charPaths
         }
 
         \posterbox[featureBox={Inventory},split=0.9]{name=inventory,column*=6,span=2.5,below=paths,rowspan=4.2}{
-            \Large\scripty
+            \Large\charFont
             \charInventory
             \tcblower
-            \tcbsubtitle{\currencyName}
-            \Huge\scripty\centering
+            \tcbsubtitle[bottomtitle=1em]{\currencyName}
+            \Large\charFont\centering
             \charCurrency
         }
 
@@ -1195,7 +1211,7 @@
         }
 
         \posterbox[featureBox={Talents}]{name=notes,column=1,span=3.5,below=character,rowspan=5.5}{
-            \Large\scripty
+            \Large\charFont
             \charThirdTalents
         }
     \end{tcbposter}
@@ -1205,25 +1221,25 @@
         poster = {columns=6,rows=6,spacing=1em},
         ]
         \posterbox[featureBox={\normalsize Character Name},valign=center,bottom=0pt]{name=character,column=1,span=2,below=top,rowspan=0.5}{
-            \centering\Huge\scripty 
+            \centering\LARGE\charFont 
             \charName
             % {Damien
             % \\[-0.5em]
             % Simmyns}
         }
-        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\scripty \charLevel}
+        \posterbox[rightBox={\small Level},valign=center]{name=level,column*=6,span=1.022,below=top,rowspan=0.5}{\centering\Huge\charFont \charLevel}
 
         \posterbox[leftBox={\small Paths},valign=center,bottom=0pt]{name=paths,column=3,span=3.022,below=top,rowspan=0.5}{
-            \centering\huge\scripty 
+            \centering\Large\charFont 
             \charPaths
         }
 
         \posterbox[featureBox={Purpose},split=0.5]{name=purpose,column*=6,span=2,below=paths,rowspan=2.5}{
-            \Large\scripty
+            \large\charFont
             \charPurpose
             \tcblower
             \tcbsubtitle{Obstacle}
-            \Large\scripty
+            \large\charFont
             \charObstacle
         }
 
@@ -1237,24 +1253,24 @@
             }
         }
         \posterbox[featureBox={Description},split=0.5]{name=description,column=1,span=2,between=appearance and bottom}{
-            \Large\scripty
+            \large\charFont
             \charDescription
             \tcblower
             \tcbsubtitle{Backstory}
-            \Large\scripty
+            \large\charFont
             \charBackstory
         }
 
         \posterbox[featureBox={Connections},split=0.5]{name=connections,column=3,span=2,below=paths,rowspan=2.5}{
-            \Large\scripty
+            \large\charFont
             \charConnections
             \tcblower
             \tcbsubtitle{Rewards}
-            \Large\scripty
+            \large\charFont
             \charRewards
         }
         \posterbox[featureBox={Notes}]{name=notes,column=3,span=2,between=connections and bottom}{
-            \Large\scripty
+            \large\charFont
             \charNotes
         }
 
