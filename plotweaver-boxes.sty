@@ -1,0 +1,397 @@
+%% plotweaver-boxes.sty
+%% Copyright 2026 Hannah Kirkland
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Hannah Kirkland.
+%
+% This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
+% plotweaver-character-sheet.sty, plotweaver-colors.sty,
+% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
+% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
+% plotweaver.pdf, nomodan.png, and README.md.
+
+\ProvidesPackage{plotweaver-boxes}[2026-09-01 Plotweaver Boxes]
+\RequirePackage{plotweaver-colors}
+\DeclareKeys[plotweaver-boxes]{
+    color.code = \colorlet{cscolor}{#1},
+    accent-color.code = \colorlet{csaccent}{#1},
+}
+\ProcessKeyOptions
+
+\RequirePackage{tikz}
+\RequirePackage[poster]{tcolorbox}
+\tcbuselibrary{skins, raster}
+\usetikzlibrary{calc, chains, backgrounds, positioning, arrows.meta, bending, shapes.geometric, shadings}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  BOXES                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tcbset{
+    featureBox/.style={
+        enhanced,
+        sharp corners,
+        colback=white,
+        colframe=black,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        toptitle=-0.25em,
+        boxsep=1em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] ($(frame.north west) + (0.925em, 0pt)$) -- ($(frame.north east) + (-0.925em, 0pt)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(frame.south west) + (0.925em, 0pt)$) -- ($(frame.south east) + (-0.925em, 0pt)$);
+
+                % round corners
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = black] (frame.south west) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.north west) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.north east) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.south east) circle (1em);
+                \end{scope}
+
+                % inner box
+                \draw[line width = 1pt, color=black] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
+            \end{pgfonlayer}
+        },
+        title={#1},
+        coltitle=black,
+        fonttitle=\sffamily\scshape\large,
+        halign title=flush center,
+        bottomtitle = -1.5em,
+        fontupper=\sffamily,
+        segmentation code={
+            \begin{pgfonlayer}{foreground}
+                \draw[line width = 1.3pt, color = black] ($(segmentation.west) + (-0.2em, 0pt)$) -- ($(segmentation.east) + (0.2em, 0pt)$);
+            \end{pgfonlayer}
+        },
+        middle = 0em,
+        subtitle style={
+            boxrule=0pt,
+            top=-1.5em,
+            before={\vspace*{-0.25em}},
+            after skip=1.25\baselineskip,
+            colframe=white,
+            colback=white,
+            coltext=black,
+            fonttitle=\sffamily\scshape\large,
+            halign=flush center
+        },
+        fontlower=\sffamily
+    },
+    %
+    sideBox/.style={
+        enhanced,
+        sidebyside,
+        sharp corners,
+        colback=white,
+        colframe=black,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        toptitle=-0.5em,
+        boxsep=0.5em,
+        lefttitle=0em,
+        righttitle=0em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] ($(frame.north west) + (0.925em, 0pt)$) -- ($(frame.north east) + (-0.925em, 0pt)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(frame.south west) + (0.925em, 0pt)$) -- ($(frame.south east) + (-0.925em, 0pt)$);
+
+                % round corners
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = black] (frame.south west) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.north west) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.north east) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.south east) circle (1em);
+                \end{scope}
+
+                % inner box
+                \draw[line width = 1pt, color=black] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
+            \end{pgfonlayer}
+        },
+        title={\small#1},
+        coltitle=black,
+        fonttitle=\sffamily\scshape\small,
+        halign title=flush center,
+        halign = flush center,
+        valign = center,
+        bottomtitle = -1em,
+        fontupper=\sffamily,
+        segmentation code={
+            \begin{pgfonlayer}{foreground}
+                \draw[line width = 1.3pt, color = black] ($(segmentation.north) + (0em, 12pt)$) -- ($(segmentation.south) + (0em, -2pt)$);
+            \end{pgfonlayer}
+        },
+        middle = -1em,
+        fontlower=\sffamily
+    },
+    % 
+    leftBox/.style={
+        enhanced,
+        nobeforeafter,
+        colback=white,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        toptitle=-0.5em,
+        left=0em,
+        right=0em,
+        boxsep=1em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.south west) circle (1em);
+                    \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.north west) circle (1em);
+                \end{scope}
+                \draw[line width = 1.5pt, color = black] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black] ($(frame.north east) + (0pt, 0.075em)$) -- ($(frame.south east) + (0pt, -0.075em)$);
+                \draw[line width = 1.5pt, color = black] ($(frame.north west) + (0.925em, 0pt)$) -- (frame.north east);
+                \draw[line width = 1.5pt, color = black] ($(frame.south west) + (0.925em, 0pt)$) -- (frame.south east);
+
+                % inner box
+                \draw[line width = 1pt, color=black] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, 0em)$);
+            \end{pgfonlayer}
+        },
+        title={#1},
+        coltitle=black,
+        fonttitle=\sffamily\scshape\large,
+        halign title=flush center,
+        halign=flush center,
+        bottomtitle = -1.5em,
+        fontupper=\sffamily,
+    },
+    % 
+    rightBox/.style={
+        enhanced,
+        nobeforeafter,
+        colback=white,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        toptitle=-0.5em,
+        left=0em,
+        right=0em,
+        boxsep=1em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.north east) circle (1em);
+                    \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.south east) circle (1em);
+                \end{scope}
+                \draw[line width = 1.5pt, color = black] ($(frame.north west) + (0pt, 0.075em)$) -- ($(frame.south west) + (0pt, -0.075em)$);
+                \draw[line width = 1.5pt, color = black] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black] (frame.north west) -- ($(frame.north east) + (-0.925em, 0pt)$);
+                \draw[line width = 1.5pt, color = black] (frame.south west) -- ($(frame.south east) + (-0.925em, 0pt)$);
+
+                % inner box
+                \draw[line width = 1pt, color=black]  ($(frame.north west) + (0.3em, 0em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
+            \end{pgfonlayer}
+        },
+        title={#1},
+        coltitle=black,
+        fonttitle=\sffamily\scshape\large,
+        halign title=flush center,
+        halign=flush center,
+        bottomtitle = -1.5em,
+        fontupper=\sffamily,
+    },
+    % 
+    statBoxLeft/.style={
+        enhanced,
+        sharp corners,
+        colback=white,
+        colframe=black,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        toptitle=-0.5em,
+        boxsep=0.9em,
+        left=0em,
+        right=0em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] ($(frame.north west) + (0.925em, 0pt)$) -- (frame.north east);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(frame.south west) + (0.925em, 0pt)$) -- (frame.south east);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, shorten <= 2pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, 0.7pt)$) -- ($(frame.north east) + (0pt, -0.3cm) + (0pt, -0.7pt)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, shorten <= 2pt, transform canvas = {xshift=-1pt}, white}] ($(frame.south east) + (0pt, -0.7pt)$) -- ($(frame.south east) + (0pt, 0.3cm) + (0pt, 0.7pt)$);
+
+                % round corners
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = black] (frame.south west) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.north west) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.east) circle (0.7cm);
+                \end{scope}
+
+                % inner box
+                \draw[line width = 1pt, color=black] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (0pt, 0.3em)$);
+            \end{pgfonlayer}
+        },
+        title={#1},
+        coltitle=black,
+        fonttitle=\sffamily\scshape,
+        halign title=flush center,
+        halign=flush center,
+        valign=center,
+        bottomtitle = -1.5em,
+        fontupper=\sffamily,
+        height=2cm,
+    },
+    % 
+    statBoxRight/.style={
+        enhanced,
+        sharp corners,
+        colback=white,
+        colframe=black,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        toptitle=-0.5em,
+        boxsep=0.9em,
+        left=0em,
+        right=0em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] (frame.north west) -- ($(frame.north east) + (-0.925em, 0pt)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] (frame.south west) -- ($(frame.south east) + (-0.925em, 0pt)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, shorten <= 2pt, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.south west) + (0pt, -0.7pt)$) -- ($(frame.south west) + (0pt, 0.3cm) + (0pt, 0.7pt)$);
+                \draw[line width = 1.5pt, color = black, preaction = {draw, shorten <= 2pt, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, 0.7pt)$) -- ($(frame.north west) + (0pt, -0.3cm) + (0pt, -0.7pt)$);
+
+                % round corners
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = black] (frame.south east) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.north east) circle (1em);
+                    \draw[line width = 1.5pt, color = black] (frame.west) circle (0.7cm);
+                \end{scope}
+
+                % inner box
+                \draw[line width = 1pt, color=black] ($(frame.south west) + (0pt, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
+            \end{pgfonlayer}
+        },
+        title={#1},
+        coltitle=black,
+        fonttitle=\sffamily\scshape,
+        halign title=flush center,
+        halign=flush center,
+        valign=center,
+        bottomtitle = -1.5em,
+        fontupper=\sffamily,
+        height=2cm,
+    },
+    %
+    keyTalentBox/.style={
+        enhanced,
+        remember as=kt,
+        nobeforeafter,
+        width=15em,
+        sharp corners,
+        colback=white,
+        colframe=white,
+        colbacktitle=white,
+        titlerule=-0.5pt,
+        boxsep=1em,
+        frame code={%
+            \begin{pgfonlayer}{foreground}
+                % outer box
+                \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(frame.north west) + (0pt, -0.925em)$) -- ($(frame.south west) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(frame.north east) + (0pt, -0.925em)$) -- ($(frame.south east) + (0pt, 0.925em)$);
+                \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=-1pt}, white}] ($(frame.north west) + (0.925em, 0pt)$) -- ($(frame.north east) + (-0.925em, 0pt)$);
+                \draw[line width = 1.5pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(frame.south west) + (0.925em, 0pt)$) -- ($(frame.south east) + (-0.925em, 0pt)$);
+
+                % round corners
+                \begin{scope}
+                    \clip (frame.south west) rectangle (frame.north east);
+                    \draw[line width = 1.5pt, color = csaccent] (frame.south west) circle (1em);
+                    \draw[line width = 1.5pt, color = csaccent] (frame.north west) circle (1em);
+                    \draw[line width = 1.5pt, color = csaccent] (frame.north east) circle (1em);
+                    \draw[line width = 1.5pt, color = csaccent] (frame.south east) circle (1em);
+                \end{scope}
+
+                % inner box
+                \draw[line width = 1pt, color=csaccent] ($(frame.north west) + (1em, -0.3em)$) -- ($(frame.north west) + (0.3em, -0.3em)$) -- ($(frame.south west) + (0.3em, 0.3em)$) -- ($(frame.south east) + (-0.3em, 0.3em)$) -- ($(frame.north east) + (-0.3em, -0.3em)$) -- ($(frame.north east) + (-1em, -0.3em)$);
+            \end{pgfonlayer}
+        },
+        title={#1},
+        coltitle=cscolor,
+        fonttitle=\sffamily\scshape\large,
+        halign title=flush left,
+        bottomtitle = -1.5em,
+        fontupper=\sffamily,
+        segmentation code={
+            \begin{pgfonlayer}{foreground}
+                \draw[line width = 1.5pt, color = csaccent] ($(segmentation.west) + (-0.2em, 0pt)$) -- ($(segmentation.east) + (0.2em, 0pt)$);
+            \end{pgfonlayer}
+        },
+        subtitle style={
+            boxrule=0pt,
+            top=-1.5em,
+            after skip=1.25\baselineskip,
+            colframe=white,
+            colback=white,
+            coltext=\maincolor,
+            fonttitle=\sffamily\scshape\large,
+            halign=flush center
+        },
+        fontlower=\sffamily
+    }
+}
+
+\NewDocumentCommand{\statBox}{mmmm}{
+    \begin{tcbraster}[raster columns=2, raster equal height]
+        \begin{tcolorbox}[leftBox,title={#1}]
+            \huge#2
+        \end{tcolorbox}
+        \begin{tcolorbox}[rightBox,title={#3}]
+            \huge#4
+        \end{tcolorbox}
+    \end{tcbraster}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%               TALENT TREE                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Talent TikZ Style
+\tikzstyle{talent} = [rectangle, fill=white, text width=10em, sharp corners, minimum height=3em, draw=white, node font=\sffamily\normalsize, inner sep=0.5em]
+
+% Connector TikZ Style
+\tikzstyle{connector} = [color=white, sharp corners, line width = 3pt]
+
+% Key Talent
+\NewDocumentCommand{\keyTalent}{mm}{
+  \begin{tcolorbox}[keyTalentBox]
+    \key \textbf{#1}
+    #2
+  \end{tcolorbox}
+}
+
+% Normal Talent
+\NewDocumentCommand{\talent}{mom}{
+  {\color{cscolor}\bfseries\scshape\hspace{-0.6em} #1}\\
+  \IfNoValueTF{#2}{}{{\color{plotweavergray}\footnotesize\itshape #2}\\}
+  {\color{black}\small #3}
+}

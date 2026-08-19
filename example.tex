@@ -1,7 +1,33 @@
-\documentclass[article,stormlight]{plotweaver}
+%% example.tex
+%% Copyright 2026 Hannah Kirkland
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Hannah Kirkland.
+%
+% This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
+% plotweaver-character-sheet.sty, plotweaver-colors.sty,
+% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
+% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
+% plotweaver.pdf, nomodan.png, and README.md.
+
+\documentclass[article,stormlight,timeline]{plotweaver}
+\usepackage[colorlinks=true]{hyperref}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage[base]{babel}
+\usetikzlibrary{chains, backgrounds}
+\pgfdeclarelayer{foreground}
+\pgfdeclarelayer{lines}
+\pgfsetlayers{background,lines,main,foreground}
 \usepackage{lipsum}
   
 \title{Plotweaver \LaTeX~Document Class}
@@ -11,11 +37,17 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
-I wanted to make a \LaTeX~class for Cosmere RPG and other Plotweaver RPG games. I've tried to emulate the style of the books and character sheets with this document class, though it is not perfect yet. Contributions to its development are welcome!
+This file serves as a tutorial and example for how to use the \texttt{plotweaver} document class to typeset homebrew content in the style of Plotweaver RPG and Cosmere RPG games.
 
-\section{Documentation}
-This document class provides styling and several commands to make formatting Plotweaver RPG homebrew a little easier.
+\section{Introduction}
+The \texttt{plotweaver} document class is a free and open source resource which uses \LaTeX~to emulate the style of the Plotweaver RPG and Cosmere RPG rule books. This allows you to focus on writing and creating content without the hassle of formatting each document. To use this document class, you will need to have \LaTeX~installed, which can be downloaded at the \href{https://www.latex-project.org/}{official \LaTeX~project website}. If you're not familiar with \LaTeX, a full installation is recommended. Another non-local option is to upload the class and package files to an online \LaTeX~editor such as Overleaf. Please note that online editors may or maynot be free. Regardless of installation choice, you will need to use Lua\LaTeX~as the compiler.
+
+The philosophy of this document class and its accompanying packages is to be as simple to use as possible while remaining as modular and flexible as possible. It is also still under active development, particularly with respect to the talent tree boxes. Contributions are welcome on this project's \href{https://github.com/teawizardry/plotweaver}{GitHub repository}. 
+
+This work is licensed under the \href{https://latex-project.org/lppl/lppl-1-3c/}{LaTeX Project Public License (LPPL) version 1.3c}. This is unofficial fan content, created and shared for non-commercial use. It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC.
+
+\section{Example Usage}
+For full documentation, please see \texttt{plotweaver.pdf}. For an example of how to use this document class to generate character sheets, please see \texttt{character-sheet.tex}. 
 
 \subsection{Feature Boxes}
 Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, and \texttt{rightBox}. You can also use the command \texttt{statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
@@ -49,14 +81,14 @@ Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} und
 \end{table}
 
 \subsection{Color Schemes}
-You can switch color schemes by passing an option to the document class. The default is \texttt{stormlight}. You can also use \texttt{mistborn}, with more to come. You can also define your own color schemes.
+You can switch color schemes by passing an option to the document class. The default is \texttt{stormlight}. You can also use \texttt{mistborn} or \texttt{ariandor}. You can also define your own color schemes.
 
 \subsection{Character Sheets}
-You can make a character sheet using the \texttt{MakeCharacterSheet} command. It will calculate derived attributes for you, and you can set it to use the terminology for Stormlight Archive or Mistborn instead of the generic Plotweaver terms. See \texttt{character\_sheet.tex} for an example of how to use this command. In the future, I intend to make the sheet more customizable.
+You can make a character sheet using the \texttt{MakeCharacterSheet} command if \texttt{character-sheet} is passed into the document class options. It will calculate derived attributes for you, and you can set it to use the terminology for Stormlight Archive or Mistborn instead of the generic Plotweaver terms. See \texttt{character-sheet.tex} for an example of how to use this command. In the future, I intend to make the sheet more customizable.
 
 \begin{center}
 \noindent
-\begin{tcolorbox}[featureBox,, title={Feature Box}]
+\begin{tcolorbox}[featureBox, title={Feature Box}]
     \lipsum[1][1-7]
     \tcblower
     \tcbsubtitle{Sub Feature}
@@ -138,7 +170,7 @@ You can make a character sheet using the \texttt{MakeCharacterSheet} command. It
 \null\newpage
 
 \subsection{Timelines}
-Timelines can be created using the \texttt{timeline} environment. You can pass in arguments to determine the spacing between major and minor ticks with \texttt{major tick pattern} and adjust the overall scale with \texttt{scale}. Within the timeline environment, the start and end years are specified with the \texttt{era} command. Specific events are added aftwards with the \texttt{event} command. This allows for multiple eras to be chained together in a single timeline. 
+Timelines can be created using the \texttt{timeline} environment if \texttt{timeline} is passed into the document class options. You can pass in arguments to determine the spacing between major and minor ticks with \texttt{major tick pattern} and adjust the overall scale with \texttt{scale}. Within the timeline environment, the start and end years are specified with the \texttt{era} command. Specific events are added aftwards with the \texttt{event} command. This allows for multiple eras to be chained together in a single timeline. 
 \begin{figure}
     \begin{timeline}[major tick pattern=5, scale=0.2]
         \era{start=1700, end=1760, prefix=XX}  

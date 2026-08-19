@@ -1,0 +1,153 @@
+%% plotweaver-character-sheet.sty
+%% Copyright 2026 Hannah Kirkland
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Hannah Kirkland.
+%
+% This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
+% plotweaver-character-sheet.sty, plotweaver-colors.sty,
+% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
+% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
+% plotweaver.pdf, nomodan.png, and README.md.
+
+\ProvidesPackage{plotweaver-icons}[2026-09-01 Plotweaver Activation Icons]
+\RequirePackage{tikz}
+\usetikzlibrary{calc, positioning, arrows.meta, bending, shapes.geometric}
+\tikzset{
+    invclip/.style={
+        clip,
+        insert path={(-1em,-1em) rectangle (1em,1em)}
+    }
+}
+\RequirePackage{plotweaver-colors}
+
+\DeclareOption{stormlight}{
+    \colorlet{textcolor}{stormingink}
+}
+\DeclareOption{mistborn}{
+    \colorlet{textcolor}{rustingink}
+}
+\DeclareOption{ariandor}{
+    \colorlet{textcolor}{ariandorink}
+}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%               ACTIVATIONS                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Action
+\NewDocumentCommand{\action}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+    }
+}
+
+% Double Action
+\NewDocumentCommand{\doubleAction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (4pt,0) {};
+    }
+}
+
+% Triple Action
+\NewDocumentCommand{\tripleAction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (0,0) {};
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (4pt,0) {};
+        \node[fill=textcolor, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em, inner sep=0pt, anchor=base] at (8pt,0) {};
+    }
+}
+
+% Free Action
+\NewDocumentCommand{\freeAction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.75ex]{%
+        \node[draw=textcolor, very thick, shape=isosceles triangle, isosceles triangle apex angle=60, minimum height=0.75em-1.2pt, inner sep=0pt, anchor=base] at (0,0) {};
+    }
+}
+
+% Reaction
+\NewDocumentCommand{\reaction}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.2ex]{%
+        \draw[color=textcolor,{Triangle[length=0.5em, width=0.5em]}-,line width=0.125em] 
+            (0,0.15) -- (0.3,0.15) 
+            arc (90:-90:0.075cm) 
+            -- (0.1,0);
+  }
+}
+
+% Forever
+\NewDocumentCommand{\forever}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.6ex]{%
+        \draw[color=textcolor, domain=0:359, smooth, samples=100, line width=0.125em] 
+            plot ({0.2*cos(\x)/(1+sin(\x)^2)}, {0.2*sin(\x)*cos(\x)/(1+sin(\x)^2)}) -- cycle;
+    }
+}
+
+% Complication
+\NewDocumentCommand{\complication}{o}{%
+    \tikz[baseline=-0.65ex]{%
+        \begin{scope}
+            \begin{pgfinterruptboundingbox}
+            \path[clip, invclip] (67.5:0.4em) -- (202.5:0.4em) -- (337.5:0.4em) -- (112.5:0.4em) -- (247.5:0.4em) -- (382.5:0.4em) -- (157.5:0.4em) -- (292.5:0.4em) -- (67.5:0.4em) -- cycle;
+            \path[invclip] (0,0) circle (0.22em);
+            \end{pgfinterruptboundingbox}
+            
+            \fill[complicationred] (45:0.5em) -- (180:0.5em) -- (315:0.5em) -- (90:0.5em) -- (225:0.5em) -- (360:0.5em) -- (135:0.5em) -- (270:0.5em) -- (45:0.5em) -- cycle;
+        \end{scope}
+    }%
+    \IfNoValueTF{#1}{}{\,{\color{complicationred}#1}}
+}
+
+% Complication Dice
+\NewDocumentCommand{\complicationDice}{o}{%
+    \tikz[baseline=-0.65ex]{%
+        \begin{scope}
+            \begin{pgfinterruptboundingbox}
+            \path[clip, invclip] (67.5:0.5em) -- (202.5:0.5em) -- (337.5:0.5em) -- (112.5:0.5em) -- (247.5:0.5em) -- (382.5:0.5em) -- (157.5:0.5em) -- (292.5:0.5em) -- (67.5:0.5em) -- cycle;
+            \path[invclip] (0,0) circle (0.27em);
+            \end{pgfinterruptboundingbox}
+            
+            \fill[complicationred] (45:0.6em) -- (180:0.6em) -- (315:0.6em) -- (90:0.6em) -- (225:0.6em) -- (360:0.6em) -- (135:0.6em) -- (270:0.6em) -- (45:0.6em) -- cycle;
+        \end{scope}
+        \node[inner sep=0pt, outer sep=0pt, anchor=center, text=complicationred] at (0,0) {\IfNoValueTF{#1}{}{\sffamily\tiny #1}};
+    }
+}
+
+% Opportunity
+\NewDocumentCommand{\opportunity}{}{%
+  \tikz[baseline=-0.65ex]{%
+    \draw[color=opportunityblue, line width=0.075em, sharp corners, anchor=center] 
+        (0:0.15) .. controls (22.5:0.025) and (67.5:0.025) .. (90:0.15)
+        .. controls (112.5:0.025) and (157.5:0.025) .. (180:0.15)
+        .. controls (202.5:0.025) and (247.5:0.025) .. (270:0.15)
+        .. controls (292.5:0.025) and (337.5:0.025) .. cycle;
+    \begin{scope}
+        \draw[color=opportunityblue, line width=0.075em, anchor=center] (0,0) circle (0.3em);
+    \end{scope}
+  }
+}
+
+% Key Talent Star
+\NewDocumentCommand{\key}{}{%
+    \colorlet{textcolor}{.}%
+    \tikz[baseline=-0.6ex]{%
+        \node[fill, color=textcolor, shape=star, star points=5, star point height=0.3em, minimum height=1em, inner sep=0pt, outer sep=0pt, anchor=center] at (0,0) {};
+    }
+}

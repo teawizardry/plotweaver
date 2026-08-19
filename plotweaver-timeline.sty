@@ -1,0 +1,166 @@
+%% plotweaver-timeline.sty
+%% Copyright 2026 Hannah Kirkland
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Hannah Kirkland.
+%
+% This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
+% plotweaver-character-sheet.sty, plotweaver-colors.sty,
+% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
+% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
+% plotweaver.pdf, nomodan.png, and README.md.
+
+\ProvidesPackage{plotweaver-timeline}[2026-09-01 Plotweaver Timeline]
+\RequirePackage[x11names]{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{calc, positioning, arrows.meta, bending, shapes.geometric}
+\RequirePackage{varwidth}
+\tikzset{
+    max width/.style={
+        execute at begin node={\begin{varwidth}{#1}},
+        execute at end node={\end{varwidth}}
+    }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                TIMELINE                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% makes a new timeline base
+\DeclareKeys[erakeys] {
+    start  .store = \startyearkey,
+    end  .store = \endyearkey,
+    prefix  .store = \timelineprefix,
+    prefix  .initial:n = {},
+    major color  .store = \timelinecolor,
+    major color  .initial:n = {spruce!85!black},
+    minor color  .store = \minortimelinecolor,
+    minor color  .initial:n = {spruce!90!white},
+}
+
+\NewDocumentCommand{\era}{m}{
+    \SetKeys[erakeys]{#1}
+    \pgfmathsetmacro{\startyear}{\startyearkey}
+    \pgfmathsetmacro{\endyear}{\endyearkey}
+    \pgfmathtruncatemacro{\numnodes}{abs(\endyear - \startyear)}
+    \pgfmathsetmacro{\direction}{sign(\endyear - \startyear)}
+    
+    % Calculate scaled positions
+    \pgfmathsetmacro{\scaledstart}{\timelineend * \timescale}
+    \pgfmathsetmacro{\scaledend}{\scaledstart - \numnodes * \timescale}
+
+    % Draw nodes
+    \foreach \i in {0,...,\numnodes} {
+        \pgfmathtruncatemacro{\major}{mod(\i,\tickpattern)}
+        \pgfmathsetmacro{\currentyear}{\startyear + \i*\direction}
+        \pgfmathsetmacro{\ypos}{\scaledstart - \i*\timescale}
+        \ifnum\major=0
+            \node[draw, line width=1pt, color=\timelinecolor, minimum width=1.5em, minimum height=0pt, inner ysep=0pt, inner xsep=2pt] at (0,\ypos) {};
+            \node[left, color=\timelinecolor] at (-0.25,\ypos) {\timelineprefix\space\pgfmathprintnumber[assume math mode=true, precision=0]{\currentyear}};
+        \else
+            \node[draw, line width=0.5pt, color=\minortimelinecolor, minimum width=1em, minimum height=0pt, inner ysep=0pt, inner xsep=2pt] at (0,\ypos) {};
+        \fi
+    }
+
+    % Draw vertical line with gap
+    \pgfmathtruncatemacro{\gapcheck}{abs(sign(\timelineend))}
+    \ifnum\gapcheck=1
+        \node[draw, very thick, color=\timelinecolor, minimum width=1.5em, minimum height=0pt, inner ysep=0pt, inner xsep=2pt] at (0,\scaledstart) {};
+    \fi
+    \draw[thick, color=\timelinecolor] (0,\scaledstart) -- (0,\scaledend);
+    
+    % Update endpoint for chaining (unscaled)
+    \pgfmathsetmacro{\newtimelineend}{\timelineend - \numnodes - 1}
+    \global\edef\timelineend{\newtimelineend}
+    
+    % Update start year for events
+    \pgfmathsetmacro{\newerastart}{\endyear + \direction}
+    \global\edef\erastart{\newerastart}
+}
+
+% event command
+\DeclareKeys[eventkeys] {
+    year  .store = \eventyear,
+    prefix  .store = \eventprefix,
+    prefix  .initial:n = {},
+    dot color  .store = \eventdotcolor,
+    dot color  .initial:n = {chestnut},
+    line color  .store = \eventlinecolor,
+    line color  .initial:n = {chestnut!70!white},
+    year color  .store = \eventyearcolor,
+    year color  .initial:n = {chestnut},
+    prefix color  .store = \eventprefixcolor,
+    prefix color  .initial:n = {crimson},
+}
+
+\NewDocumentCommand{\reseteventkeys}{}{
+    \SetKeys[eventkeys]{
+        year = 0,
+        prefix = {},
+        dot color = chestnut,
+        line color = chestnut!70!white,
+        year color = chestnut,
+        prefix color = crimson
+    }
+}
+
+\ifcharstandalonetype
+  \gdef\timelinewidth{15cm}
+\else
+  \gdef\timelinewidth{0.8\textwidth}
+\fi
+
+\NewDocumentCommand{\event}{m m O{}}{
+    \reseteventkeys
+    \SetKeys[eventkeys]{#1}
+    \pgfmathsetmacro{\ypos}{(\timelineend + \erastart - \eventyear) * \timescale}
+
+    \node[fill, circle, inner sep=1.5pt, color=\eventdotcolor] (year-marker) at (0,\ypos) {};
+    \def\tempa{}%
+    \ifx\eventprefix\tempa
+        \node[right, max width=\timelinewidth, below={#3} of event-\number\numexpr\value{eventcounter}-1\relax.south west, anchor=north west] (event-\number\value{eventcounter}) {\leavevmode{\color{\eventyearcolor}\textbf{\pgfmathprintnumber[assume math mode=true, precision=0]{\eventyear}~--- }}#2};
+    \else
+        \node[right, max width=\timelinewidth, below={#3} of event-\number\numexpr\value{eventcounter}-1\relax.south west, anchor=north west] (event-\number\value{eventcounter}) {\leavevmode{\color{\eventprefixcolor}\textbf{\pgfmathprintnumber[assume math mode=true, precision=0]{\eventyear}~--- \eventprefix}}#2};
+    \fi
+    \draw[thin, color=\eventlinecolor, shorten <=-0.2pt] (year-marker) -- ($(event-\number\value{eventcounter}.north west) - (0, 0.75em)$);
+    \stepcounter{eventcounter}
+}
+
+% timeline environment
+\DeclareKeys[timelinekeys] {
+  scale  .store = \timescale,
+  scale  .initial:n = 0.1,
+  major tick pattern  .store = \majortickpattern,
+  major tick pattern  .initial:n = 1,
+  event xshift  .store = \eventxshift,
+  event xshift  .initial:n = 3cm,
+}
+
+\NewDocumentEnvironment{timeline}{o}{
+    \SetKeys[timelinekeys]{#1}
+    % Initialize timeline start and end position
+    \gdef\timelineend{0}
+    \gdef\erastart{0}
+    % Initialize first event node position
+    \ifcsname c@eventcounter\endcsname
+    \else
+        \newcounter{eventcounter}
+    \fi
+    \setcounter{eventcounter}{0}
+    % Tick pattern
+    \gdef\tickpattern{\majortickpattern}
+    \begin{tikzpicture}
+        \node[xshift=\eventxshift] (event-\the\value{eventcounter}) at (0,0) {};
+        \stepcounter{eventcounter}
+}{
+    \end{tikzpicture}
+}
