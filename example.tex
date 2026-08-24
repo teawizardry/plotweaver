@@ -28,6 +28,8 @@
 \pgfdeclarelayer{foreground}
 \pgfdeclarelayer{lines}
 \pgfsetlayers{background,lines,main,foreground}
+\usepackage{wrapfig}
+\setlength{\intextsep}{0.25em}
 \usepackage{lipsum}
   
 \title{Plotweaver \LaTeX~Document Class}
@@ -50,7 +52,7 @@ This work is licensed under the \href{https://latex-project.org/lppl/lppl-1-3c/}
 For full documentation, please see \texttt{plotweaver.pdf}. For an example of how to use this document class to generate character sheets, please see \texttt{character-sheet.tex}. 
 
 \subsection{Feature Boxes}
-Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, and \texttt{rightBox}. You can also use the command \texttt{statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
+Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, \texttt{rightBox}, and \texttt{calloutBox}. You can also use the command \texttt{statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
 
 \subsection{Talent Paths}
 TikZ is used to make the talent paths. You can add a photo as the background, if desired. Check the \texttt{example.tex} for a sample talent path.
@@ -100,8 +102,24 @@ You can make a character sheet using the \texttt{MakeCharacterSheet} command if 
 {Stat Two}{
     \normalsize ...and still end up the same height! Even when one is multiple lines.
 }
+\begin{tcolorbox}[calloutBox, title={Callout Box}]
+    This is a callout box. It will be as wide as the text (i.e., \texttt{\textbackslash linewidth}) unless you pass a width to the \texttt{tcolorbox} environment.
+
+\end{tcolorbox}
 \vspace{\baselineskip}
 \end{center}
+
+You can also have a callout box that will float next to the text. To do this, you need to use the \texttt{wrapfig} package. Set the width in the \texttt{wrapfigure} environment and then let the \texttt{tcolorbox} fill the total width.
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \begin{tcolorbox}[calloutBox, title={Callout Box}, nobeforeafter]
+        \lipsum[1][1-4]
+    \end{tcolorbox}
+\end{wrapfigure}
+
+\lipsum[1]
+
+
 
 \clearpage
 

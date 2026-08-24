@@ -24,6 +24,8 @@
 \DeclareKeys[plotweaver-boxes]{
     color.code = \colorlet{cscolor}{#1},
     accent-color.code = \colorlet{csaccent}{#1},
+    callout-color.code = \colorlet{cscalloutbg}{#1},
+    text-color.code = \colorlet{cstextcolor}{#1}
 }
 \ProcessKeyOptions
 
@@ -352,11 +354,29 @@
             after skip=1.25\baselineskip,
             colframe=white,
             colback=white,
-            coltext=\maincolor,
+            coltext=cstextcolor,
             fonttitle=\sffamily\scshape\large,
             halign=flush center
         },
         fontlower=\sffamily
+    },
+    calloutBox/.style={
+        enhanced,
+        nobeforeafter,
+        colback=cscalloutbg,
+        colframe=cscolor,
+        arc=1em,
+        arc is angular,
+        sharp corners=uphill,
+        sharp corners=northwest,
+        fonttitle=\sffamily\scshape\bfseries\large,
+        fontupper=\sffamily,
+        fontlower=\sffamily,
+        boxsep=0.5em,
+        left=0.5em,
+        right=0.5em,
+        top=0.25em,
+        bottom=0.25em
     }
 }
 

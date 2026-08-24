@@ -180,7 +180,7 @@
     \RequirePackage{plotweaver-timeline}
 \fi
 
-\RequirePackage[color=cscolor,accent-color=csaccent]{plotweaver-boxes}
+\RequirePackage[color=cscolor,accent-color=csaccent,callout-color=cscalloutbg,text-color=cstextcolor]{plotweaver-boxes}
 
 \RequirePackage{fontspec}
 \setmainfont{TeX Gyre Schola}
