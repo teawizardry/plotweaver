@@ -1,0 +1,264 @@
+\ProvidesPackage{plotweaver-statblock}[2026-08-26 Plotweaver Statblock]
+\RequirePackage{tikz}
+\RequirePackage{multicol}
+\RequirePackage{setspace}
+\RequirePackage{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%               NPC STATBLOCK             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% keys
+\DeclareKeys[statblock]{
+	numCols		.store = \NumCols,
+	name			.store = \charName,
+	tier			.store = \charTier,
+	role			.store = \charRole,
+	size			.store = \charSize,
+	type			.store = \charType,
+	health		.store = \charHealth,
+	focus		.store = \charFocus,
+	essence		.store = \charInvestiture,
+	strength		.store = \charSTR,
+	speed		.store = \charSPD,
+	intellect	.store = \charINT,
+	willpower	.store = \charWIL,
+	awareness	.store = \charAWA,
+	presence		.store = \charPRE,
+	physDef		.store = \charPhysDef,
+	cogDef		.store = \charCogDef,
+	spiDef		.store = \charSpiDef,
+	deflect		.store = \Deflect,
+	movement		.store = \Movement,
+	senses		.store = \Senses,
+	immunities	.store = \Immunities,
+	physSkills	.store = \PhysicalSkills,
+	cogSkills	.store = \CognitiveSkills,
+	spiSkills	.store = \SpiritualSkills,
+	surgeSkills	.store = \SurgeSkills,
+	maSkills		.store = \MASkills,
+	languages	.store = \Languages,
+	features		.store = \Features,
+	actions		.store = \Actions,
+	oandcs		.store = \OandC,
+    stormlight.if = charStormlight,
+    mistborn.if = charMistborn,
+}
+
+\NewDocumentCommand{\MakeStatBlock}{m}{%
+    \SetKeys[statblock]{#1}
+
+    \ifstormlight
+        \def\essenceName{Investiture}
+        \def\mentalName{Cognitive}
+    \else
+        \ifmistborn
+            \def\essenceName{Investiture}
+            \def\mentalName{Cognitive}
+        \else
+            \def\essenceName{Essence}
+            \def\mentalName{Mental}
+        \fi
+    \fi
+	
+	\renewcommand{\baselinestretch}{1.5}
+	
+    \begin{tcolorbox}[boxsep=0pt, left=5pt, right=5pt, calloutBox, spread inwards= -0.08\pagewidth, spread outwards = -0.08\pagewidth, colframe=csaccent,colback=white,coltext=cscolor,fontlower=\footnotesize\sffamily, fonttitle=\sffamily\scshape\footnotesize, fontupper=\footnotesize\sffamily, subtitle style={
+            boxrule=0pt,
+            after skip=0.2\baselineskip,
+            colframe=white,
+            colback=white,
+            coltext=cscolor,
+            halign=flush center
+        }]
+    {\setlength\columnsep{20pt}
+	\ifx\NumCols\empty
+	\begin{multicols}{2}
+	\else    
+    \ifnum 1=\NumCols
+	\else
+	\begin{multicols}{\NumCols}
+	\fi
+	\fi
+	\raggedright
+	{\Large \textbf{\sffamily\scshape{\charName}}}
+	
+	\textcolor{cstextcolor}{\small\textit{Tier {\charTier}  {\charRole}  -  {\charSize} {\charType}}}\\
+	\vspace{5pt}
+	\resizebox{1\linewidth}{!}{
+	\tikz{
+                \coordinate (sw) at (0,0);
+                \coordinate (se) at (30.2em,0);
+                \coordinate (ss) at (15.1em,0);
+                \coordinate (nw) at (0,4em);
+                \coordinate (ne) at (30.2em,4em);
+                \coordinate (nn) at (15.1em,4em);
+                
+                % outer box
+                \draw[line width = 1pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {xshift=1pt}, white}] ($(nw) + (0pt, -1em)$) -- ($(sw) + (0pt, 0.865em)$);
+                \draw[line width = 1pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {xshift=-1pt}, white}] ($(ne) + (0pt, -1em)$) -- ($(se) + (0pt, 0.865em)$);
+                \draw[line width = 1pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(sw) + (0.865em, 0pt)$) -- ($(ss) + (-10.8em, 0pt)$);
+                \draw[line width = 1pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(ss) + (-9.2em, 0pt)$) -- ($(ss) + (-0.8em, 0pt)$);
+                \draw[line width = 1pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(ss) + (0.8em, 0pt)$) -- ($(ss) + (9.2em, 0pt)$);
+                \draw[line width = 1pt, color = csaccent, preaction = {draw, line width=1pt, transform canvas = {yshift=1pt}, white}] ($(ss) + (10.8em, 0pt)$) -- ($(se) + (-0.865em, 0pt)$);
+
+                % round corners
+                \begin{scope}
+                    \clip (sw) rectangle (ne);
+                    \draw[line width = 1pt, color = csaccent] (sw) circle (0.925em);
+                    \draw[line width = 1pt, color = csaccent] (se) circle (0.925em);
+                \end{scope}
+
+                % inner box
+                \draw[line width = 0.5pt, color=csaccent] ($(nw) + (0.3em, -1em)$) -- ($(sw) + (0.3em, 0.3em)$) -- ($(ss) + (-11.5em, 0.3em)$);
+                \draw[line width = 0.5pt, color=csaccent] ($(ss) + (-8.5em, 0.3em)$) -- ($(ss) + (-1.5em, 0.3em)$);
+                \draw[line width = 0.5pt, color=csaccent] ($(ss) + (8.5em, 0.3em)$) -- ($(ss) + (1.5em, 0.3em)$);
+                \draw[line width = 0.5pt, color=csaccent] ($(ss) + (11.5em, 0.3em)$) -- ($(se) + (-0.3em, 0.3em)$) -- ($(ne) + (-0.3em, -1em)$);
+                
+                % upper filled box
+                \filldraw[line width = 1pt, color = csaccent] ($(nw) + (0em, -1em)$) rectangle ($(ne) + (0em, 0.5em)$);
+                
+                % Defense box outlines (please don't ask me how I got this to work...)
+                % Cognitive/Mental
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em)$) -- ($(nn) + (1.5em, -1em)$);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em)$) -- ($(nn) + (-1.5em, -1em)$);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em)$) arc (245:253.7:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em)$) arc (245:244.8:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em)$) arc (295:286.3:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em)$) arc (295:295.2:3);
+				
+				% Physical
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em) - (10em,0em)$) -- ($(nn) + (1.5em, -1em) - (10em,0em)$);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em) - (10em,0em)$) -- ($(nn) + (-1.5em, -1em) - (10em,0em)$);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em) - (10em,0em)$) arc (245:253.7:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em) - (10em,0em)$) arc (245:244.8:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em) - (10em,0em)$) arc (295:286.3:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em) - (10em,0em)$) arc (295:295.2:3);
+				
+				% Spiritual
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em) + (10em,0em)$) -- ($(nn) + (1.5em, -1em) + (10em,0em)$);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em) + (10em,0em)$) -- ($(nn) + (-1.5em, -1em) + (10em,0em)$);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em) + (10em,0em)$) arc (245:253.7:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (-1.5em, 0.3em) + (10em,0em)$) arc (245:244.8:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em) + (10em,0em)$) arc (295:286.3:3);
+				\draw[line width = 1pt, color = csaccent] ($(ss) + (1.5em, 0.3em) + (10em,0em)$) arc (295:295.2:3);
+				
+				% Attributes & Defense Headers
+				\node[color=white] at ($(nn) - (0, 2pt)$) {\sffamily\scshape \centering\textbf{\mentalName}};
+				\node[color=white] at ($(nn) - (10em, 2pt)$) {\sffamily\scshape \centering\textbf{Physical}};
+				\node[color=white] at ($(nn) - (-10em, 2pt)$) {\sffamily\scshape \centering\textbf{Spiritual}};
+				
+				% Physical Attributes & Defense
+				\node[color=cscolor, align=center] at ($(nn) - (13em, 2.4em)$) {\scriptsize\sffamily\scshape STR \\[-0.5em] \charSTR};
+				\node[color=cscolor, align=center] at ($(nn) - (10em, 2.4em)$) {\scriptsize\sffamily\scshape DEF \\[-0.5em] \charPhysDef};
+				\node[color=cscolor, align=center] at ($(nn) - (7em, 2.4em)$) {\scriptsize\sffamily\scshape SPD \\[-0.5em] \charSPD};
+				
+				% Cognitive/Mental Attributes & Defense
+				\node[color=cscolor, align=center] at ($(nn) - (3em, 2.4em)$) {\scriptsize\sffamily\scshape INT \\[-0.5em] \charINT};
+				\node[color=cscolor, align=center] at ($(nn) - (0em, 2.4em)$) {\scriptsize\sffamily\scshape DEF \\[-0.5em] \charCogDef};
+				\node[color=cscolor, align=center] at ($(nn) - (-3em, 2.4em)$) {\scriptsize\sffamily\scshape WIL \\[-0.5em] \charWIL};
+				
+				% Spiritual Attributes & Defense
+				\node[color=cscolor, align=center] at ($(nn) - (-7em, 2.4em)$) {\scriptsize\sffamily\scshape AWA \\[-0.5em] \charAWA};
+				\node[color=cscolor, align=center] at ($(nn) - (-10em, 2.4em)$) {\scriptsize\sffamily\scshape DEF \\[-0.5em] \charSpiDef};
+				\node[color=cscolor, align=center] at ($(nn) - (-13em, 2.4em)$) {\scriptsize\sffamily\scshape PRE \\[-0.5em] \charPRE};
+				
+				% Following is for Health, Focus, and Investiture/Essence scores below table
+				% If you are just looking to showcase table then remove this
+				\node[color=cscolor, align=center] at ($(nn) - (0em, 5.5em)$) {\textbf{Focus:} \charFocus};
+				\node[color=cscolor, align=center] at ($(nn) - (10em, 5.5em)$) {\textbf{Health:} \charHealth};
+				\node[color=cscolor, align=center] at ($(nn) - (-10em, 5.5em)$) {\textbf{\essenceName:} \charInvestiture};
+}}\\[-1.3em]
+{\color{csaccent} \rule{\linewidth}{1pt}}
+	\ifx\Deflect\empty
+	{}
+	\else
+	\textbf{Deflect:} \Deflect\\
+	\fi
+%
+	\ifx\Movement\empty
+	{}
+	\else
+	\textbf{Movement:} \Movement\\
+	\fi
+%	
+	\ifx\Senses\empty
+	{}
+	\else
+	\textbf{Senses:} \Senses\\
+	\fi
+%	
+	\ifx\Immunities\empty
+	{}
+	\else
+	\textbf{Immunities:} \Immunities\\
+	\fi
+%	
+	\ifx\PhysicalSkills\empty
+	{}
+	\else
+	\textbf{Physical Skills:} \PhysicalSkills\\
+	\fi
+%	
+	\ifx\CognitiveSkills\empty
+	{}
+	\else
+	\textbf{{\mentalName} Skills:} \CognitiveSkills\\
+	\fi
+%	
+	\ifx\SpiritualSkills\empty
+	{}
+	\else
+	\textbf{Spiritual Skills:} \SpiritualSkills\\
+	\fi
+%	
+	\ifx\MASkills\empty
+	{}
+	\else
+	\textbf{Metallic Art Skills:} \MASkills\\
+	\fi
+%	
+	\ifx\SurgeSkills\empty
+	{}
+	\else
+	\textbf{Surge Skills:} \SurgeSkills\\
+	\fi
+%	
+	\ifx\Languages\empty
+	{}
+	\else
+	\textbf{Languages:} \Languages\\
+	\fi
+%
+	\ifx\Features\empty
+	{}
+	\else
+	\tcbsubtitle{\textbf{FEATURES}}
+	{\color{csaccent} \rule{\linewidth}{1pt}}
+	\textcolor{cstextcolor}{\Features}
+	\fi
+	\ifx\Actions\empty
+	{}
+	\else
+	\tcbsubtitle{\textbf{ACTIONS}}
+	{\color{csaccent} \rule{\linewidth}{1pt}}
+	\textcolor{cstextcolor}{\Actions}
+	\fi
+	\ifx\OandC\empty
+	{}
+	\else
+	\tcbsubtitle{\textbf{OPPORTUNITIES AND COMPLICATIONS}}
+	{\color{csaccent} \rule{\linewidth}{1pt}}
+	\textcolor{cstextcolor}{The following options are available when an enemy gains an Opportunity or Complication during a scene with the \charName:\\{\OandC}}
+	\fi
+	\ifx\NumCols\empty
+	\end{multicols}
+	\else    
+    \ifnum 1=\NumCols
+    \else
+	\end{multicols}
+	\fi
+	\fi
+    }
+\end{tcolorbox}
+}
