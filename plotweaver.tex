@@ -194,6 +194,15 @@ These boxes are implemented using \disptxt{tcolorbox} and are provided by \dispr
   \end{dispExample*}
 \end{docKey}
 
+\begin{docKey}[tcb][doc new = 2026-08-26]{paperBox}{=\meta{text}}{}
+  The tcolorbox key containing the styling for paper boxes. This box will match the current color scheme. See the \disptxt{tcolorbox} documentation for more information. 
+  \begin{dispExample*}{sidebyside}
+  \begin{tcolorbox}[paperBox, title={Paper Box}]
+      \lipsum[1][4-5]
+  \end{tcolorbox}
+  \end{dispExample*}
+\end{docKey}
+
 \begin{docEnvironment}[doc updated=2026-08-11]{statBox}{\marg{heading 1}\marg{content 1}\marg{heading 2}\marg{content 2}}
 This is a series of custom boxes that will stay the same height regardless of content length. They are always of equal width. You can use each half of \dispred{statBox} separately by using the \dispvar{leftBox} and \dispvar{rightBox} style keys. These follow the same documentation as \dispred{/tcb/featureBox}.
 \begin{dispExample*}{sidebyside}

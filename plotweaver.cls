@@ -185,9 +185,10 @@
 \RequirePackage{fontspec}
 \setmainfont{TeX Gyre Schola}
 \setsansfont{Noto Sans}
-\ifcsname scripty\endcsname\else
-    \newfontface\scripty[Scale=1.5]{QT Handwriting}
+\ifcsname handy\endcsname\else
+    \newfontface\handy[Scale=1.5]{QT Handwriting}
 \fi
+\RequirePackage{aurical}
 \renewcommand{\normalsize}{\fontsize{10pt}{12pt}\selectfont}
 
 \AtBeginDocument{

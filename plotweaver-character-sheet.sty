@@ -24,7 +24,7 @@
 \RequirePackage{plotweaver-boxes}
 \RequirePackage{nicematrix}
 \RequirePackage{fontspec}
-\newfontface\scripty[Scale=1.5]{QT Handwriting}
+\newfontface\handy[Scale=1.5]{QT Handwriting}
 
 \RequirePackage{tikz}
 \RequirePackage[poster]{tcolorbox}
@@ -164,7 +164,7 @@
     \SetKeys[charsheet]{#1}
 
     \ifcharHandwritten
-        \def\charFont{\scripty}
+        \def\charFont{\handy}
     \else
         \def\charFont{\sffamily}
     \fi
