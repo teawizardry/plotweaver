@@ -1,4 +1,4 @@
-%% plotweaver-character-sheet.sty
+%% character-sheet.tex
 %% Copyright 2026 Hannah Kirkland
 %
 % This work may be distributed and/or modified under the
@@ -15,9 +15,9 @@
 %
 % This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
 % plotweaver-character-sheet.sty, plotweaver-colors.sty,
-% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
-% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
-% plotweaver.pdf, nomodan.png, and README.md.
+% plotweaver-icons.sty, plotweaver-mistborn.sty, plotweaver-timeline.sty,
+% character-sheet.tex, character-sheet.pdf, example.tex, example.pdf, 
+% plotweaver.tex, plotweaver.pdf, nomodan.png, and README.md.
 
 \ProvidesPackage{plotweaver-character-sheet}[2026-09-01 Plotweaver Character Sheet]
 \RequirePackage{plotweaver-colors}
@@ -68,7 +68,7 @@
     awareness   .store = \charAwareness,
     presence    .store = \charPresence,
     phyDefenseBonus     .store = \charPhyDefenseBonus,
-    cogDefenseBonus     .store = \charCogDefenseBonus,
+    menDefenseBonus     .store = \charmenDefenseBonus,
     spiDefenseBonus     .store = \charSpiDefenseBonus,
     agility     .store = \charAgility,
     athletics   .store = \charAthletics,
@@ -93,11 +93,11 @@
     phyStatRanks    .initial:n = 0,
     phyStatBase     .store = \charPhyStatBase,
     phyStatBase     .initial:n = 0,
-    cogStatName     .store = \charCogStatName,
-    cogStatRanks    .store = \charCogStatRanks,
-    cogStatRanks    .initial:n = 0,
-    cogStatBase     .store = \charCogStatBase,
-    cogStatBase     .initial:n = 0,
+    menStatName     .store = \charmenStatName,
+    menStatRanks    .store = \charmenStatRanks,
+    menStatRanks    .initial:n = 0,
+    menStatBase     .store = \charmenStatBase,
+    menStatBase     .initial:n = 0,
     spiStatName     .store = \charSpiStatName,
     spiStatRanks    .store = \charSpiStatRanks,
     spiStatRanks    .initial:n = 0,
@@ -174,15 +174,21 @@
         \def\finesseName{Thievery}
         \def\essenceName{Investiture}
         \def\currencyName{Marks}
+        \def\cognitiveName{Cognitive}
+        \def\loreName{Lore}
     \else
         \ifcharMistborn
             \def\finesseName{Thievery}
             \def\essenceName{Investiture}
             \def\currencyName{Boxings}
+            \def\cognitiveName{Cognitive}
+            \def\loreName{Lore}
         \else
             \def\finesseName{Finesse}
             \def\essenceName{Essence}
             \def\currencyName{Currency}
+            \def\cognitiveName{Mental}
+            \def\loreName{Knowledge}
         \fi
     \fi
 
@@ -243,7 +249,7 @@
         }
 
         
-        \posterbox[featureBox={Cognitive},frame empty,opacityback=0,opacitybacktitle=0]{name=cognitive,column=3,span=2,below=character,rowspan=1,yshift=0.2cm}{}
+        \posterbox[featureBox={\cognitiveName},frame empty,opacityback=0,opacitybacktitle=0]{name=cognitive,column=3,span=2,below=character,rowspan=1,yshift=0.2cm}{}
         \posterbox[statBoxRight={Intellect}]{name=intellect,column*=4,span=1,below=character,yshift=-0.6cm,xshift=-3pt}{
             \Huge \charIntellect
         }
@@ -251,7 +257,7 @@
             \Huge \charWillpower
         }
         \posterbox[halign=center,valign=center,square,circular arc,colback=white,colframe=black,width=1.4cm,boxsep=0pt,left=0pt,right=0pt]{name=cogDefense,below=character,column=3,yshift=-0.895cm,xshift=2.65cm}{
-            \sffamily\LARGE \the\numexpr10+\charIntellect+\charWillpower+\charCogDefenseBonus\relax
+            \sffamily\LARGE \the\numexpr10+\charIntellect+\charWillpower+\charmenDefenseBonus\relax
         }
         \posterbox[adjusted title={Focus}, fonttitle=\sffamily\scshape\large, halign title=flush center, frame empty, opacityback=0, coltitle=black, boxsep=0pt]{name=focustitle,column=3,below=strength,span=2,rowspan=0.14,yshift=2mm}{}
         \posterbox[sideBox={\setlength{\tabcolsep}{0pt}\begin{NiceTabularX}{\linewidth}{*2{>{\centering}X}}Maximum & Current\end{NiceTabularX}},height=1.5cm]{name=focus,column=3,below=focustitle,span=1.5,xshift=0.04166666667\textwidth}{
@@ -302,14 +308,14 @@
                 \StatRow[Deduction (int)][\charDeduction][\charIntellect] \\
                 \StatRow[Discipline (wil)][\charDiscipline][\charWillpower] \\
                 \StatRow[Intimidation (wil)][\charIntimidation][\charWillpower] \\
-                \StatRow[Knowledge (int)][\charKnowledge][\charIntellect] \\
+                \StatRow[\loreName~(int)][\charKnowledge][\charIntellect] \\
                 \StatRow[Medicine (int)][\charMedicine][\charIntellect] \\
                 \ifcharHideBlanks
                 \else
-                    \ifx\charCogStatName\@empty
+                    \ifx\charmenStatName\@empty
                         \StatRow \\
                     \else
-                        \StatRow[\charCogStatName][\charCogStatRanks][\charCogStatBase] \\
+                        \StatRow[\charmenStatName][\charmenStatRanks][\charmenStatBase] \\
                     \fi
                 \fi
             \end{NiceTabularX}

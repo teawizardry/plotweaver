@@ -39,6 +39,9 @@
 % Timeline
 \newif\ifchartimeline\chartimelinefalse
 
+% Statblock
+\newif\ifcharstatblock\charstatblockfalse
+
 % Document type options
 \DeclareOption{article}{%
     \chararticletypetrue
@@ -71,6 +74,11 @@
 % Timeline
 \DeclareOption{timeline}{%
     \chartimelinetrue
+}
+
+% Statblock
+\DeclareOption{statblock}{%
+    \charstatblocktrue
 }
 
 % Pass unknown options to base class
@@ -117,7 +125,8 @@
 
 \ifmistborn
     \RequirePackage[mistborn]{plotweaver-icons}
-
+    \RequirePackage[mistborn]{plotweaver-mistborn}
+    
     \colorlet{cspapercolor}{rustingpaper}
     \colorlet{cstextcolor}{rustingink}
     \colorlet{cscolor}{rustingred}
@@ -181,6 +190,11 @@
 \fi
 
 \RequirePackage[color=cscolor,accent-color=csaccent,callout-color=cscalloutbg,text-color=cstextcolor]{plotweaver-boxes}
+
+\ifcharstatblock
+    \RequirePackage{plotweaver-statblock}
+\fi
+
 
 \RequirePackage{fontspec}
 \setmainfont{TeX Gyre Schola}

@@ -19,7 +19,8 @@
 % character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
 % plotweaver.pdf, nomodan.png, and README.md.
 
-\documentclass[article,stormlight,timeline]{plotweaver}
+\documentclass[article,stormlight,timeline,statblock]{plotweaver}
+\usepackage{plotweaver-mistborn}
 \usepackage[colorlinks=true]{hyperref}
 \usepackage{enumitem}
 \usepackage{graphicx}
@@ -42,29 +43,143 @@
 This file serves as a tutorial and example for how to use the \texttt{plotweaver} document class to typeset homebrew content in the style of Plotweaver RPG and Cosmere RPG games.
 
 \section{Introduction}
-The \texttt{plotweaver} document class is a free and open source resource which uses \LaTeX~to emulate the style of the Plotweaver RPG and Cosmere RPG rule books. This allows you to focus on writing and creating content without the hassle of formatting each document. To use this document class, you will need to have \LaTeX~installed, which can be downloaded at the \href{https://www.latex-project.org/}{official \LaTeX~project website}. If you're not familiar with \LaTeX, a full installation is recommended. Another non-local option is to upload the class and package files to an online \LaTeX~editor such as Overleaf. Please note that online editors may or maynot be free. Regardless of installation choice, you will need to use Lua\LaTeX~as the compiler.
+The \texttt{plotweaver} document class is a free and open source resource which uses \LaTeX~to emulate the style of the Plotweaver RPG and Cosmere RPG rule books. This allows you to focus on writing and creating content without the hassle of formatting each document. To use this document class, you will need to have \LaTeX~installed, which can be downloaded at the \href{https://www.latex-project.org/}{official \LaTeX~project website}. If you're not familiar with \LaTeX, a full installation is recommended. Another non-local option is to upload the class and package files to an online \LaTeX~editor such as Overleaf. Please note that online editors may or may not be free. Regardless of installation choice, you will need to use Lua\LaTeX~as the compiler.
 
 The philosophy of this document class and its accompanying packages is to be as simple to use as possible while remaining as modular and flexible as possible. It is also still under active development, particularly with respect to the talent tree boxes. Contributions are welcome on this project's \href{https://github.com/teawizardry/plotweaver}{GitHub repository}. 
 
-This work is licensed under the \href{https://latex-project.org/lppl/lppl-1-3c/}{LaTeX Project Public License (LPPL) version 1.3c}. This is unofficial fan content, created and shared for non-commercial use. It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC.
+This work is licensed under the \href{https://latex-project.org/lppl/lppl-1-3c/}{LaTeX Project Public License (LPPL) version 1.3c}, with the exception of icons specific to Plotweaver RPG, Cosmere RPG, and the Cosmere. This is unofficial fan content, created and shared for non-commercial use. It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC. 
 
 \section{Example Usage}
 For full documentation, please see \texttt{plotweaver.pdf}. For an example of how to use this document class to generate character sheets, please see \texttt{character-sheet.tex}. 
 
-\subsection{Feature Boxes}
-Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, \texttt{rightBox}, \texttt{calloutBox}, and \texttt{paperBox}. You can also use the command \texttt{statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
+\subsection{Character Sheets}
+You can make a character sheet using the \texttt{MakeCharacterSheet} command if \texttt{character-sheet} is passed into the document class options. It will calculate derived attributes for you, and you can set it to use the terminology for Stormlight Archive or Mistborn instead of the generic Plotweaver terms. See \texttt{character-sheet.tex} for an example of how to use this command. In the future, I intend to make the sheet more customizable.
 
-\subsection{Talent Paths}
-TikZ is used to make the talent paths. You can add a photo as the background, if desired. Check the \texttt{example.tex} for a sample talent path.
+\subsection{Color Schemes}
+You can switch color schemes by passing an option to the document class. The default is \texttt{stormlight}. You can also use \texttt{mistborn} or \texttt{ariandor}. You can also define your own color schemes.
 
 \subsection{Icons}
-Icons for activations and plot die are specified with \texttt{forever}, \texttt{freeAction}, \texttt{action}, \texttt{doubleAction}, \texttt{tripleAction}, \texttt{reaction}, \texttt{opportunity}, and \texttt{complication}. They look like this:
+Icons for activations and plot die are specified with \texttt{forever}, \texttt{freeAction}, \texttt{action}, \texttt{doubleAction}, 
+\texttt{tripleAction}, \texttt{reaction}, \texttt{opportunity}, and \texttt{complication}. They look like this:
 \begin{center}
     \forever \freeAction \action \doubleAction \tripleAction \reaction \opportunity \complication
 \end{center}
 The complication commands can take a number or be left blank. Numbers look like this: \complication[2]. You can also make larger complication symbols with \texttt{complicationDice}:
 \begin{center}
     \complicationDice\space \complicationDice[2] \complicationDice[4]
+\end{center}
+
+\begin{table}
+    \caption{Mistborn Symbols}
+    \begin{plotable}{ccl}
+        Steel & Terris & Meaning \\
+        \alLerasium & \feLerasium & Lerasium (A)\\
+        \alIron & \feIron & Iron (B)\\
+        \alUnknownC & \feUnknownC & Unknown C (C)\\
+        \alCopper & \feCopper & Copper (D)\\
+        \alTin & \feTin & Tin (E)\\
+        \alMalatium & \feMalatium & Malatium (F)\\
+        \alCadmium & \feCadmium & Cadmium (G)\\
+        \alUnknownH & \feUnknownH & Unknown H (H)\\
+        \alUnknownJ & \feUnknownJ & Unknown J (J)\\
+        \alBendalloy & \feBendalloy & Bendalloy (K)\\
+        \alZinc & \feZinc & Zinc (L)\\
+        \alGold & \feGold & Gold (M)\\
+        \alElectrum & \feElectrum & Electrum (N)\\
+        \alPewter & \fePewter & Pewter (O)\\
+        \alSteel & \feSteel & Steel (P)\\
+        \alBrass & \feBrass & Brass (R)\\
+        \alDuralumin & \feDuralumin & Duralumin (S)\\
+        \alBronze & \feBronze & Bronze (T)\\
+        \alAtium & \feAtium & Atium (V)\\
+        \alChromium & \feChromium & Chromium (W)\\
+        \alUnknownX & \feUnknownX & Unknown X (X)\\
+        \alNicrosil & \feNicrosil & Nicrosil (Y)\\
+        \alAluminum & \feAluminum & Aluminum (Z)\\
+        \alEttmetal & \feEttmetal & Ettmetal\\
+        \alZero & -- & Zero (0)\\
+    \end{plotable}
+\end{table}
+
+\subsection{Feature Boxes}
+Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, \texttt{rightBox}, \texttt{calloutBox}, \texttt{altcalloutBox}, and \texttt{paperBox}. You can also use the command \texttt{\textbackslash statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
+
+\subsection{Statblocks}
+Statblocks can be made using the \texttt{\textbackslash MakeStatBlock} command. Similar to the character sheet command, you pass in the attributes, features, and actions for the statblock as key-value pairs. This command currently does not calculate derived attributes. You can also change the number of columns in the statblock. Thanks to \texttt{cosmicducks} for contributing this command!
+
+% If you don't want any entry to appear (eg. deflect, Opportunities and Complications) leave that field empty
+% Numbers / field entries used here are for purely illustrative purposes, I haven't worked out whether they make sense
+% For safety, anything field which contains a comma should have {} around it, eg. {Heavy Weaponry +9, Thievery +5} as below
+% Empty fields can be left blank or as {}
+\begin{center}
+\MakeStatBlock{
+    % Number of columns, will default to 2. Set to 1 if in multicols{2} environment.
+    numCols = ,
+    % Name of character		
+    name = Example Character,
+    % Character tier rank
+    tier = 2,
+    % Character role (Minion, Rival, Boss)
+    role = Boss,
+    % Character Size (Small, Medium, Large, Huge, Gargantuan)
+    size = Gargantuan,
+    % Character type (Humanoid, Animal, Swarm, Essence, Entity, etc.)
+    type = Animal,
+    % Character health (enter in format 'XX (YY-ZZ)')
+    health = 40 (20-60),
+    % Character Focus
+    focus = 5,
+    % Character Essence/Investiture
+    essence = 5,
+    % Character Strength
+    strength = 5,
+    % Character Speed
+    speed = 3,
+    % Character Intellect
+    intellect = 2,
+    % Character Willpower
+    willpower = 3,
+    % Character Awareness
+    awareness = 3,
+    % Character Presence
+    presence = 2,
+    % Character Physical Defense
+    physDef = 18,
+    % Character Mental/Cognitive Defense
+    cogDef = 15,
+    % Character Spiritual Defense
+    spiDef = 15,
+    % Character Deflect
+    deflect = ,
+    % Character Movement Speed
+    movement = 30 ft.,
+    % Character Sense Range
+    senses = 20 ft. (sight),
+    % Character Immunities (eg. Pierce, Immobilised)
+    immunities = ,
+    % Physical Skills
+    physSkills = {Heavy Weaponry +9, Thievery +5},
+    % Cognitive / Mental Skills
+    cogSkills = {Discipline +5},
+    % Spiritual Skills
+    spiSkills = {Insight +7, Perception +7},
+    % Surge Skills would go here
+    surgeSkills = {},
+    % Metallic Art Skills go here
+    maSkills = {Allomancy +6 (3 ranks; Tin)},
+    % Any known languages go here
+    languages = {},
+    % Features need to be entered as you want them to display. Default text display uses cstextcolor.
+    features = {
+        \textcolor{cscolor}{\textbf{Example feature.}} Feature text goes here.
+    },
+    % Actions need to be entered as you want them to display. Default text display uses cstextcolor.
+    actions = {
+        \textcolor{cscolor}{\freeAction \textbf{Example Action.}} Action text goes here.
+    },
+    % Opportunities and Complications need to be entered as you want them to display. Default text display uses cstextcolor.
+    oandcs = {}
+}
 \end{center}
 
 \subsection{Tables}
@@ -82,11 +197,9 @@ Tables can be created using \texttt{plotable}. This uses \texttt{nicematrix} und
     \label{tab:example}
 \end{table}
 
-\subsection{Color Schemes}
-You can switch color schemes by passing an option to the document class. The default is \texttt{stormlight}. You can also use \texttt{mistborn} or \texttt{ariandor}. You can also define your own color schemes.
+\subsection{Talent Paths}
+TikZ is used to make the talent paths. You can add a photo as the background, if desired. See the \hyperref[fig:talent-tree]{talent path page} for a sample talent path.
 
-\subsection{Character Sheets}
-You can make a character sheet using the \texttt{MakeCharacterSheet} command if \texttt{character-sheet} is passed into the document class options. It will calculate derived attributes for you, and you can set it to use the terminology for Stormlight Archive or Mistborn instead of the generic Plotweaver terms. See \texttt{character-sheet.tex} for an example of how to use this command. In the future, I intend to make the sheet more customizable.
 
 \begin{center}
 \noindent
@@ -109,10 +222,12 @@ You can make a character sheet using the \texttt{MakeCharacterSheet} command if 
 \vspace{\baselineskip}
 \end{center}
 
+\newpage
+
 You can also have a callout box that will float next to the text. To do this, you need to use the \texttt{wrapfig} package. Set the width in the \texttt{wrapfigure} environment and then let the \texttt{tcolorbox} fill the total width.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
-    \begin{tcolorbox}[calloutBox, title={Callout Box}, nobeforeafter]
+    \begin{tcolorbox}[altcalloutBox, title={Alt Callout Box}, nobeforeafter]
         \lipsum[1][1-4]
     \end{tcolorbox}
 \end{wrapfigure}
@@ -192,6 +307,7 @@ You can also have a callout box that will float next to the text. To do this, yo
 \end{pgfonlayer}
 \end{tikzpicture}
 \end{center}
+\label{fig:talent-tree}
 \end{figure*}
 
 \null\newpage

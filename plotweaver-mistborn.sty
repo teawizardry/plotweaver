@@ -1,0 +1,504 @@
+%% character-sheet.tex
+%% Copyright 2026 Hannah Kirkland
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Hannah Kirkland.
+%
+% This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
+% plotweaver-character-sheet.sty, plotweaver-colors.sty,
+% plotweaver-icons.sty, plotweaver-mistborn.sty, plotweaver-timeline.sty,
+% character-sheet.tex, character-sheet.pdf, example.tex, example.pdf, 
+% plotweaver.tex, plotweaver.pdf, nomodan.png, and README.md.
+
+\ProvidesPackage{plotweaver-mistborn}[2026-09-01 Plotweaver Mistborn Icons]
+\RequirePackage{tikz}
+
+\def\letterscale{0.5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              STEEL ALPHABET               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NewDocumentCommand{\alAluminum}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.4754, 0.6976)arc(270.01:251.3025:0.3081 and -0.3081)arc(256.5754:269.9673:0.2491 and -0.2491).. controls (0.5716, 0.6882) and (0.6829, 0.5769) .. (0.6829, 0.4396).. controls (0.6829, 0.3023) and (0.5716, 0.191) .. (0.4343, 0.191).. controls (0.297, 0.191) and (0.1857, 0.3023) .. (0.1857, 0.4396)arc(179.9512:205.1281:0.2476 and -0.2476)arc(210.4466:179.9344:0.3071 and -0.3071).. controls (0.1668, 0.2185) and (0.3049, 0.0803) .. (0.4754, 0.0803).. controls (0.6459, 0.0803) and (0.7841, 0.2185) .. (0.7841, 0.389).. controls (0.7841, 0.5594) and (0.6459, 0.6976) .. (0.4754, 0.6976) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.3019, 0.6239) circle (0.0539cm);
+        \path[fill=textcolor,line width=0.0013cm] (0.8493, -0.0).. controls (0.8078, 0.0288) and (0.754, 0.0524) .. (0.6971, 0.0747) -- (0.5693, 0.2439)arc(322.9097:260.5455:0.0176 and -0.0176) -- (0.5288, 0.2467) -- (0.6234, 0.3195) -- (0.6174, 0.3052)arc(202.4653:140.9051:0.0238 and -0.0238) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.0, 0.088).. controls (0.0263, 0.1223) and (0.0534, 0.1792) .. (0.0758, 0.2275) -- (0.2195, 0.3198)arc(54.8993:-2.4059:0.0169 and -0.0169) -- (0.2259, 0.3594).. controls (0.2259, 0.3594) and (0.236, 0.3427) .. (0.2455, 0.3283).. controls (0.2618, 0.3036) and (0.2897, 0.2672) .. (0.2897, 0.2672) -- (0.269, 0.2781).. controls (0.263, 0.2817) and (0.2592, 0.2799) .. (0.2533, 0.2755) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.7661, 0.8451) -- (0.6085, 0.6042)arc(213.1808:154.2859:0.0134 and -0.0134) -- (0.6172, 0.5714) -- (0.5298, 0.6305) -- (0.5474, 0.6288)arc(95.3883:33.305:0.0124 and -0.0124) -- (0.6456, 0.7662).. controls (0.6929, 0.7936) and (0.7451, 0.8219) .. (0.7661, 0.8451) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alBendalloy}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0012cm] (0.4671, 0.4359) circle (0.0514cm);
+        \path[fill=textcolor,line width=0.0012cm] (0.4494, 0.6837).. controls (0.4662, 0.6784) and (0.484, 0.6722) .. (0.4991, 0.6638)arc(298.9834:335.8929:0.03 and -0.03) -- (0.5241, 0.6227)arc(230.0683:262.3502:0.066 and -0.066) -- (0.571, 0.6903)arc(315.7205:269.884:0.2965 and -0.2965).. controls (0.1947, 0.7798) and (0.0623, 0.6489) .. (0.0623, 0.4874).. controls (0.0623, 0.3259) and (0.1947, 0.1949) .. (0.3581, 0.1949).. controls (0.5066, 0.1949) and (0.6295, 0.303) .. (0.6507, 0.4439).. controls (0.6292, 0.3475) and (0.5255, 0.2744) .. (0.4026, 0.2744).. controls (0.2643, 0.2744) and (0.1537, 0.3669) .. (0.1537, 0.4811).. controls (0.1537, 0.588) and (0.2532, 0.6916) .. (0.3787, 0.6916).. controls (0.4029, 0.6916) and (0.4261, 0.6909) .. (0.4477, 0.6844) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.0045, 0.471) -- (0.0, 0.5758) -- (0.8467, 0.5808) -- (0.0467, 0.5058).. controls (0.0407, 0.5053) and (0.03, 0.5001) .. (0.0258, 0.4958) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.3629, 0.8448).. controls (0.3273, 0.8403) and (0.2876, 0.8409) .. (0.2451, 0.8448) -- (0.2722, 0.8268)arc(303.7063:354.8626:0.0165 and -0.0165) -- (0.3525, 0.0) -- (0.3498, 0.8166)arc(179.7986:213.3785:0.0278 and -0.0278) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alIron}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0014cm] (0.4368, 0.8467) -- (0.297, 0.8149) -- (0.3326, 0.797)arc(296.6744:342.9014:0.0197 and -0.0197) -- (0.4497, 0.4382) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.624, 0.6321)arc(-0.6227:269.9967:0.055 and -0.055)arc(269.6861:359.6879:0.0547 and -0.0547) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.3984, 0.4182) -- (0.2603, 0.7683)arc(158.5174:184.3859:0.037 and -0.037) -- (0.2601, 0.8142) -- (0.1151, 0.7353) -- (0.1629, 0.7332)arc(272.545:323.7078:0.0092 and -0.0092) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.4018, 0.0975).. controls (0.2371, 0.1018) and (0.1066, 0.2169) .. (0.1102, 0.3544).. controls (0.1137, 0.489) and (0.2444, 0.5952) .. (0.4042, 0.5958) -- (0.4042, 0.6985)arc(278.3408:270.0282:0.3567 and -0.3567).. controls (0.1579, 0.7023) and (0.0, 0.5451) .. (0.0, 0.3511).. controls (0.0, 0.1571) and (0.1579, 0.0) .. (0.3526, 0.0).. controls (0.5277, 0.0) and (0.673, 0.1272) .. (0.7004, 0.2939).. controls (0.672, 0.1784) and (0.5481, 0.0936) .. (0.4018, 0.0975) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alZinc}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0012cm] (0.6242, 0.7309)arc(-32.8934:0.068:0.2482 and -0.2482).. controls (0.664, 0.4581) and (0.5523, 0.3463) .. (0.4145, 0.3463).. controls (0.2768, 0.3463) and (0.1651, 0.458) .. (0.1651, 0.5958).. controls (0.1651, 0.7335) and (0.2768, 0.8452) .. (0.4145, 0.8452).. controls (0.4153, 0.8452) and (0.416, 0.8452) .. (0.4168, 0.8452).. controls (0.4072, 0.8462) and (0.3974, 0.8467) .. (0.3876, 0.8467).. controls (0.2219, 0.8467) and (0.0876, 0.7124) .. (0.0876, 0.5467).. controls (0.0876, 0.381) and (0.2219, 0.2467) .. (0.3876, 0.2467).. controls (0.5532, 0.2467) and (0.6875, 0.381) .. (0.6875, 0.5467)arc(0.0683:-38.0065:0.2986 and -0.2986) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.5298, 0.7973) circle (0.0493cm);
+        \path[fill=textcolor,line width=0.0012cm] (0.1005, -0.0) -- (0.4044, 0.4919)arc(211.6875:235.974:0.076 and -0.076) -- (0.439, 0.5261).. controls (0.4035, 0.533) and (0.3768, 0.5456) .. (0.3348, 0.5672) -- (0.3495, 0.5387)arc(-27.1431:25.6781:0.0233 and -0.0233) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.0, 0.0576) -- (0.322, 0.6129)arc(209.8389:232.0015:0.0499 and -0.0499).. controls (0.3457, 0.6359) and (0.3602, 0.6443) .. (0.3694, 0.6479).. controls (0.3431, 0.6488) and (0.2683, 0.6888) .. (0.255, 0.6982) -- (0.2671, 0.6683)arc(-21.1961:24.5148:0.0349 and -0.0349) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alLerasium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.7792, 0.7849)arc(-32.846:0.0753:0.2757 and -0.2757).. controls (0.8233, 0.4831) and (0.7013, 0.3599) .. (0.5509, 0.3599).. controls (0.4004, 0.3599) and (0.2784, 0.4831) .. (0.2784, 0.635).. controls (0.2784, 0.7869) and (0.4004, 0.9101) .. (0.5509, 0.9101).. controls (0.554, 0.9101) and (0.5572, 0.91) .. (0.5603, 0.9099)arc(276.7456:270.1073:0.3242 and -0.3242).. controls (0.344, 0.9121) and (0.199, 0.7659) .. (0.199, 0.5856).. controls (0.199, 0.4053) and (0.344, 0.2591) .. (0.5228, 0.2591).. controls (0.7017, 0.2591) and (0.8467, 0.4053) .. (0.8467, 0.5856)arc(0.0857:-37.4777:0.3267 and -0.3267) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.6688, 0.8442) circle (0.0566cm);
+        \path[fill=textcolor,line width=0.0013cm] (0.3637, 0.9659).. controls (0.1604, 0.9599) and (0.0, 0.8163) .. (0.0, 0.631).. controls (0.0, 0.57) and (0.0233, 0.5181) .. (0.0542, 0.4685) -- (0.1267, 0.5411)arc(140.8658:154.972:0.1789 and -0.1789).. controls (0.0407, 0.7346) and (0.202, 0.9202) .. (0.3637, 0.9659) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.194, 0.0531) -- (0.2193, 0.0621)arc(70.2583:30.9319:0.0334 and -0.0334) -- (0.575, 0.6395) -- (0.2986, 0.0607)arc(205.5389:150.3251:0.0447 and -0.0447) -- (0.311, -0.0)arc(299.1829:289.5965:0.7692 and -0.7692) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.1439, 0.3723).. controls (0.332, 0.4277) and (0.4387, 0.5493) .. (0.5155, 0.6931).. controls (0.4189, 0.4271) and (0.2635, 0.3236) .. (0.0951, 0.2816)arc(256.3165:236.4508:0.0899 and -0.0899) -- (0.0417, 0.2524).. controls (0.0491, 0.2989) and (0.0489, 0.3437) .. (0.0387, 0.3861) -- (0.0567, 0.3748)arc(122.2597:85.9488:0.0528 and -0.0528) -- (0.1299, 0.3698)arc(85.7507:73.5071:0.0668 and -0.0668) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alZero}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0014cm] (0.0, 0.8467)arc(107.2619:88.8443:0.3666 and -0.3666) -- (0.095, 0.8065)arc(221.9914:181.4862:0.0275 and -0.0275) -- (0.0745, 0.223).. controls (0.0563, 0.1334) and (0.0369, 0.0402) .. (0.0351, 0.0) -- (0.0345, 0.7816)arc(359.9532:324.0884:0.0538 and -0.0538) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alCadmium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0011cm] (0.5063, 0.709)arc(-57.9341:0.1999:0.2188 and -0.2188).. controls (0.609, 0.4024) and (0.513, 0.3048) .. (0.3947, 0.3048).. controls (0.2764, 0.3048) and (0.1805, 0.4024) .. (0.1805, 0.5228)arc(179.8131:236.4172:0.2188 and -0.2188).. controls (0.1915, 0.6619) and (0.1319, 0.571) .. (0.1319, 0.4659).. controls (0.1319, 0.3179) and (0.25, 0.1979) .. (0.3955, 0.1979).. controls (0.5411, 0.1979) and (0.6591, 0.3179) .. (0.6591, 0.4659).. controls (0.6591, 0.5736) and (0.5965, 0.6664) .. (0.5063, 0.709) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.3947, 0.718) circle (0.0466cm);
+        \path[fill=textcolor,line width=0.0011cm] (0.0, 0.5784).. controls (0.0042, 0.5429) and (0.0042, 0.5035) .. (0.0016, 0.4618)arc(45.3754:27.1325:0.1599 and -0.1599) -- (0.8467, 0.5479) -- (0.0283, 0.5523).. controls (0.0236, 0.5612) and (0.0125, 0.5698) .. (0.0, 0.5784) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.3435, 0.4013) -- (0.3713, 0.3838) -- (0.3963, 0.0) -- (0.4122, 0.3865) -- (0.4419, 0.4015)arc(86.1244:93.5585:0.7595 and -0.7595) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alChromium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0015cm] (0.6297, 0.598)arc(-11.9813:0.0371:0.3709 and -0.3709).. controls (0.6378, 0.3466) and (0.5185, 0.2054) .. (0.3712, 0.2054).. controls (0.224, 0.2054) and (0.1047, 0.3466) .. (0.1047, 0.5207).. controls (0.1047, 0.6739) and (0.1971, 0.8015) .. (0.3194, 0.83) -- (0.3194, 0.8305).. controls (0.1387, 0.804) and (0.0, 0.6484) .. (0.0, 0.4603).. controls (0.0, 0.2537) and (0.1676, 0.0861) .. (0.3742, 0.0861).. controls (0.5809, 0.0861) and (0.7485, 0.2537) .. (0.7485, 0.4603)arc(0.0567:-27.0713:0.3725 and -0.3725).. controls (0.6879, 0.6112) and (0.6618, 0.5995) .. (0.6297, 0.598) -- cycle;
+        \path[fill=textcolor,line width=0.0015cm] (0.5197, 0.7475) circle (0.0632cm);
+        \path[fill=textcolor,line width=0.0015cm] (0.5028, 0.5809)arc(349.5535:359.9147:0.1682 and -0.1682).. controls (0.5056, 0.463) and (0.4384, 0.3919) .. (0.3555, 0.3919).. controls (0.2726, 0.3919) and (0.2054, 0.463) .. (0.2054, 0.5507).. controls (0.2054, 0.6237) and (0.2521, 0.6851) .. (0.3157, 0.7036)arc(258.5765:-23.4862:0.2111 and -0.2111).. controls (0.5373, 0.5764) and (0.5228, 0.5735) .. (0.5028, 0.5809) -- cycle;
+        \path[fill=textcolor,line width=0.0015cm] (0.8467, 0.0) -- (0.4089, 0.5714).. controls (0.4136, 0.5963) and (0.4098, 0.6137) .. (0.4078, 0.6268) -- (0.2926, 0.5328) -- (0.315, 0.5287)arc(280.3628:315.3163:0.0359 and -0.0359) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alDuralumin}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0011cm] (0.4332, 0.2775) circle (0.0482cm);
+        \path[fill=textcolor,line width=0.0011cm] (0.3148, 0.4022) -- (0.4022, 0.4597).. controls (0.3893, 0.4607) and (0.3785, 0.4631) .. (0.3621, 0.4637) -- (0.1613, 0.7857) -- (0.3243, 0.4405).. controls (0.3207, 0.4319) and (0.3166, 0.4225) .. (0.3148, 0.4022) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.4529, 0.436) -- (0.5178, 0.3644).. controls (0.5214, 0.3769) and (0.5203, 0.3886) .. (0.5189, 0.3999) -- (0.7722, 0.6408) -- (0.4851, 0.436).. controls (0.475, 0.4367) and (0.4634, 0.4373) .. (0.4529, 0.436) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.5257, 0.3525) -- (0.5827, 0.2708).. controls (0.5847, 0.2802) and (0.5836, 0.2926) .. (0.5827, 0.3063) -- (0.8467, 0.5545) -- (0.5534, 0.3458).. controls (0.5442, 0.3483) and (0.5349, 0.351) .. (0.5257, 0.3525) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.3193, 0.2245).. controls (0.3126, 0.2136) and (0.3128, 0.2053) .. (0.3153, 0.198) -- (0.0733, 0.0) -- (0.3342, 0.1486)arc(240.3281:280.3925:0.0455 and -0.0455) -- (0.3824, 0.1506) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.0, 0.1106) -- (0.2538, 0.3125).. controls (0.2514, 0.3228) and (0.2517, 0.333) .. (0.2572, 0.343) -- (0.3091, 0.2629) -- (0.2908, 0.2692)arc(289.0017:239.6826:0.0293 and -0.0293) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.2087, 0.277).. controls (0.2087, 0.4006) and (0.309, 0.5009) .. (0.4326, 0.5009).. controls (0.5563, 0.5009) and (0.6566, 0.4006) .. (0.6566, 0.277)arc(-0.074:31.8446:0.2228 and -0.2228)arc(39.0555:-0.0741:0.2738 and -0.2738).. controls (0.6842, 0.4838) and (0.5611, 0.6069) .. (0.4092, 0.6069).. controls (0.2574, 0.6069) and (0.1342, 0.4838) .. (0.1342, 0.332).. controls (0.1342, 0.1881) and (0.2447, 0.0702) .. (0.3854, 0.0581).. controls (0.2844, 0.0798) and (0.2087, 0.1695) .. (0.2087, 0.277) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alElectrum}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0016cm] (0.4974, 0.1077).. controls (0.3159, 0.1077) and (0.1687, 0.2316) .. (0.1687, 0.3845).. controls (0.1687, 0.4717) and (0.2166, 0.5495) .. (0.2915, 0.6002) -- (0.3252, 0.7096) -- (0.2027, 0.7096)arc(234.174:179.9667:0.3914 and -0.3914).. controls (0.0404, 0.1755) and (0.2159, 0.0) .. (0.4324, 0.0).. controls (0.6272, 0.0) and (0.7886, 0.142) .. (0.8192, 0.328).. controls (0.7882, 0.2022) and (0.6559, 0.1077) .. (0.4974, 0.1077) -- cycle;
+        \path[fill=textcolor,line width=0.0016cm] (0.6122, 0.2598) circle (0.0665cm);
+        \path[fill=textcolor,line width=0.0016cm] (0.5053, 0.3041) -- (0.5023, 0.3079) -- (0.1315, 0.7904).. controls (0.1368, 0.8058) and (0.1367, 0.8246) .. (0.1315, 0.8467) -- (0.0, 0.7215) -- (0.0317, 0.7203)arc(272.1654:315.2282:0.0222 and -0.0222) -- (0.3057, 0.453).. controls (0.3826, 0.4001) and (0.457, 0.348) .. (0.5053, 0.3041) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alGold}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0011cm] (0.3348, 0.7468) -- (0.3086, 0.6627).. controls (0.3888, 0.6341) and (0.445, 0.5674) .. (0.445, 0.4897).. controls (0.445, 0.3859) and (0.3448, 0.3018) .. (0.2212, 0.3018).. controls (0.1093, 0.3018) and (0.0166, 0.3707) .. (0.0, 0.4607).. controls (0.0152, 0.3289) and (0.1273, 0.2265) .. (0.2632, 0.2265).. controls (0.4096, 0.2265) and (0.5283, 0.3452) .. (0.5283, 0.4915).. controls (0.5283, 0.6131) and (0.4464, 0.7155) .. (0.3348, 0.7468) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.2334, 0.4395).. controls (0.2471, 0.4885) and (0.2589, 0.5348) .. (0.2642, 0.5722) -- (0.4101, 0.8144)arc(31.0349:-15.1085:0.0178 and -0.0178) -- (0.407, 0.8467) -- (0.4736, 0.8005) -- (0.4615, 0.7989)arc(262.3848:211.7076:0.0135 and -0.0135) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.487, 0.794) -- (0.5687, 0.7421) -- (0.5511, 0.743)arc(272.8561:208.1774:0.0105 and -0.0105) -- (0.146, 0.0).. controls (0.162, 0.0444) and (0.2072, 0.2087) .. (0.2227, 0.2727) -- (0.4923, 0.7621)arc(28.7729:-20.1464:0.0175 and -0.0175) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.2299, 0.7402) circle (0.0447cm);
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alMalatium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0011cm] (0.7432, 0.5499)arc(-19.093:0.0158:0.2261 and -0.2261).. controls (0.7556, 0.3499) and (0.6528, 0.2478) .. (0.526, 0.2478).. controls (0.3992, 0.2478) and (0.2964, 0.3499) .. (0.2964, 0.4758).. controls (0.2964, 0.6018) and (0.3992, 0.7039) .. (0.526, 0.7039)arc(269.9453:290.108:0.2305 and -0.2305)arc(294.1526:269.9617:0.2693 and -0.2693).. controls (0.3463, 0.7134) and (0.2257, 0.5934) .. (0.2257, 0.4453).. controls (0.2257, 0.2972) and (0.3463, 0.1772) .. (0.4951, 0.1772).. controls (0.6438, 0.1772) and (0.7644, 0.2972) .. (0.7644, 0.4453)arc(0.0722:-23.0618:0.2662 and -0.2662) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.497, 0.4645) circle (0.0444cm);
+        \path[fill=textcolor,line width=0.0011cm] (0.558, 0.5906)arc(308.1679:320.9154:0.4395 and -0.4395) -- (0.6274, 0.5443)arc(179.572:225.4412:0.0265 and -0.0265) -- (0.8467, 0.7727) -- (0.5979, 0.5955)arc(54.5612:89.0649:0.0245 and -0.0245) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.7931, 0.1281) -- (0.6897, 0.3381)arc(153.6488:189.5875:0.0277 and -0.0277) -- (0.6905, 0.3742).. controls (0.6686, 0.3533) and (0.6454, 0.335) .. (0.6198, 0.3212) -- (0.6394, 0.3167)arc(283.0035:322.4407:0.0301 and -0.0301) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.3312, -0.0) -- (0.4104, 0.3031)arc(14.7568:-34.517:0.0161 and -0.0161) -- (0.393, 0.3384).. controls (0.4239, 0.3196) and (0.4534, 0.3058) .. (0.4807, 0.2992) -- (0.4628, 0.2907)arc(244.792:203.0018:0.0296 and -0.0296) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.0, 0.4564) -- (0.3145, 0.4521)arc(90.8002:53.3343:0.0199 and -0.0199) -- (0.3494, 0.473).. controls (0.3439, 0.4462) and (0.3445, 0.4184) .. (0.3494, 0.3897) -- (0.3274, 0.4055)arc(305.7728:278.3003:0.0284 and -0.0284) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.3129, 0.8293) -- (0.4338, 0.6494)arc(-33.8538:5.5464:0.0139 and -0.0139) -- (0.4333, 0.611).. controls (0.4532, 0.6317) and (0.4785, 0.6491) .. (0.5081, 0.664) -- (0.4764, 0.6696)arc(100.0915:135.1739:0.018 and -0.018) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alNicrosil}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0016cm] (0.4192, 0.7956).. controls (0.1965, 0.7956) and (0.016, 0.6169) .. (0.016, 0.3965).. controls (0.016, 0.1973) and (0.1635, 0.0323) .. (0.3564, 0.0024).. controls (0.2267, 0.0343) and (0.1295, 0.1686) .. (0.1295, 0.3294).. controls (0.1295, 0.514) and (0.2576, 0.6637) .. (0.4157, 0.6637).. controls (0.5738, 0.6637) and (0.7019, 0.5141) .. (0.7019, 0.3294).. controls (0.7019, 0.1642) and (0.5993, 0.0271) .. (0.4645, 0.0).. controls (0.6659, 0.0223) and (0.8225, 0.1913) .. (0.8225, 0.3965).. controls (0.8225, 0.6169) and (0.6419, 0.7956) .. (0.4192, 0.7956) -- cycle;
+        \path[fill=textcolor,line width=0.0016cm] (0.4169, 0.5866).. controls (0.2922, 0.5866) and (0.1912, 0.4863) .. (0.1912, 0.3626).. controls (0.1912, 0.2602) and (0.2606, 0.1738) .. (0.3554, 0.1473).. controls (0.2954, 0.1722) and (0.253, 0.2334) .. (0.253, 0.3051).. controls (0.253, 0.3989) and (0.3255, 0.4749) .. (0.4151, 0.4749).. controls (0.5046, 0.4749) and (0.5772, 0.3989) .. (0.5772, 0.3051).. controls (0.5772, 0.2307) and (0.5314, 0.1676) .. (0.4678, 0.1446).. controls (0.5679, 0.1675) and (0.6425, 0.2564) .. (0.6425, 0.3626).. controls (0.6425, 0.4863) and (0.5415, 0.5866) .. (0.4169, 0.5866) -- cycle;
+        \path[fill=textcolor,line width=0.0016cm] (0.4074, 0.2576) circle (0.0677cm);
+        \path[fill=textcolor,line width=0.0016cm] (0.62, 0.1792) -- (0.1485, 0.8087).. controls (0.1523, 0.8192) and (0.1534, 0.8324) .. (0.1532, 0.8467) -- (0.0, 0.6946) -- (0.0738, 0.7244)arc(248.09:315.3535:0.0094 and -0.0094) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alAtium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0012cm] (0.381, 0.7489)arc(269.9228:260.0132:0.2958 and -0.2958)arc(263.6261:269.9148:0.259 and -0.259).. controls (0.5001, 0.746) and (0.6149, 0.6312) .. (0.6149, 0.4896).. controls (0.6149, 0.3479) and (0.5001, 0.2331) .. (0.3585, 0.2331).. controls (0.2168, 0.2331) and (0.102, 0.3479) .. (0.102, 0.4896)arc(179.9153:210.7854:0.2552 and -0.2552)arc(214.4226:179.9201:0.2929 and -0.2929).. controls (0.0867, 0.292) and (0.2185, 0.1603) .. (0.381, 0.1603).. controls (0.5436, 0.1603) and (0.6753, 0.292) .. (0.6753, 0.4546).. controls (0.6753, 0.6171) and (0.5436, 0.7489) .. (0.381, 0.7489) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.2162, 0.6891) circle (0.0482cm);
+        \path[fill=textcolor,line width=0.0012cm] (0.3951, 0.5102) -- (0.046, 0.2587)arc(54.2504:91.5814:0.0212 and -0.0212) -- (0.0, 0.2555)arc(312.9028:320.3177:0.8316 and -0.8316) -- (0.0734, 0.2057)arc(178.9722:227.2404:0.0157 and -0.0157) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.4394, 0.6047).. controls (0.4695, 0.5823) and (0.494, 0.5583) .. (0.5194, 0.5295) -- (0.519, 0.561)arc(179.183:226.6138:0.0156 and -0.0156) -- (0.8145, 0.8467) -- (0.4848, 0.6101)arc(54.3301:90.1982:0.0211 and -0.0211) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.7778, 0.1241) -- (0.5553, 0.3809)arc(139.068:179.865:0.0206 and -0.0206) -- (0.5502, 0.4234).. controls (0.5286, 0.4015) and (0.5018, 0.38) .. (0.4724, 0.3586) -- (0.5048, 0.3588)arc(269.6831:311.5439:0.0217 and -0.0217) -- cycle;
+        \path[fill=textcolor,line width=0.0012cm] (0.3822, 0.0) -- (0.381, 0.2779)arc(179.4859:231.3297:0.0124 and -0.0124) -- (0.4039, 0.3041).. controls (0.3712, 0.3) and (0.3375, 0.3003) .. (0.3029, 0.3041) -- (0.3209, 0.2821)arc(318.2924:348.7435:0.0358 and -0.0358) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alUnknownJ}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.3735, 0.2932).. controls (0.2375, 0.2932) and (0.1273, 0.4043) .. (0.1273, 0.5413).. controls (0.1273, 0.6783) and (0.2376, 0.7893) .. (0.3735, 0.7893).. controls (0.4603, 0.7893) and (0.5366, 0.744) .. (0.5804, 0.6757).. controls (0.5306, 0.7769) and (0.4264, 0.8467) .. (0.3059, 0.8467).. controls (0.1369, 0.8467) and (0.0, 0.7097) .. (0.0, 0.5408).. controls (0.0, 0.3719) and (0.1369, 0.2349) .. (0.3059, 0.2349).. controls (0.4279, 0.2349) and (0.5333, 0.3065) .. (0.5823, 0.4099).. controls (0.5388, 0.3398) and (0.4616, 0.2932) .. (0.3735, 0.2932) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.618, 0.5493) circle (0.0531cm);
+        \path[fill=textcolor,line width=0.0013cm] (0.2438, 0.5262).. controls (0.286, 0.5193) and (0.3246, 0.5195) .. (0.3585, 0.5291) -- (0.3397, 0.5053)arc(218.2383:182.7014:0.0287 and -0.0287) -- (0.3105, 0.0) -- (0.271, 0.4862)arc(355.3497:317.894:0.032 and -0.032) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alUnknownC}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.001cm] (0.1706, 0.4044) circle (0.042cm);
+        \path[fill=textcolor,line width=0.001cm] (0.2394, 0.6569)arc(270.0134:255.1916:0.2428 and -0.2428) -- (0.1772, 0.5806).. controls (0.1852, 0.5814) and (0.1932, 0.5818) .. (0.2014, 0.5818).. controls (0.315, 0.5818) and (0.4072, 0.505) .. (0.4072, 0.4103).. controls (0.4072, 0.3156) and (0.315, 0.2388) .. (0.2014, 0.2388).. controls (0.1022, 0.2388) and (0.0194, 0.2974) .. (-0.0, 0.3754).. controls (0.0187, 0.26) and (0.1187, 0.1719) .. (0.2394, 0.1719).. controls (0.3733, 0.1719) and (0.4819, 0.2805) .. (0.4819, 0.4144).. controls (0.4819, 0.5484) and (0.3733, 0.6569) .. (0.2394, 0.6569) -- cycle;
+        \path[fill=textcolor,line width=0.001cm] (0.1222, 0.4814).. controls (0.1569, 0.4888) and (0.191, 0.4914) .. (0.2241, 0.4873) -- (0.2009, 0.5118)arc(136.5051:175.8488:0.0146 and -0.0146) -- (0.1735, 0.8467) -- (0.1503, 0.5221)arc(4.0991:40.0738:0.0246 and -0.0246) -- cycle;
+        \path[fill=textcolor,line width=0.001cm] (0.1237, 0.3177).. controls (0.1529, 0.3125) and (0.1809, 0.3127) .. (0.2078, 0.3184) -- (0.1968, 0.3011)arc(212.4279:182.2815:0.032 and -0.032) -- (0.1802, 0.0) -- (0.1491, 0.2826)arc(353.7353:317.5032:0.0255 and -0.0255) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alUnknownH}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.6803, 0.7119) circle (0.0552cm);
+        \path[fill=textcolor,line width=0.0013cm] (0.7755, 0.6523)arc(-26.3127:0.0661:0.2592 and -0.2592).. controls (0.8023, 0.3939) and (0.6868, 0.2778) .. (0.5442, 0.2778).. controls (0.4017, 0.2778) and (0.2861, 0.3939) .. (0.2861, 0.5371).. controls (0.2861, 0.6804) and (0.4017, 0.7965) .. (0.5442, 0.7965).. controls (0.5469, 0.7965) and (0.5496, 0.7964) .. (0.5523, 0.7963)arc(278.0457:270.0849:0.3192 and -0.3192).. controls (0.3331, 0.7994) and (0.1913, 0.6576) .. (0.1913, 0.4826).. controls (0.1913, 0.3077) and (0.3331, 0.1659) .. (0.5081, 0.1659).. controls (0.683, 0.1659) and (0.8248, 0.3077) .. (0.8248, 0.4826)arc(0.0682:-32.4942:0.3152 and -0.3152) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.0, 0.8467) -- (0.4441, 0.5865)arc(120.3686:53.373:0.027 and -0.027) -- (0.5306, 0.6303).. controls (0.4927, 0.58) and (0.4617, 0.5333) .. (0.4439, 0.4934) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.5299, 0.4282) -- (0.4465, 0.513) -- (0.0104, 0.0) -- (0.4647, 0.4202)arc(227.2288:276.6646:0.0444 and -0.0444) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alUnknownX}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0011cm] (0.324, 0.3947) circle (0.0464cm);
+        \path[fill=textcolor,line width=0.0011cm] (0.2655, 0.6557).. controls (0.1309, 0.6557) and (0.0195, 0.5574) .. (0.0, 0.4293).. controls (0.023, 0.5136) and (0.1126, 0.5765) .. (0.2197, 0.5765).. controls (0.3443, 0.5765) and (0.4452, 0.4915) .. (0.4452, 0.3866).. controls (0.4452, 0.2818) and (0.3443, 0.1967) .. (0.2197, 0.1967).. controls (0.1158, 0.1967) and (0.0283, 0.256) .. (0.0022, 0.3366).. controls (0.0268, 0.2145) and (0.1353, 0.1225) .. (0.2655, 0.1225).. controls (0.4138, 0.1225) and (0.534, 0.2418) .. (0.534, 0.3891).. controls (0.534, 0.5363) and (0.4138, 0.6557) .. (0.2655, 0.6557) -- cycle;
+        \path[fill=textcolor,line width=0.0011cm] (0.1301, 0.0).. controls (0.1685, 0.0121) and (0.2073, 0.017) .. (0.2463, 0.0164) -- (0.2251, 0.0401)arc(138.1881:178.6374:0.0275 and -0.0275) -- (0.2047, 0.6236).. controls (0.1864, 0.7132) and (0.167, 0.8065) .. (0.1652, 0.8467) -- (0.1647, 0.0651)arc(0.0455:35.9139:0.0538 and -0.0538) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alCopper}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.3361, 0.8299).. controls (0.4314, 0.807) and (0.5031, 0.7086) .. (0.5031, 0.5907).. controls (0.5031, 0.4557) and (0.4092, 0.3463) .. (0.2933, 0.3463).. controls (0.1775, 0.3463) and (0.0836, 0.4557) .. (0.0836, 0.5907)arc(179.8284:202.7401:0.2768 and -0.2768) -- (0.0691, 0.7318)arc(220.5008:179.9326:0.2883 and -0.2883).. controls (0.0, 0.3844) and (0.1296, 0.2548) .. (0.2895, 0.2548).. controls (0.4494, 0.2548) and (0.579, 0.3843) .. (0.579, 0.5442).. controls (0.579, 0.6883) and (0.4738, 0.8077) .. (0.3361, 0.8299) -- cycle;
+        \path[fill=textcolor,cm={ 0.0475,-0.0,-0.0,0.0475,(-0.3395, 1.1412)}] (21.1021, -23.9998) -- (8.6932, -8.4688) -- (7.7668, -9.8645) -- (21.1021, -23.9998)-- cycle;;
+        \path[fill=textcolor,line width=0.0013cm] (0.6789, 0.1349) -- (0.4336, 0.4918)arc(145.5082:205.3533:0.0114 and -0.0114) -- (0.4419, 0.5226) -- (0.3584, 0.4566) -- (0.376, 0.4611)arc(255.6171:318.0373:0.0126 and -0.0126) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.1937, 0.7979) circle (0.0487cm);
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alTin}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.332, 0.1101) -- (0.3724, 0.6698)arc(184.1272:204.0903:0.0557 and -0.0557) -- (0.3864, 0.7094).. controls (0.3477, 0.6976) and (0.2943, 0.6959) .. (0.2365, 0.6971) -- (0.2813, 0.6744).. controls (0.2907, 0.6697) and (0.2969, 0.6697) .. (0.2976, 0.6593) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.3726, 0.7969)arc(-0.0001:269.9998:0.0497 and -0.0497)arc(269.9998:359.9999:0.0497 and -0.0497) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.3262, 0.628).. controls (0.1461, 0.628) and (0.0, 0.4866) .. (0.0, 0.3122).. controls (0.0, 0.1541) and (0.12, 0.0232) .. (0.2765, 0.0).. controls (0.1741, 0.0266) and (0.0975, 0.1327) .. (0.0975, 0.2596).. controls (0.0975, 0.4066) and (0.2002, 0.5257) .. (0.3267, 0.5257).. controls (0.4533, 0.5257) and (0.5559, 0.4066) .. (0.5559, 0.2596).. controls (0.5559, 0.1334) and (0.4802, 0.0278) .. (0.3787, 0.0005).. controls (0.5339, 0.0248) and (0.6525, 0.155) .. (0.6525, 0.3122).. controls (0.6525, 0.4866) and (0.5064, 0.628) .. (0.3262, 0.628) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.3262, 0.4699).. controls (0.224, 0.4699) and (0.1411, 0.3889) .. (0.1411, 0.289).. controls (0.1411, 0.209) and (0.1943, 0.1412) .. (0.268, 0.1173).. controls (0.2264, 0.1398) and (0.1979, 0.1852) .. (0.1979, 0.2378).. controls (0.1979, 0.3126) and (0.2554, 0.3733) .. (0.3262, 0.3733).. controls (0.3971, 0.3733) and (0.4546, 0.3127) .. (0.4546, 0.2378).. controls (0.4546, 0.1852) and (0.4261, 0.1397) .. (0.3845, 0.1173).. controls (0.4582, 0.1412) and (0.5114, 0.209) .. (0.5114, 0.289).. controls (0.5114, 0.3889) and (0.4285, 0.4699) .. (0.3262, 0.4699) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alPewter}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0016cm] (0.3818, 0.0003).. controls (0.2377, 0.0097) and (0.1232, 0.1563) .. (0.1232, 0.3357).. controls (0.1232, 0.5213) and (0.2553, 0.6717) .. (0.4063, 0.6717).. controls (0.4073, 0.6717) and (0.4083, 0.6717) .. (0.4093, 0.6716) -- (0.4093, 0.8004).. controls (0.4067, 0.8004) and (0.4042, 0.8006) .. (0.4016, 0.8006).. controls (0.1852, 0.8006) and (0.0, 0.6213) .. (0.0, 0.4002).. controls (0.0, 0.1825) and (0.17, 0.0055) .. (0.3818, 0.0) -- cycle;
+        \path[fill=textcolor,line width=0.0016cm] (0.4861, 0.6239).. controls (0.3233, 0.6239) and (0.1913, 0.4932) .. (0.1913, 0.3321).. controls (0.1913, 0.1829) and (0.3044, 0.06) .. (0.4504, 0.0425)arc(-260.7869:82.4716:0.2157 and -0.2157).. controls (0.6633, 0.0551) and (0.781, 0.18) .. (0.781, 0.3321).. controls (0.781, 0.4932) and (0.649, 0.6239) .. (0.4861, 0.6239) -- cycle;
+        \path[fill=textcolor,line width=0.0016cm] (0.426, 0.1948) circle (0.0645cm);
+        \path[fill=textcolor,line width=0.0016cm] (0.6038, 0.1975) -- (0.1529, 0.8005)arc(143.3527:177.4277:0.0243 and -0.0243) -- (0.1451, 0.8467) -- (0.0065, 0.718) -- (0.0676, 0.7366).. controls (0.0842, 0.74) and (0.087, 0.7434) .. (0.0986, 0.731) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alSteel}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0014cm] (0.0976, 0.601) -- (0.0, 0.4793) -- (0.0333, 0.4932)arc(247.2565:316.4751:0.0186 and -0.0186) -- (0.3356, 0.1923) -- (0.1132, 0.5522)arc(148.3024:171.7537:0.1019 and -0.1019) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.485, 0.328).. controls (0.485, 0.2992) and (0.4611, 0.2759) .. (0.4314, 0.2759).. controls (0.4018, 0.2759) and (0.3778, 0.2992) .. (0.3778, 0.3279) -- (0.3778, 0.3279).. controls (0.3778, 0.3567) and (0.4018, 0.38) .. (0.4314, 0.38).. controls (0.4611, 0.38) and (0.4851, 0.3567) .. (0.4851, 0.3279) -- (0.4851, 0.3279) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.3542, 0.6573).. controls (0.192, 0.6515) and (0.0568, 0.5152) .. (0.0386, 0.3548) -- (0.1366, 0.2858).. controls (0.124, 0.3658) and (0.1977, 0.5069) .. (0.3567, 0.5015).. controls (0.4779, 0.4974) and (0.5625, 0.4124) .. (0.5735, 0.2916).. controls (0.5916, 0.093) and (0.4403, 0.0088) .. (0.3378, 0.0).. controls (0.5681, 0.0001) and (0.6889, 0.1864) .. (0.6924, 0.3277).. controls (0.6972, 0.5192) and (0.5419, 0.664) .. (0.3542, 0.6573) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.3215, 0.3584) -- (0.2335, 0.7772).. controls (0.2311, 0.7885) and (0.2327, 0.7913) .. (0.238, 0.8016) -- (0.261, 0.8467) -- (0.1175, 0.7769) -- (0.129, 0.7656)arc(314.731:335.6824:0.1074 and -0.1074) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alBrass}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0013cm] (0.3581, 0.7364).. controls (0.1948, 0.7364) and (0.0625, 0.604) .. (0.0625, 0.4408)arc(180.0765:142.657:0.2942 and -0.2942)arc(145.2738:180.0546:0.2413 and -0.2413).. controls (0.0799, 0.5346) and (0.1904, 0.644) .. (0.3268, 0.644).. controls (0.4632, 0.644) and (0.5737, 0.5346) .. (0.5737, 0.3997).. controls (0.5737, 0.2648) and (0.4632, 0.1554) .. (0.3268, 0.1554)arc(89.9354:114.7953:0.2481 and -0.2481)arc(117.3896:89.9421:0.2941 and -0.2941).. controls (0.5213, 0.1453) and (0.6536, 0.2776) .. (0.6536, 0.4408).. controls (0.6536, 0.604) and (0.5213, 0.7364) .. (0.3581, 0.7364) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.3308, 0.4292) circle (0.0481cm);
+        \path[fill=textcolor,line width=0.0013cm] (0.5679, 0.7815) -- (0.4153, 0.5363).. controls (0.4004, 0.5542) and (0.3797, 0.5597) .. (0.3645, 0.5627) -- (0.5198, 0.8077).. controls (0.5217, 0.8118) and (0.5215, 0.8132) .. (0.5205, 0.8171) -- (0.5153, 0.8359) -- (0.5216, 0.8467).. controls (0.5571, 0.8246) and (0.5922, 0.8038) .. (0.6157, 0.7952) -- (0.582, 0.7895).. controls (0.5729, 0.7879) and (0.5729, 0.7879) .. (0.5679, 0.7815) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.1884, 0.822) -- (0.2153, 0.7987).. controls (0.2212, 0.7926) and (0.2294, 0.7811) .. (0.2315, 0.773) -- (0.2939, 0.5384) -- (0.2832, 0.8159)arc(178.5428:200.9966:0.0464 and -0.0464) -- (0.2897, 0.8429) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.4457, 0.42) -- (0.7205, 0.5265)arc(66.314:23.5149:0.0168 and -0.0168) -- (0.7414, 0.5565).. controls (0.7392, 0.5364) and (0.7427, 0.4818) .. (0.7529, 0.4251) -- (0.7109, 0.4674)arc(316.0338:259.033:0.0103 and -0.0103) -- cycle;
+        \path[fill=textcolor,line width=0.0013cm] (0.0, 0.0) -- (0.2208, 0.3406).. controls (0.2357, 0.3252) and (0.2521, 0.3113) .. (0.2713, 0.3005) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alBronze}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0014cm] (0.3704, 0.8251)arc(270.0177:261.3183:0.3487 and -0.3487).. controls (0.3205, 0.8212) and (0.3235, 0.8214) .. (0.3265, 0.8214).. controls (0.4835, 0.8214) and (0.6107, 0.6941) .. (0.6107, 0.5371).. controls (0.6107, 0.3801) and (0.4835, 0.2528) .. (0.3265, 0.2528).. controls (0.1695, 0.2528) and (0.0422, 0.3801) .. (0.0422, 0.5371)arc(179.9605:197.0788:0.2841 and -0.2841)arc(204.2107:179.9551:0.3446 and -0.3446).. controls (0.0244, 0.2882) and (0.1793, 0.1332) .. (0.3704, 0.1332).. controls (0.5615, 0.1332) and (0.7163, 0.2882) .. (0.7163, 0.4792).. controls (0.7163, 0.6702) and (0.5615, 0.8251) .. (0.3704, 0.8251) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.4868, 0.5255) circle (0.0604cm);
+        \path[fill=textcolor,line width=0.0014cm] (0.3422, 0.0)arc(259.4978:269.7344:0.9613 and -0.9613) -- (0.4868, 0.0369)arc(133.0612:150.6392:0.0998 and -0.0998) -- (0.0, 0.8467) -- (0.3884, 0.0432)arc(-25.8244:57.1496:0.0096 and -0.0096) -- cycle;
+        \path[fill=textcolor,line width=0.0014cm] (0.6545, 0.144) -- (0.5474, 0.0579)arc(50.9411:165.4016:0.0053 and -0.0053) -- (0.5364, 0.0706)arc(165.373:219.8765:0.0184 and -0.0184) -- (0.5511, 0.1001) -- (0.1739, 0.6979) -- (0.6106, 0.1493)arc(141.4631:86.7694:0.0183 and -0.0183) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\alEttmetal}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+\begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+  \begin{scope}[shift={(-8.4103, 14.2002)}]
+    \path[fill=textcolor,line width=0.0008cm] (8.7892, -14.1968).. controls (8.7893, -14.1874) and (8.7922, -14.1832) .. (8.8027, -14.1772) -- (8.8136, -14.1709) -- (8.8172, -14.1158).. controls (8.8192, -14.0854) and (8.8212, -14.0558) .. (8.8218, -14.0498) -- (8.8228, -14.0391) -- (8.8149, -14.0378).. controls (8.8106, -14.0371) and (8.8036, -14.0365) .. (8.7993, -14.0365).. controls (8.7867, -14.0364) and (8.7561, -14.0283) .. (8.7316, -14.0184).. controls (8.719, -14.0134) and (8.7082, -14.0097) .. (8.7076, -14.0103).. controls (8.707, -14.0109) and (8.6992, -14.0347) .. (8.6903, -14.0631) -- (8.674, -14.1147) -- (8.6808, -14.1286).. controls (8.6873, -14.1417) and (8.6885, -14.1498) .. (8.684, -14.1498).. controls (8.6829, -14.1498) and (8.6645, -14.1389) .. (8.643, -14.1255).. controls (8.6215, -14.1121) and (8.6026, -14.1007) .. (8.601, -14.1001).. controls (8.5959, -14.0981) and (8.598, -14.0962) .. (8.6097, -14.0922) -- (8.6212, -14.0883) -- (8.6382, -14.0534).. controls (8.6475, -14.0343) and (8.6586, -14.0113) .. (8.6627, -14.0023) -- (8.6701, -13.9861) -- (8.6599, -13.9773).. controls (8.6259, -13.9482) and (8.6016, -13.9139) .. (8.5849, -13.8714).. controls (8.561, -13.8105) and (8.5631, -13.7346) .. (8.5906, -13.6707).. controls (8.5994, -13.6503) and (8.6224, -13.6159) .. (8.64, -13.5969).. controls (8.6556, -13.58) and (8.7054, -13.5431) .. (8.7125, -13.5431).. controls (8.7134, -13.5431) and (8.7086, -13.5473) .. (8.7018, -13.5523).. controls (8.6854, -13.5645) and (8.6615, -13.5896) .. (8.6517, -13.605).. controls (8.639, -13.6248) and (8.626, -13.6541) .. (8.6208, -13.6745).. controls (8.6168, -13.6904) and (8.6161, -13.6985) .. (8.6163, -13.7279).. controls (8.6164, -13.758) and (8.6171, -13.7651) .. (8.6218, -13.7827).. controls (8.634, -13.8285) and (8.6618, -13.8717) .. (8.6967, -13.8992) -- (8.708, -13.9081) -- (8.7251, -13.8731).. controls (8.7345, -13.8538) and (8.7529, -13.8157) .. (8.7661, -13.7883).. controls (8.7792, -13.7609) and (8.7903, -13.7387) .. (8.7906, -13.7391).. controls (8.7909, -13.7394) and (8.7785, -13.7804) .. (8.7629, -13.8303).. controls (8.7474, -13.8801) and (8.7346, -13.9217) .. (8.7346, -13.9227).. controls (8.7346, -13.9248) and (8.7584, -13.9344) .. (8.7721, -13.9379).. controls (8.7856, -13.9413) and (8.8146, -13.9462) .. (8.8212, -13.9462) -- (8.827, -13.9462) -- (8.827, -13.9194).. controls (8.827, -13.9047) and (8.8284, -13.853) .. (8.8301, -13.8045).. controls (8.8318, -13.756) and (8.8333, -13.7026) .. (8.8335, -13.6859).. controls (8.8338, -13.6477) and (8.8364, -13.6583) .. (8.8383, -13.7058).. controls (8.8414, -13.7804) and (8.85, -13.9447) .. (8.8509, -13.9456).. controls (8.8512, -13.9459) and (8.8593, -13.9447) .. (8.8688, -13.9429).. controls (8.9052, -13.936) and (8.9454, -13.9218) .. (8.9436, -13.9164).. controls (8.943, -13.9149) and (8.9378, -13.8981) .. (8.9319, -13.879).. controls (8.9142, -13.8222) and (8.8903, -13.746) .. (8.8887, -13.7415).. controls (8.8835, -13.7268) and (8.8961, -13.7513) .. (8.9298, -13.8218).. controls (8.951, -13.866) and (8.9691, -13.9021) .. (8.9699, -13.9021).. controls (8.9708, -13.9021) and (8.979, -13.8947) .. (8.988, -13.8857).. controls (9.0527, -13.8217) and (9.0712, -13.7257) .. (9.0351, -13.642).. controls (9.0206, -13.6083) and (8.99, -13.5698) .. (8.964, -13.5524).. controls (8.9463, -13.5406) and (8.9459, -13.5395) .. (8.9624, -13.5481).. controls (9.0284, -13.5824) and (9.0794, -13.6549) .. (9.0927, -13.733).. controls (9.0979, -13.7636) and (9.096, -13.8094) .. (9.0883, -13.8389).. controls (9.076, -13.8866) and (9.0521, -13.929) .. (9.019, -13.9621).. controls (9.0115, -13.9696) and (9.0054, -13.9763) .. (9.0054, -13.9772).. controls (9.0053, -13.978) and (9.0169, -14.003) .. (9.0311, -14.0327) -- (9.0568, -14.0867) -- (9.0689, -14.0915).. controls (9.0755, -14.0941) and (9.0809, -14.0967) .. (9.0809, -14.0973).. controls (9.0807, -14.0998) and (8.9969, -14.15) .. (8.9949, -14.1488).. controls (8.9915, -14.1467) and (8.9924, -14.1422) .. (8.9991, -14.1275) -- (9.0053, -14.1138) -- (8.9885, -14.0599).. controls (8.9792, -14.0303) and (8.9712, -14.0048) .. (8.9707, -14.0033).. controls (8.9701, -14.0014) and (8.9658, -14.0027) .. (8.9556, -14.0078).. controls (8.9383, -14.0165) and (8.902, -14.0282) .. (8.8757, -14.0335) -- (8.8561, -14.0374) -- (8.8575, -14.0511).. controls (8.8582, -14.0586) and (8.8601, -14.0766) .. (8.8616, -14.091).. controls (8.8632, -14.1055) and (8.8656, -14.1291) .. (8.867, -14.1437) -- (8.8696, -14.17) -- (8.8812, -14.1762).. controls (8.8906, -14.1811) and (8.8933, -14.1839) .. (8.8955, -14.1902) -- (8.8981, -14.1981) -- (8.8755, -14.1981).. controls (8.863, -14.1981) and (8.8385, -14.1987) .. (8.821, -14.1995).. controls (8.7906, -14.2008) and (8.7892, -14.2007) .. (8.7892, -14.1968) -- cycle(8.509, -13.9909).. controls (8.4886, -13.9804) and (8.4626, -13.9572) .. (8.4492, -13.9378).. controls (8.4333, -13.9145) and (8.4199, -13.8822) .. (8.4131, -13.8507).. controls (8.4089, -13.8308) and (8.4095, -13.7664) .. (8.4141, -13.7452).. controls (8.4237, -13.7017) and (8.444, -13.6553) .. (8.467, -13.6246).. controls (8.5003, -13.5803) and (8.5485, -13.5462) .. (8.5923, -13.5358).. controls (8.6113, -13.5313) and (8.6156, -13.5317) .. (8.6055, -13.5371).. controls (8.5892, -13.5457) and (8.5714, -13.5598) .. (8.5557, -13.5766).. controls (8.5005, -13.6352) and (8.4691, -13.7283) .. (8.4785, -13.8056).. controls (8.4847, -13.8571) and (8.5054, -13.8952) .. (8.5378, -13.9152).. controls (8.5433, -13.9186) and (8.5478, -13.9218) .. (8.5478, -13.9223).. controls (8.5478, -13.9229) and (8.5446, -13.9311) .. (8.5407, -13.9405).. controls (8.5324, -13.9606) and (8.5226, -13.9895) .. (8.5226, -13.9937).. controls (8.5226, -13.9976) and (8.5212, -13.9973) .. (8.509, -13.9909) -- cycle(9.1377, -13.9877).. controls (9.1347, -13.9763) and (9.1271, -13.9534) .. (9.1201, -13.9353) -- (9.1147, -13.9214) -- (9.1194, -13.9185).. controls (9.1219, -13.9169) and (9.1268, -13.9142) .. (9.1301, -13.9125).. controls (9.1422, -13.9064) and (9.1594, -13.8866) .. (9.1687, -13.8682).. controls (9.1802, -13.8452) and (9.185, -13.828) .. (9.1883, -13.7981).. controls (9.1945, -13.7421) and (9.1778, -13.6699) .. (9.1469, -13.6191).. controls (9.1245, -13.5822) and (9.1043, -13.5603) .. (9.0749, -13.5408).. controls (9.0593, -13.5305) and (9.0591, -13.5303) .. (9.0673, -13.5317).. controls (9.1014, -13.5375) and (9.1426, -13.5606) .. (9.172, -13.5904).. controls (9.1931, -13.6118) and (9.2037, -13.6256) .. (9.217, -13.6491).. controls (9.2881, -13.7753) and (9.2615, -13.9301) .. (9.1587, -13.9887).. controls (9.142, -13.9981) and (9.1403, -13.9981) .. (9.1377, -13.9877) -- cycle(8.8154, -13.578).. controls (8.7866, -13.5654) and (8.7781, -13.5307) .. (8.7979, -13.5067).. controls (8.8188, -13.4814) and (8.8595, -13.4869) .. (8.8734, -13.5169).. controls (8.8841, -13.54) and (8.8727, -13.568) .. (8.8486, -13.5781).. controls (8.8401, -13.5817) and (8.8237, -13.5816) .. (8.8154, -13.578) -- cycle;
+  \end{scope}
+\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              TERRIS ALPHABET              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NewDocumentCommand{\feAluminum}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(1.2529, -0.3303)}]
+            \path[fill=textcolor] (-8.5417, 14.8026) -- (-7.36, 15.7096) -- (-8.7316, 15.7096).. controls (-8.7316, 15.7096) and (-9.54, 14.9444) .. (-10.7147, 13.8309) -- (-10.7147, 18.3896).. controls (-10.7147, 18.3896) and (-13.1573, 16.533) .. (-13.753, 15.9627).. controls (-14.3252, 15.4152) and (-15.8634, 13.5999) .. (-15.8634, 13.5999) -- (-15.1671, 13.5999).. controls (-15.1671, 13.5999) and (-14.1873, 14.9886) .. (-13.5169, 15.5829).. controls (-12.6555, 16.3469) and (-12.0124, 16.6697) .. (-11.6643, 16.8027) -- (-11.6643, 12.9308).. controls (-14.005, 10.7097) and (-17.1351, 7.736) .. (-18.6485, 6.2782).. controls (-18.796, 6.1365) and (-19.0125, 5.6015) .. (-19.0606, 5.48) -- (-19.5765, 5.1604) -- (-10.7148, 5.1604) -- (-10.7148, 10.1862).. controls (-10.1305, 10.5831) and (-9.3013, 11.0889) .. (-9.3013, 11.0889) -- (-9.6179, 11.4687).. controls (-9.6179, 11.4687) and (-10.2027, 11.0756) .. (-10.7148, 10.6952) -- (-10.7148, 12.7581) -- cycle(-11.6642, 9.8407).. controls (-12.2978, 9.1026) and (-12.6232, 8.393) .. (-12.6346, 8.3677).. controls (-12.6118, 8.3925) and (-12.106, 8.9413) .. (-11.6642, 9.3869) -- (-11.6642, 5.8985) -- (-18.08, 5.8985) -- (-17.9389, 5.9618) -- (-11.6642, 11.8649) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feBendalloy}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(0.9725, -0.343)}]
+            \path[fill=textcolor] (-5.9097, 9.9086) -- (-5.9097, 18.5883) -- (-15.1955, 18.5883) -- (-11.5308, 13.367) -- (-15.1335, 9.8318) -- (-14.1313, 9.8318) -- (-11.1181, 12.7792) -- (-9.753, 10.8349).. controls (-9.8631, 10.7035) and (-9.976, 10.5776) .. (-10.0898, 10.4638).. controls (-10.5451, 10.0103) and (-12.2026, 8.9989) .. (-12.2026, 8.9989) -- (-11.5243, 8.2743).. controls (-11.5243, 8.2743) and (-9.9917, 9.5865) .. (-9.6114, 10.1094).. controls (-9.5475, 10.1973) and (-9.4874, 10.2852) .. (-9.4291, 10.3731) -- (-5.9097, 5.3591) -- (-5.9097, 6.5465) -- (-9.0367, 11.0589).. controls (-8.5472, 12.0352) and (-8.4398, 12.8237) .. (-8.4398, 12.8237).. controls (-8.4398, 12.8237) and (-8.7979, 12.1417) .. (-9.2958, 11.4328) -- (-10.5886, 13.2976) -- (-6.8665, 16.9392) -- (-6.8665, 10.8655) -- cycle(-10.9987, 13.8898) -- (-13.7454, 17.8525) -- (-6.96, 17.8525) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feIron}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(0.0856, 1.0771)}]
+            \path[fill=textcolor] (1.6118, -15.7275) -- (4.8352, -15.7275) -- (4.8352, -16.8295) -- (0.5658, -16.8295) -- (0.5658, -10.889).. controls (-0.201, -10.9624) and (-1.3378, -11.1628) .. (-1.3378, -11.1628) -- (-1.3378, -10.5068).. controls (-1.3378, -10.5068) and (-0.2023, -10.3799) .. (0.5658, -10.3612) -- (0.5658, -3.738) -- (7.0448, -13.0223) -- (3.8387, -3.6004) -- (4.6402, -3.6004) -- (9.0485, -16.8295) -- (1.6118, -6.6302) -- (1.6118, -10.5242).. controls (2.3772, -10.7873) and (3.5567, -11.2964) .. (3.6289, -11.3284).. controls (3.5582, -11.3124) and (2.412, -11.0466) .. (1.6118, -10.9236) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feZinc}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(0.5838, -0.0393)}]
+            \path[fill=textcolor] (-5.7232, 11.1026) -- (-5.7232, 8.1131).. controls (-5.0697, 7.7906) and (-4.1684, 7.3868) .. (-4.1684, 7.3868) -- (-4.5373, 6.8861).. controls (-4.5373, 6.8861) and (-5.076, 7.1096) .. (-5.7232, 7.4711) -- (-5.7232, 5.2248).. controls (-4.6701, 4.8221) and (-3.167, 4.4089) .. (-3.167, 4.4089) -- (-3.5359, 3.671).. controls (-3.5359, 3.671) and (-4.2358, 3.8112) .. (-5.7232, 4.5871) -- (-5.7232, 1.6155) -- (-2.4554, 1.6155) -- (-2.4554, 0.6141) -- (-6.5138, 0.6141) -- (-6.5138, 5.0244).. controls (-8.2616, 6.067) and (-9.0932, 7.2666) .. (-9.1217, 7.3087).. controls (-9.0732, 7.2729) and (-7.5637, 6.1524) .. (-6.5138, 5.58) -- (-6.5138, 7.9591).. controls (-7.4035, 8.5779) and (-8.4819, 10.0283) .. (-8.5156, 10.0737).. controls (-8.4755, 10.04) and (-7.337, 9.0923) .. (-6.5138, 8.5526) -- (-6.5138, 13.8432) -- (2.6833, 0.6141) -- (1.6681, 0.6141) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feLerasium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[shift={(-1.2893, 1.8059)}]
+        \path[draw=black,fill=textcolor,even odd rule,line cap=,line join=miter,line width=0.0cm,miter limit=4.0] (1.5711, -1.2044) -- (1.6077, -1.2044) -- (1.6077, -1.3347).. controls (1.6077, -1.3819) and (1.5711, -1.4437) .. (1.5459, -1.4884).. controls (1.566, -1.4185) and (1.5737, -1.3841) .. (1.5711, -1.3293) -- cycle;
+            \end{scope}
+        \begin{scope}[shift={(-1.2893, 1.8059)}]
+            \path[draw=black,fill=textcolor,even odd rule,line cap=butt,line join=round,line width=0.0cm,miter limit=4.0] (1.758, -0.9626) -- (1.758, -1.5868).. controls (1.758, -1.6687) and (1.689, -1.7942) .. (1.651, -1.8059).. controls (1.6778, -1.7398) and (1.7062, -1.6745) .. (1.7062, -1.5868) -- (1.7062, -1.039) -- cycle;
+            \path[draw=black,fill=textcolor,even odd rule,line cap=round,line join=miter,line width=0.0067cm] (1.6378, -1.0016) -- (1.6379, -0.9626) -- (1.294, -0.9626) -- (1.5006, -1.5868) -- (1.541, -1.5868).. controls (1.4802, -1.4063) and (1.4213, -1.2254) .. (1.3615, -1.0446) -- (1.7062, -1.5418) -- (1.7062, -1.4764) -- (1.3762, -1.0016) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feCadmium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(0.7027, -0.3182)}]
+            \path[fill=textcolor] (-2.7913, 18.2004) -- (-2.7913, 14.306) -- (-7.2762, 14.306) -- (-9.4863, 17.5067) -- (-4.2588, 17.5067) -- (-4.2588, 18.2004) -- (-10.9802, 18.2004) -- (-8.2716, 14.306) -- (-10.913, 14.306) -- (-10.2729, 13.6131) -- (-7.7891, 13.6131) -- (-5.5567, 10.4029).. controls (-5.7368, 10.258) and (-5.9159, 10.1228) .. (-6.0856, 10.0084).. controls (-6.6009, 9.6595) and (-8.3964, 9.0786) .. (-8.3964, 9.0786) -- (-7.8556, 8.2584).. controls (-7.8556, 8.2584) and (-6.3193, 8.9401) .. (-5.6359, 9.5891).. controls (-5.4983, 9.7195) and (-5.371, 9.8459) .. (-5.2526, 9.9667) -- (-1.7783, 4.9713) -- (-1.7783, 18.2004) -- cycle(-2.7913, 7.8118) -- (-4.7021, 10.5796).. controls (-4.0028, 11.4254) and (-3.8539, 11.9271) .. (-3.8459, 11.9575).. controls (-3.87, 11.9335) and (-4.3525, 11.4454) .. (-4.9405, 10.9245) -- (-6.7978, 13.613) -- (-2.7913, 13.613) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feChromium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(1.1771, -0.4106)}]
+            \path[fill=textcolor] (-9.299, 18.497) -- (-12.5888, 13.7789).. controls (-12.2039, 13.3989) and (-11.9136, 13.0731) .. (-11.9136, 13.0731) -- (-12.515, 12.4154).. controls (-12.515, 12.4154) and (-12.749, 12.7254) .. (-13.0556, 13.1097) -- (-17.189, 7.1812) -- (-14.9843, 7.1812) -- (-9.299, 15.3445) -- (-9.299, 6.4159) -- (-9.955, 6.4159) -- (-9.955, 13.0731) -- (-14.7289, 6.4159) -- (-18.3916, 6.4159) -- (-13.4547, 13.5984).. controls (-13.751, 13.9521) and (-14.0522, 14.2894) .. (-14.2506, 14.4518).. controls (-14.7983, 14.8996) and (-16.7046, 15.8168) .. (-16.7636, 15.8452).. controls (-16.7057, 15.8326) and (-14.8355, 15.4123) .. (-13.7996, 14.7934).. controls (-13.5667, 14.6546) and (-13.2984, 14.4376) .. (-13.0386, 14.2042) -- (-9.299, 19.645) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feDuralumin}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.0485,-0.0,-0.0,0.0485,(0.8943, -0.0964)}]
+            \path[fill=textcolor] (-10.5226, 6.7956).. controls (-10.3161, 6.6784) and (-10.1893, 6.6076) .. (-10.1745, 6.5993).. controls (-10.1905, 6.604) and (-10.3268, 6.6475) .. (-10.5542, 6.7266).. controls (-10.7202, 6.3636) and (-10.9107, 5.9696) .. (-11.1248, 5.5572).. controls (-11.8866, 4.0933) and (-13.6286, 2.0514) .. (-13.6827, 1.9883).. controls (-13.6399, 2.0526) and (-12.258, 4.1259) .. (-11.4522, 5.7952).. controls (-11.3279, 6.0535) and (-11.1689, 6.4547) .. (-11.0071, 6.8903).. controls (-11.4659, 7.061) and (-12.0782, 7.3045) .. (-12.7538, 7.6122).. controls (-12.8424, 7.5128) and (-12.9341, 7.4128) .. (-13.0293, 7.3128).. controls (-14.2381, 6.0434) and (-15.5758, 5.2835) .. (-15.6169, 5.2603).. controls (-15.5788, 5.2942) and (-14.3428, 6.3798) .. (-13.2078, 7.6699).. controls (-13.1764, 7.7056) and (-13.1454, 7.7425) .. (-13.115, 7.7807).. controls (-13.6959, 8.0573) and (-14.31, 8.3787) .. (-14.9039, 8.7412).. controls (-17.0761, 10.0653) and (-18.4449, 11.4787) .. (-18.4449, 11.4787) -- (-18.4449, 12.3416).. controls (-18.4449, 12.3416) and (-17.9086, 11.8684) .. (-17.0575, 11.1817) -- (-14.0998, 16.314) -- (-11.2969, 12.3273).. controls (-11.3243, 13.1593) and (-11.3754, 14.4108) .. (-11.4522, 15.0196).. controls (-11.585, 16.0771) and (-12.3818, 19.3491) .. (-12.4068, 19.4508).. controls (-12.3693, 19.3645) and (-11.2826, 16.8281) .. (-10.9464, 15.0493).. controls (-10.5298, 12.8474) and (-10.5298, 10.4075) .. (-10.5298, 10.4075) -- (-14.0999, 15.1833) -- (-16.5988, 10.8158).. controls (-16.0281, 10.3653) and (-15.358, 9.8535) .. (-14.6361, 9.3363).. controls (-14.1165, 8.9644) and (-13.472, 8.5501) .. (-12.8353, 8.1586).. controls (-12.3342, 8.8929) and (-11.9283, 9.7827) .. (-11.9283, 9.7827) -- (-11.4689, 9.3066).. controls (-11.4689, 9.3066) and (-11.8509, 8.6852) .. (-12.4741, 7.9378).. controls (-11.9062, 7.5938) and (-11.3665, 7.279) .. (-10.9523, 7.0403).. controls (-10.5899, 8.0283) and (-10.2322, 9.128) .. (-10.2322, 9.128) -- (-9.6966, 8.8602).. controls (-9.6966, 8.86) and (-9.9721, 8.0086) .. (-10.5226, 6.7956) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feElectrum}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(1.194, -0.3926)}]
+            \path[fill=textcolor] (-9.2867, 7.2337) -- (-9.2867, 6.1349) -- (-14.1724, 13.0337).. controls (-15.1914, 12.2206) and (-16.9795, 10.4561) .. (-17.0351, 10.4012).. controls (-16.9974, 10.459) and (-15.7673, 12.3044) .. (-14.4973, 13.4918) -- (-18.6561, 19.3641) -- (-9.6916, 19.3641) -- (-9.4602, 18.6701) -- (-17.2098, 18.6701) -- (-13.9457, 13.9585).. controls (-13.0758, 14.6201) and (-11.253, 15.8074) .. (-11.253, 15.8074) -- (-10.6169, 14.8531).. controls (-10.6169, 14.8531) and (-12.6601, 13.9741) .. (-13.5859, 13.4397) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feGold}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(1.1507, -0.3747)}]
+            \path[fill=textcolor] (-8.6688, 19.0831) -- (-8.6688, 5.8539) -- (-12.8417, 5.8539) -- (-12.8417, 6.8478) -- (-9.5774, 6.8478) -- (-9.5774, 16.443) -- (-11.807, 13.2444).. controls (-10.9188, 11.2941) and (-10.9682, 10.2262) .. (-10.9682, 10.2262).. controls (-10.9682, 10.2262) and (-11.6256, 12.0009) .. (-12.0855, 12.8441) -- (-12.9363, 11.6245).. controls (-12.2149, 10.3377) and (-11.9603, 9.2186) .. (-11.9484, 9.1633).. controls (-11.9748, 9.2118) and (-12.6927, 10.5472) .. (-13.1806, 11.2736) -- (-16.9585, 5.8539) -- (-17.9805, 5.8539) -- (-13.7146, 11.9141).. controls (-14.5134, 12.6856) and (-15.8087, 13.4905) .. (-15.8087, 13.4905) -- (-15.1198, 14.1786).. controls (-15.1198, 14.1786) and (-13.93, 13.0195) .. (-13.4037, 12.3561) -- (-12.5819, 13.5228).. controls (-13.1721, 14.1854) and (-14.1191, 15.0515) .. (-14.1191, 15.0515) -- (-13.3816, 15.6051).. controls (-13.3816, 15.6051) and (-12.6517, 14.7117) .. (-12.2217, 14.0356) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feMalatium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0012cm] (0.6025, 0.0166).. controls (0.595, 0.0189) and (0.4984, 0.0692) .. (0.407, 0.1202).. controls (0.3863, 0.1318) and (0.3592, 0.1494) .. (0.329, 0.1701).. controls (0.3551, 0.2052) and (0.3774, 0.2251) .. (0.3774, 0.2251) -- (0.3353, 0.2547).. controls (0.317, 0.2396) and (0.3017, 0.2199) .. (0.289, 0.1981).. controls (0.2491, 0.2265) and (0.2068, 0.2579) .. (0.1685, 0.2867).. controls (0.2412, 0.4018) and (0.3162, 0.5075) .. (0.336, 0.5351).. controls (0.4871, 0.3897) and (0.5636, 0.2491) .. (0.5636, 0.2491).. controls (0.5803, 0.5827) and (0.4384, 0.8467) .. (0.4384, 0.8467) -- (0.4212, 0.8387).. controls (0.5161, 0.5112) and (0.5139, 0.382) .. (0.5139, 0.382).. controls (0.3492, 0.6823) and (0.0752, 0.7899) .. (0.0752, 0.7899) -- (0.0287, 0.7523).. controls (0.1306, 0.703) and (0.2182, 0.6404) .. (0.2912, 0.5763)arc(218.2411:207.7842:1.6769 and -1.6769).. controls (0.0751, 0.3578) and (0.0401, 0.3854) .. (0.0401, 0.3854) -- (0.0308, 0.3225).. controls (0.0308, 0.3225) and (0.0102, 0.3322) .. (0.0974, 0.2659).. controls (0.0243, 0.1146) and (0.0, 0.0062) .. (0.0, 0.0062) -- (0.0191, -0.0).. controls (0.0346, 0.0575) and (0.0827, 0.1466) .. (0.1371, 0.236) .. controls (0.1465, 0.229) and (0.1567, 0.2215) .. (0.1677, 0.2134)arc(126.1155:119.8266:1.0655 and -1.0655).. controls (0.2394, 0.0834) and (0.2319, 0.0173) .. (0.2319, 0.0173) -- (0.2522, 0.0037).. controls (0.2617, 0.0523) and (0.281, 0.095) .. (0.3017, 0.1296).. controls (0.4458, 0.0513) and (0.5932, -0.0) .. (0.5932, -0.0) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feNicrosil}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(1.2622, -0.3704)}]
+            \path[fill=textcolor] (-9.4703, 5.7881) -- (-10.9978, 5.7881).. controls (-10.9978, 5.7881) and (-13.7679, 6.9013) .. (-15.3212, 7.8593).. controls (-17.2514, 9.0496) and (-18.5314, 10.5258) .. (-18.5314, 10.5258).. controls (-18.5314, 10.5258) and (-15.8463, 8.8523) .. (-14.9328, 8.3252).. controls (-14.0531, 7.8178) and (-12.2611, 7.3181) .. (-11.5036, 7.1198) -- (-19.7223, 19.0173) -- (-10.4542, 19.0173) -- (-10.4542, 14.901) -- (-11.1272, 15.3669) -- (-11.1272, 18.4736) -- (-15.4817, 18.4736) -- (-9.7551, 10.1375) -- (-9.7551, 9.0243) -- (-16.3339, 18.4737) -- (-18.5832, 18.4737) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feAtium}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(1.173, -0.2239)}]
+            \path[fill=textcolor] (-7.8707, 10.4363).. controls (-7.8797, 10.4019) and (-8.1806, 9.302) .. (-9.517, 8.2748).. controls (-9.6377, 8.182) and (-9.7599, 8.0931) .. (-9.8816, 8.0078) -- (-9.8816, 3.4987) -- (-14.105, 3.4987) -- (-14.105, 4.5545) -- (-10.9122, 4.5545) -- (-10.9122, 7.3634).. controls (-11.4175, 7.0795) and (-11.7795, 6.9173) .. (-11.7795, 6.9173) -- (-12.4476, 7.6715).. controls (-12.4476, 7.6715) and (-11.7018, 7.8846) .. (-10.9122, 8.2051) -- (-10.9122, 9.6504).. controls (-11.5792, 9.253) and (-12.1064, 9.0543) .. (-12.1064, 9.0543) -- (-12.559, 9.733).. controls (-12.559, 9.733) and (-11.718, 10.0083) .. (-10.9123, 10.3929) -- (-10.9123, 13.8055) -- (-18.3283, 3.4987) -- (-14.0296, 16.7279) -- (-13.0868, 16.7279).. controls (-13.0868, 16.7279) and (-13.3848, 16.344) .. (-13.4564, 16.2) -- (-16.3675, 7.2254) -- (-9.8816, 16.7279) -- (-9.8816, 10.9876).. controls (-8.977, 11.6207) and (-8.0592, 12.5234) .. (-8.0592, 12.5234).. controls (-8.0592, 12.5234) and (-8.2149, 11.724) .. (-9.8816, 10.3718) -- (-9.8816, 8.6945).. controls (-9.8342, 8.7221) and (-9.7877, 8.7499) .. (-9.7433, 8.7778).. controls (-8.8122, 9.3608) and (-7.8937, 10.4102) .. (-7.8707, 10.4363) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feUnknownJ}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.1745,-0.0,-0.0,0.1745,(-0.0098, 0.7074)}]
+            \path[fill=textcolor] (0.7892, 0.7983).. controls (1.5356, -0.3351) and (2.3061, -1.4527) .. (3.0709, -2.5739).. controls (3.2198, -2.7968) and (3.4061, -2.9916) .. (3.6005, -3.1754).. controls (3.5059, -3.1729) and (3.3172, -3.1687) .. (3.2226, -3.1665).. controls (2.4941, -2.1583) and (1.7978, -1.1271) .. (1.1, -0.0974).. controls (1.0894, -0.8647) and (1.0954, -1.632) .. (1.0894, -2.3989).. controls (1.0964, -2.6328) and (1.0654, -2.8825) .. (1.1673, -3.1023).. controls (1.3688, -3.3278) and (1.6242, -3.4953) .. (1.8718, -3.6654).. controls (2.0511, -3.786) and (2.2595, -3.8763) .. (2.3936, -4.0531).. controls (1.9064, -3.913) and (1.4739, -3.6297) .. (1.0516, -3.3574).. controls (0.7073, -3.0992) and (0.3471, -2.8437) .. (0.0709, -2.5111).. controls (0.0346, -2.3301) and (0.0769, -2.1368) .. (0.0808, -1.9516).. controls (0.3164, -2.2049) and (0.5256, -2.4818) .. (0.768, -2.7287).. controls (0.7941, -1.5533) and (0.7542, -0.3771) .. (0.7892, 0.7983) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feUnknownC}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.1747,-0.0,-0.0,0.1747,(-0.0071, 0.6993)}]
+            \path[fill=textcolor] (1.9604, -0.0917).. controls (2.1788, 0.2134) and (2.3541, 0.5489) .. (2.5873, 0.8435).. controls (2.6102, 0.0981) and (2.5449, -0.6477) .. (2.5887, -1.3935).. controls (2.7005, -1.251) and (2.8014, -1.0985) .. (2.9298, -0.9694).. controls (2.8533, -1.221) and (2.716, -1.4474) .. (2.6077, -1.6845).. controls (2.552, -2.0172) and (2.5767, -2.3569) .. (2.5792, -2.6928).. controls (2.831, -2.4532) and (3.0469, -2.1805) .. (3.2741, -1.9184).. controls (3.242, -2.1717) and (3.3196, -2.4896) .. (3.0981, -2.6741).. controls (2.6945, -3.0833) and (2.2091, -3.4004) .. (1.7159, -3.6904).. controls (1.4778, -3.8149) and (1.2404, -3.9585) .. (0.9712, -4.0033).. controls (1.3515, -3.6385) and (1.8877, -3.4519) .. (2.2151, -3.0289).. controls (2.2888, -2.7203) and (2.2497, -2.3954) .. (2.2592, -2.0803).. controls (2.1093, -2.2059) and (1.9562, -2.3276) .. (1.8002, -2.4462).. controls (1.7297, -2.3805) and (1.6595, -2.3149) .. (1.5889, -2.2493).. controls (1.7872, -2.1248) and (1.989, -2.0031) .. (2.1632, -1.845).. controls (2.2327, -1.7815) and (2.2842, -1.6902) .. (2.2521, -1.5879).. controls (2.274, -1.0897) and (2.2578, -0.5913) .. (2.2493, -0.0931).. controls (1.6404, -0.9483) and (1.0728, -1.832) .. (0.4667, -2.6892).. controls (0.3383, -2.8596) and (0.2191, -3.0459) .. (0.0409, -3.1704).. controls (0.1094, -2.7436) and (0.3136, -2.3562) .. (0.4237, -1.9403).. controls (0.7186, -1.0315) and (1.0132, -0.1221) .. (1.336, 0.7775).. controls (1.4319, 0.7765) and (1.5282, 0.7754) .. (1.6245, 0.7743).. controls (1.3815, 0.2674) and (1.2386, -0.279) .. (1.0537, -0.8086).. controls (0.9331, -1.1913) and (0.7825, -1.5646) .. (0.6713, -1.9505).. controls (1.1162, -1.3416) and (1.5258, -0.708) .. (1.9604, -0.0917) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feUnknownH}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.1742,-0.0,-0.0,0.1742,(-0.006, 0.706)}]
+            \path[fill=textcolor] (0.7264, 0.8075).. controls (0.9253, 0.5934) and (1.0502, 0.3235) .. (1.216, 0.0854).. controls (1.7163, -0.6488) and (2.2285, -1.3751) .. (2.7167, -2.1174).. controls (2.9771, -2.4853) and (3.2085, -2.8896) .. (3.5669, -3.1739).. controls (3.4706, -3.1729) and (3.2787, -3.1711) .. (3.1828, -3.1701).. controls (2.4462, -2.1784) and (1.79, -1.1303) .. (1.0682, -0.1281).. controls (1.0566, -0.6022) and (1.0573, -1.076) .. (1.058, -1.5501).. controls (1.2114, -1.6309) and (1.3628, -1.7163) .. (1.5201, -1.7896).. controls (1.4817, -1.8581) and (1.4422, -1.9258) .. (1.4023, -1.9935).. controls (1.2848, -1.9332) and (1.1712, -1.8655) .. (1.0576, -1.7978).. controls (1.077, -2.2384) and (0.991, -2.7016) .. (1.1412, -3.1253).. controls (1.4877, -3.5105) and (2.001, -3.6851) .. (2.3576, -4.0534).. controls (1.8835, -3.925) and (1.4658, -3.6516) .. (1.0597, -3.3842).. controls (0.6847, -3.1443) and (0.3563, -2.8409) .. (0.0346, -2.5354).. controls (0.0385, -2.3421) and (0.0437, -2.1488) .. (0.0504, -1.9554).. controls (0.2787, -2.2123) and (0.49, -2.4846) .. (0.7327, -2.7287).. controls (0.7324, -2.3393) and (0.7733, -1.9456) .. (0.7288, -1.5579).. controls (0.6054, -1.2996) and (0.3796, -1.0996) .. (0.2745, -0.8301).. controls (0.4396, -0.968) and (0.5771, -1.1345) .. (0.7338, -1.282).. controls (0.7542, -0.5853) and (0.7306, 0.1111) .. (0.7264, 0.8075) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feUnknownX}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.2118,-0.0,-0.0,0.2118,(-0.0148, 0.6779)}]
+            \path[fill=textcolor] (1.5589, -1.1426).. controls (2.0211, -0.5119) and (2.4313, 0.1545) .. (2.8758, 0.7969).. controls (2.9259, -0.5189) and (2.8497, -1.8366) .. (2.9281, -3.1517) -- (2.9281, -3.1768).. controls (2.4931, -3.1754) and (2.0578, -3.175) .. (1.6228, -3.1743).. controls (1.6228, -3.0865) and (1.6228, -2.9111) .. (1.6228, -2.8233).. controls (1.9283, -2.8222) and (2.2338, -2.8219) .. (2.5393, -2.8212).. controls (2.5389, -1.9353) and (2.5471, -1.0495) .. (2.5312, -0.1637).. controls (2.2627, -0.5401) and (2.0055, -0.9239) .. (1.7431, -1.3042).. controls (1.8898, -1.5088) and (2.0376, -1.7166) .. (2.1332, -1.9509).. controls (1.9544, -1.8048) and (1.7942, -1.6379) .. (1.627, -1.4788).. controls (1.2404, -2.0151) and (0.8971, -2.5823) .. (0.4889, -3.1027).. controls (0.3969, -3.2424) and (0.212, -3.1873) .. (0.0698, -3.2).. controls (0.6071, -2.6487) and (0.9878, -1.9717) .. (1.4256, -1.3437).. controls (1.227, -1.2573) and (1.0245, -1.1807) .. (0.8188, -1.1134).. controls (0.87, -1.0195) and (0.9215, -0.926) .. (0.9723, -0.8318).. controls (1.1737, -0.9236) and (1.3667, -1.0329) .. (1.5589, -1.1426) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feCopper}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(0.4797, 0.1839)}]
+            \path[fill=textcolor] (-4.265, 0.8966) -- (-4.265, 2.9624).. controls (-3.6785, 2.4693) and (-3.0235, 1.967) .. (-3.0235, 1.967) -- (-2.4379, 2.5535).. controls (-2.4379, 2.5535) and (-3.4973, 3.2288) .. (-4.265, 3.7941) -- (-4.265, 7.5797) -- (3.1433, -2.8741) -- (2.8584, -1.6252) -- (-5.2826, 10.355) -- (-5.2826, 4.7358).. controls (-5.847, 5.4186) and (-6.6269, 6.5001) .. (-6.6908, 6.587).. controls (-6.651, 6.489) and (-6.0163, 4.9607) .. (-5.2826, 3.9736) -- (-5.2826, 1.7783) -- (-7.4955, 3.6942) -- (-7.4955, 2.7996) -- (-5.2826, 0.8606) -- (-5.2826, -2.8741) -- (0.0904, -2.8741) -- (-1.1382, -1.8102) -- cycle(-4.265, -1.8103) -- (-4.265, -0.0304) -- (-2.2345, -1.8103) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feTin}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[shift={(-0.6188, 6.8207)}]
+            \path[fill=textcolor,line width=0.0017cm] (0.9589, -6.3377).. controls (0.8937, -6.2895) and (0.8176, -6.2385) .. (0.8176, -6.2385) -- (0.736, -6.2385).. controls (0.736, -6.2385) and (0.8466, -6.3119) .. (0.9312, -6.3766) -- (0.6188, -6.8136) -- (0.6845, -6.8136) -- (0.9707, -6.4079).. controls (0.9873, -6.4216) and (1.0014, -6.4341) .. (1.0111, -6.4444).. controls (1.0239, -6.458) and (1.036, -6.4716) .. (1.0473, -6.4852) -- (0.8286, -6.8136) -- (0.878, -6.8136) -- (1.0769, -6.523).. controls (1.1179, -6.5782) and (1.1477, -6.6321) .. (1.1691, -6.6786).. controls (1.1714, -6.6835) and (1.1735, -6.6882) .. (1.1756, -6.6929).. controls (1.2086, -6.7683) and (1.2188, -6.8207) .. (1.2188, -6.8207) -- (1.2188, -5.9741) -- cycle(1.1478, -6.5552).. controls (1.1339, -6.5316) and (1.119, -6.5072) .. (1.1036, -6.4841) -- (1.1478, -6.4195) -- cycle(1.1478, -6.3343) -- (1.0749, -6.4438).. controls (1.0623, -6.4273) and (1.0497, -6.4127) .. (1.0377, -6.4009).. controls (1.0284, -6.3919) and (1.0148, -6.3806) .. (0.9988, -6.368) -- (1.1478, -6.1568) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\fePewter}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[shift={(-2.1948, 7.5659)}]
+            \path[fill=textcolor,line width=0.0016cm] (2.545, -6.9485) -- (2.545, -7.2502).. controls (2.585, -7.2747) and (2.6371, -7.2987) .. (2.6371, -7.2987) -- (2.6118, -7.3312).. controls (2.6118, -7.3312) and (2.5786, -7.3096) .. (2.545, -7.2849) -- (2.545, -7.5659) -- (2.5053, -7.5659).. controls (2.5053, -7.5659) and (2.4985, -7.5598) .. (2.4872, -7.5492).. controls (2.4517, -7.5158) and (2.3718, -7.4379) .. (2.3211, -7.3674).. controls (2.2275, -7.237) and (2.1962, -7.1338) .. (2.1948, -7.1292).. controls (2.198, -7.1345) and (2.2998, -7.306) .. (2.3699, -7.3746).. controls (2.3913, -7.3955) and (2.4449, -7.4375) .. (2.4872, -7.47) -- (2.4872, -7.2374).. controls (2.45, -7.1988) and (2.4024, -7.1092) .. (2.4024, -7.1092).. controls (2.4024, -7.1092) and (2.446, -7.1635) .. (2.4872, -7.2041) -- (2.4872, -6.7734) -- (3.0415, -7.5659) -- (2.9837, -7.5659) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feSteel}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[shift={(-3.3773, 8.4838)}]
+            \path[fill=textcolor,cm={ 0.064,-0.0,-0.0,0.064,(1.7947, -7.6913)}] (29.0991, -12.3825) -- (33.2963, -12.3825) -- (33.2963, 0.8467) -- (26.6653, -8.7059) -- (29.9808, 0.8467) -- (29.0991, 0.8467) -- (24.7285, -12.3825) -- (32.5085, -1.484) -- (32.5085, -11.4962) -- (29.0991, -11.4962);;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feBrass}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[shift={(1.0493, 0.5863)}]
+            \path[fill=textcolor,line width=0.0013cm] (-0.7731, -0.0825).. controls (-0.6093, -0.2418) and (-0.5956, -0.3822) .. (-0.5956, -0.3822) -- (-0.5956, 0.2604) -- (-0.7881, -0.0139) -- (-0.7882, -0.0139).. controls (-0.8313, 0.015) and (-0.8855, 0.0472) .. (-0.8855, 0.0472) -- (-0.9544, 0.0472).. controls (-0.9544, 0.0472) and (-0.87, -0.0071) .. (-0.8132, -0.0497) -- (-1.0492, -0.3859).. controls (-1.0493, -0.386) and (-1.0493, -0.386) .. (-1.0493, -0.386) -- (-1.0007, -0.386) -- (-1.0007, -0.3859).. controls (-0.9983, -0.3839) and (-0.9214, -0.3181) .. (-0.893, -0.2995).. controls (-0.8617, -0.2791) and (-0.7669, -0.2335) .. (-0.7534, -0.2464).. controls (-0.738, -0.261) and (-0.8262, -0.3934) .. (-0.8581, -0.4376).. controls (-0.8855, -0.4755) and (-0.9719, -0.5863) .. (-0.9719, -0.5863) -- (-0.9112, -0.5863).. controls (-0.9112, -0.5863) and (-0.8197, -0.4744) .. (-0.7953, -0.433).. controls (-0.7684, -0.3871) and (-0.7123, -0.2451) .. (-0.7231, -0.2327).. controls (-0.7382, -0.2153) and (-0.8678, -0.2521) .. (-0.9097, -0.2752).. controls (-0.916, -0.2787) and (-0.924, -0.284) .. (-0.9329, -0.2904) -- (-0.7806, -0.0757).. controls (-0.7778, -0.0781) and (-0.7753, -0.0804) .. (-0.7731, -0.0825) -- cycle(-0.6385, 0.1246) -- (-0.6385, -0.165).. controls (-0.6725, -0.1235) and (-0.7186, -0.0691) .. (-0.7443, -0.0461).. controls (-0.747, -0.0437) and (-0.7502, -0.041) .. (-0.7539, -0.0381) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feBronze}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={ 0.064,-0.0,-0.0,0.064,(0.7949, -0.1462)}]
+            \path[fill=textcolor] (-1.3338, 9.2186).. controls (-1.3889, 9.1546) and (-2.164, 8.2749) .. (-3.2279, 7.4337) -- (-3.2279, 2.2849) -- (-4.1099, 2.2849) -- (-4.1099, 6.8107).. controls (-5.0657, 6.254) and (-7.0635, 5.3631) .. (-7.0635, 5.3631) -- (-7.541, 6.2077).. controls (-7.541, 6.2077) and (-5.3293, 6.7909) .. (-4.1099, 7.3399) -- (-4.1099, 9.2837).. controls (-4.8695, 8.8625) and (-5.7769, 8.4678) .. (-5.7769, 8.4678) -- (-6.0525, 9.0566).. controls (-6.0525, 9.0566) and (-4.9831, 9.3851) .. (-4.1099, 9.8129) -- (-4.1099, 12.7037) -- (-10.9863, 2.9739) -- (-5.7492, 2.9739) -- (-5.7492, 2.2849) -- (-12.4195, 2.2849) -- (-3.2278, 15.514) -- (-3.2278, 10.3542).. controls (-2.6126, 10.8315) and (-1.768, 11.6342) .. (-1.7185, 11.6805).. controls (-1.7582, 11.6121) and (-2.3679, 10.5857) .. (-3.2278, 9.868) -- (-3.2278, 7.8515).. controls (-2.4781, 8.3597) and (-1.401, 9.1691) .. (-1.3338, 9.2186) -- cycle;
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\feEttmetal}{O{0.5}}{%
+\colorlet{textcolor}{.}%
+    \begin{tikzpicture}[baseline=0.5ex, y=1cm, x=1cm, yscale={#1},xscale={#1}, every node/.append style={scale={#1}}, inner sep=0pt, outer sep=0pt]
+        \path[fill=textcolor,line width=0.0012cm] (0.201, 0.0154).. controls (0.181, 0.0421) and (0.1679, 0.0633) .. (0.1546, 0.0902).. controls (0.1313, 0.1376) and (0.1171, 0.1878) .. (0.1125, 0.2395).. controls (0.1117, 0.248) and (0.1112, 0.3047) .. (0.1112, 0.3844) -- (0.1112, 0.5154) -- (0.1013, 0.5231).. controls (0.0959, 0.5273) and (0.0846, 0.5373) .. (0.0762, 0.5454).. controls (0.0481, 0.5726) and (0.0265, 0.6008) .. (0.006, 0.6372).. controls (-0.0015, 0.6505) and (-0.0016, 0.6517) .. (0.0038, 0.6553).. controls (0.0061, 0.6568) and (0.0069, 0.6562) .. (0.0158, 0.645).. controls (0.0283, 0.6294) and (0.0492, 0.608) .. (0.0644, 0.5952).. controls (0.0763, 0.5852) and (0.1077, 0.5632) .. (0.11, 0.5632).. controls (0.1108, 0.5632) and (0.1112, 0.5765) .. (0.1112, 0.5994) -- (0.1112, 0.6356) -- (0.1022, 0.6427).. controls (0.0764, 0.6629) and (0.0441, 0.6993) .. (0.02, 0.7352) -- (0.0111, 0.7485) -- (0.0145, 0.7515) -- (0.0179, 0.7544) -- (0.0291, 0.7424).. controls (0.0445, 0.726) and (0.0576, 0.7134) .. (0.0699, 0.7032).. controls (0.0803, 0.6945) and (0.109, 0.6739) .. (0.1107, 0.6739).. controls (0.1111, 0.6739) and (0.1113, 0.7128) .. (0.111, 0.7603) -- (0.1105, 0.8467) -- (0.1154, 0.8466) -- (0.1204, 0.8466) -- (0.1311, 0.826).. controls (0.137, 0.8147) and (0.1467, 0.7968) .. (0.1527, 0.7863) -- (0.1636, 0.7672) -- (0.1636, 0.7066) -- (0.1636, 0.6459) -- (0.1693, 0.643).. controls (0.1823, 0.6365) and (0.2375, 0.618) .. (0.2442, 0.6179).. controls (0.245, 0.6179) and (0.2464, 0.6174) .. (0.2473, 0.6168).. controls (0.2486, 0.616) and (0.2477, 0.6132) .. (0.2427, 0.6036).. controls (0.236, 0.5904) and (0.2251, 0.5741) .. (0.2231, 0.5741).. controls (0.2201, 0.5741) and (0.1922, 0.5859) .. (0.1796, 0.5925).. controls (0.172, 0.5964) and (0.1653, 0.5997) .. (0.1647, 0.5997).. controls (0.164, 0.5997) and (0.1636, 0.5864) .. (0.1636, 0.5681).. controls (0.1636, 0.5384) and (0.1637, 0.5364) .. (0.1658, 0.5352).. controls (0.1697, 0.5332) and (0.2037, 0.5221) .. (0.2147, 0.5194).. controls (0.2203, 0.5179) and (0.2271, 0.5162) .. (0.2296, 0.5156) -- (0.2341, 0.5144) -- (0.2292, 0.5047).. controls (0.2232, 0.4928) and (0.216, 0.4809) .. (0.2096, 0.4724) -- (0.2048, 0.466) -- (0.1966, 0.469).. controls (0.1922, 0.4707) and (0.1831, 0.4745) .. (0.1764, 0.4774).. controls (0.1698, 0.4804) and (0.1641, 0.4826) .. (0.1639, 0.4824).. controls (0.1637, 0.4822) and (0.1637, 0.4471) .. (0.1638, 0.4045) -- (0.1642, 0.3269) -- (0.2293, 0.4209).. controls (0.2651, 0.4726) and (0.2959, 0.5172) .. (0.2978, 0.5201) -- (0.3012, 0.5252) -- (0.2488, 0.6833).. controls (0.22, 0.7702) and (0.1964, 0.8417) .. (0.1964, 0.8422).. controls (0.1964, 0.8426) and (0.2282, 0.843) .. (0.267, 0.843) -- (0.3376, 0.843) -- (0.3376, 0.8157) -- (0.3376, 0.7883) -- (0.3049, 0.788) -- (0.2723, 0.7877) -- (0.3065, 0.6864).. controls (0.3253, 0.6307) and (0.341, 0.5849) .. (0.3414, 0.5845).. controls (0.3417, 0.5841) and (0.3521, 0.5984) .. (0.3643, 0.6161).. controls (0.3766, 0.6339) and (0.3871, 0.648) .. (0.3876, 0.6474).. controls (0.388, 0.6469) and (0.3981, 0.6325) .. (0.4099, 0.6155).. controls (0.4217, 0.5984) and (0.4317, 0.5845) .. (0.4321, 0.5845).. controls (0.4325, 0.5845) and (0.4483, 0.6302) .. (0.4672, 0.6861) -- (0.5015, 0.7877) -- (0.4688, 0.788) -- (0.4361, 0.7883) -- (0.4361, 0.8157) -- (0.4361, 0.843) -- (0.5067, 0.843).. controls (0.547, 0.843) and (0.5773, 0.8426) .. (0.5773, 0.8419).. controls (0.5773, 0.8413) and (0.5537, 0.7699) .. (0.5249, 0.6831).. controls (0.4925, 0.5857) and (0.4729, 0.5248) .. (0.4735, 0.5238).. controls (0.474, 0.5228) and (0.5048, 0.4782) .. (0.542, 0.4246) -- (0.6095, 0.3271) -- (0.6098, 0.4045).. controls (0.61, 0.4472) and (0.6099, 0.4822) .. (0.6096, 0.4825).. controls (0.6094, 0.4828) and (0.6068, 0.4818) .. (0.6038, 0.4803).. controls (0.5965, 0.4765) and (0.5695, 0.4659) .. (0.5686, 0.4665).. controls (0.5665, 0.4678) and (0.5523, 0.49) .. (0.5462, 0.5014) -- (0.5394, 0.5144) -- (0.5446, 0.5157).. controls (0.5664, 0.5213) and (0.5824, 0.526) .. (0.5949, 0.5305) -- (0.6095, 0.5358) -- (0.6098, 0.5677).. controls (0.61, 0.5853) and (0.6098, 0.5997) .. (0.6093, 0.5997).. controls (0.6089, 0.5997) and (0.6022, 0.5964) .. (0.5944, 0.5925).. controls (0.5813, 0.5858) and (0.5533, 0.5741) .. (0.5506, 0.5741).. controls (0.5486, 0.5741) and (0.5377, 0.5904) .. (0.531, 0.6035).. controls (0.5275, 0.6102) and (0.5249, 0.6158) .. (0.5251, 0.616).. controls (0.5254, 0.6162) and (0.5344, 0.6189) .. (0.5452, 0.622).. controls (0.5657, 0.6278) and (0.5945, 0.638) .. (0.6043, 0.643) -- (0.6101, 0.6459) -- (0.6101, 0.7067) -- (0.6101, 0.7674) -- (0.6154, 0.7763).. controls (0.6225, 0.7883) and (0.6442, 0.8283) .. (0.6492, 0.8385).. controls (0.6532, 0.8466) and (0.6532, 0.8467) .. (0.6583, 0.8467) -- (0.6634, 0.8467) -- (0.6627, 0.7603).. controls (0.6624, 0.7128) and (0.6625, 0.6739) .. (0.663, 0.6739).. controls (0.6644, 0.6739) and (0.6878, 0.6901) .. (0.6971, 0.6976).. controls (0.7126, 0.7099) and (0.7314, 0.7275) .. (0.7435, 0.7409).. controls (0.7501, 0.7482) and (0.7558, 0.7542) .. (0.7562, 0.7542).. controls (0.7566, 0.7542) and (0.7582, 0.7529) .. (0.7597, 0.7512) -- (0.7625, 0.7483) -- (0.7529, 0.7339).. controls (0.7291, 0.6982) and (0.6941, 0.6593) .. (0.6682, 0.64) -- (0.6624, 0.6356) -- (0.6624, 0.5994).. controls (0.6624, 0.577) and (0.6629, 0.5632) .. (0.6636, 0.5632).. controls (0.6659, 0.5632) and (0.6974, 0.585) .. (0.7087, 0.5945).. controls (0.7231, 0.6066) and (0.7466, 0.6307) .. (0.7584, 0.6456).. controls (0.7634, 0.6518) and (0.7678, 0.6568) .. (0.7682, 0.6568).. controls (0.7687, 0.6568) and (0.7704, 0.6555) .. (0.772, 0.6538).. controls (0.7748, 0.6508) and (0.7748, 0.6507) .. (0.7727, 0.6462).. controls (0.7646, 0.6291) and (0.7417, 0.5948) .. (0.7249, 0.5745).. controls (0.7126, 0.5596) and (0.6859, 0.5334) .. (0.6725, 0.5231) -- (0.6624, 0.5153) -- (0.6624, 0.3826).. controls (0.6624, 0.2412) and (0.6622, 0.2345) .. (0.6563, 0.2018).. controls (0.6441, 0.1346) and (0.6122, 0.0647) .. (0.5684, 0.0094) -- (0.5611, 0.0001) -- (0.5571, 0.0024) -- (0.5531, 0.0048) -- (0.5568, 0.0111).. controls (0.5695, 0.0327) and (0.5846, 0.0665) .. (0.5929, 0.0923).. controls (0.6057, 0.1321) and (0.6116, 0.1645) .. (0.6138, 0.2088) -- (0.615, 0.2324) -- (0.5357, 0.3482).. controls (0.4921, 0.4119) and (0.4558, 0.4647) .. (0.4549, 0.4656).. controls (0.4537, 0.4669) and (0.447, 0.4479) .. (0.4203, 0.368).. controls (0.4021, 0.3134) and (0.387, 0.2687) .. (0.3868, 0.2687).. controls (0.3865, 0.2687) and (0.3717, 0.3129) .. (0.3539, 0.3669).. controls (0.336, 0.421) and (0.3211, 0.4656) .. (0.3206, 0.4662).. controls (0.3201, 0.4667) and (0.3153, 0.4607) .. (0.3098, 0.4528).. controls (0.3044, 0.4449) and (0.2986, 0.4365) .. (0.297, 0.4342).. controls (0.2861, 0.4186) and (0.1612, 0.2359) .. (0.1602, 0.234).. controls (0.1585, 0.2308) and (0.1603, 0.1903) .. (0.163, 0.1713).. controls (0.1686, 0.1313) and (0.1776, 0.097) .. (0.1915, 0.0631).. controls (0.1975, 0.0486) and (0.2101, 0.023) .. (0.217, 0.0111) -- (0.2207, 0.0048) -- (0.2166, 0.0024) -- (0.2125, 0.0) -- cycle(0.4021, 0.4935) -- (0.4132, 0.5266) -- (0.4003, 0.5455).. controls (0.3931, 0.5559) and (0.3871, 0.5644) .. (0.3869, 0.5644).. controls (0.3866, 0.5644) and (0.3805, 0.5558) .. (0.3734, 0.5454) -- (0.3604, 0.5264) -- (0.3736, 0.4877) -- (0.3868, 0.449) -- (0.3889, 0.4547).. controls (0.3901, 0.4578) and (0.3961, 0.4752) .. (0.4021, 0.4935) -- cycle;
+    \end{tikzpicture}
+}

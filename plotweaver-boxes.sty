@@ -388,11 +388,31 @@
         },
         fontlower=\sffamily
     },
+    %
     calloutBox/.style={
         enhanced,
         nobeforeafter,
         colback=cscalloutbg,
         colframe=cscolor,
+        arc=1em,
+        arc is angular,
+        sharp corners=uphill,
+        sharp corners=northwest,
+        fonttitle=\sffamily\scshape\bfseries\large,
+        fontupper=\sffamily,
+        fontlower=\sffamily,
+        boxsep=0.5em,
+        left=0.5em,
+        right=0.5em,
+        top=0.25em,
+        bottom=0.25em
+    },
+    %
+    altcalloutBox/.style={
+        enhanced,
+        nobeforeafter,
+        colback=csaccent!15!white,
+        colframe=csaccent,
         arc=1em,
         arc is angular,
         sharp corners=uphill,

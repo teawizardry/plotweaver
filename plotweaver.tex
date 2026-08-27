@@ -21,6 +21,7 @@
 
 \PassOptionsToPackage{all}{tcolorbox}
 \documentclass[article,ariandor]{plotweaver}
+\usepackage{plotweaver-mistborn}
 \usepackage{listings}
 \usepackage{lipsum}
 \usepackage{graphicx}
@@ -65,9 +66,9 @@
 \begin{document}
 \maketitle
 
-Documentation for the Plotweaver \LaTeX~document class. See \disptxt{example.tex} and \disptxt{character-sheet.tex} for sample usage.
+Documentation for the Plotweaver \LaTeX~document class. See \disptxt{example.tex} and \disptxt{character-sheet.tex} for sample usage. Thanks to everyone who has contributed commands and feedback to this project! 
 
-\section{Icon Commands}
+\section{Plotweaver Icon Commands}
 These commands produce commonly used icons and are provided by \dispred{plotweaver-icons.sty}. All of the icons are implemented using \disptxt{TikZ}. The icons created by \dispcmd{action}, \dispcmd{doubleAction}, \dispcmd{tripleAction}, \dispcmd{freeAction}, \dispcmd{reaction}, \dispcmd{forever}, and \dispcmd{key} will match the current text color. For example: \textcolor{red}{\action} \textcolor{blue}{\action} \textcolor{green}{\action}. Icons will also respect font size: {\Large\action} \action {\scriptsize\;\action}.
 
 \begin{docCommand}[
@@ -155,6 +156,454 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
   This command produces the \key icon.
 \end{docCommand}
 
+\section{Mistborn Icon Commands}
+These commands produce commonly used icons and are provided by \dispred{plotweaver-mistborn.sty}. This package will be automatically loaded if the \disptxt{mistborn} option is passed to the document class. Otherwise, it must be loaded separately. All of the icons are implemented using \disptxt{TikZ} and will match the current text color. For example: \textcolor{red}{\alBronze} \textcolor{blue}{\alBronze} \textcolor{green}{\alBronze}. Icons size can also be alted with an optional argument: \feElectrum[0.5] \feElectrum[0.3] \feElectrum[0.1].
+
+\subsection{The Steel Alphabet}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alAluminum },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alAluminum icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alAtium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alAtium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alBendalloy },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alBendalloy icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alBrass },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alBrass icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alBronze },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alBronze icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alCadmium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alCadmium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alChromium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alChromium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alCopper },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alCopper icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alDuralumin },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alDuralumin icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alElectrum },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alElectrum icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alEttmetal },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alEttmetal icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alGold },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alGold icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alIron },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alIron icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alLerasium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alLerasium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alMalatium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alMalatium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alNicrosil },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alNicrosil icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alPewter },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alPewter icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alSteel },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alSteel icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alTin },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alTin icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alUnknownC },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alUnknownC icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alUnknownH },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alUnknownH icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alUnknownJ },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alUnknownJ icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alUnknownX },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alUnknownX icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alZero },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alZero icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \alZinc },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \alZinc icon.
+\end{docCommand}
+
+\subsection{The Terris Alphabet}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feAluminum },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feAluminum icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feAtium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feAtium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feBendalloy },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feBendalloy icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feBrass },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feBrass icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feBronze },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feBronze icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feCadmium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feCadmium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feChromium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feChromium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feCopper },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feCopper icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feDuralumin },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feDuralumin icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feElectrum },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feElectrum icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feEttmetal },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feEttmetal icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feGold },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feGold icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feIron },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feIron icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feLerasium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feLerasium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feMalatium },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feMalatium icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feNicrosil },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feNicrosil icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \fePewter },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \fePewter icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feSteel },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feSteel icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feTin },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feTin icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feUnknownC },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feUnknownC icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feUnknownH },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feUnknownH icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feUnknownJ },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feUnknownJ icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feUnknownX },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feUnknownX icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = action,
+    doc description = { \feZinc },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-26,
+  ]{}{}
+  This command produces the \feZinc icon.
+\end{docCommand}
+
 \section{Feature Boxes}
 These boxes are implemented using \disptxt{tcolorbox} and are provided by \dispred{plotweaver-boxes.sty}. 
 
@@ -194,6 +643,15 @@ These boxes are implemented using \disptxt{tcolorbox} and are provided by \dispr
   \end{dispExample*}
 \end{docKey}
 
+\begin{docKey}[tcb][doc new = 2026-08-26]{altcalloutBox}{=\meta{text}}{}
+  The tcolorbox key containing alternate styling for callout boxes. This box will match the current color scheme. See the \disptxt{tcolorbox} documentation for more information. 
+  \begin{dispExample*}{sidebyside}
+  \begin{tcolorbox}[altcalloutBox, title={Alt Callout Box}]
+      \lipsum[1][3]
+  \end{tcolorbox}
+  \end{dispExample*}
+\end{docKey}
+
 \begin{docKey}[tcb][doc new = 2026-08-26]{paperBox}{=\meta{text}}{}
   The tcolorbox key containing the styling for paper boxes. This box will match the current color scheme. See the \disptxt{tcolorbox} documentation for more information. 
   \begin{dispExample*}{sidebyside}
@@ -214,6 +672,157 @@ This is a series of custom boxes that will stay the same height regardless of co
 }
 \end{dispExample*}
 \end{docEnvironment}
+
+\newpage
+
+\begin{docCommand}[
+    doc name        = MakeStatBlock,
+    doc new         = 2026-08-26,
+    doc parameter   = \marg{key-value pairs},
+  ]{}{}
+  This command is provided by \disptxt{plotweaver-statblock.sty} and can be used by passing \dispvar{statblock} into the document class options. generates a statblock which is populated by a series of key-value pairs. The statblock is a custom \disptxt{tcolorbox}, and it will change to match the current color scheme. Spe Pcial thanks to \texttt{cosmicducks} for contributing this command!
+\end{docCommand}
+
+\begin{docKeys}[
+  doc keypath = statblock,
+  doc parameter = {=\meta{text}},
+]{
+{
+  doc name = numCols,
+  doc description = number of columns in the statblock \textit{(defaults to 2)},
+},
+{
+  doc name = width,
+  doc description = width of the statblock \textit{(defaults to \dispvar{\textbackslash linewidth})},
+},
+{
+  doc name = name,
+  doc description = name for the statblock,
+},
+{
+  doc name = tier,
+  doc description = tier rank for the statblock,
+},
+{
+  doc name = role,
+  doc description = {role for the statblock \textit{(Minion, Rival, Boss)}},
+},
+{
+  doc name = size,
+  doc description = {size for the statblock \textit{(Small, Medium, Large, Huge, Gargantuan)}},
+},
+{
+  doc name = type,
+  doc description = {type for the statblock \textit{(Humanoid, Animal, Swarm, Essence, Entity, etc.)}},
+},
+{
+  doc name = health,
+  doc description = {health for the statblock \textit{(AVG (MIN-MAX))}},
+},
+{
+  doc name = focus,
+  doc description = focus for the statblock,
+},
+{
+  doc name = essence,
+  doc description = essence or investiture for the statblock,
+},
+{
+  doc name = strength,
+  doc description = strength for the statblock,
+},
+{
+  doc name = speed,
+  doc description = speed for the statblock,
+},
+{
+  doc name = intellect,
+  doc description = intellect for the statblock,
+},
+{
+  doc name = willpower,
+  doc description = willpower for the statblock,
+},
+{
+  doc name = awareness,
+  doc description = awareness for the statblock,
+},
+{
+  doc name = presence,
+  doc description = presence for the statblock,
+},
+{
+  doc name = physDef,
+  doc description = physical defense for the statblock,
+},
+{
+  doc name = cogDef,
+  doc description = cognitive or mental defense for the statblock,
+},
+{
+  doc name = spiDef,
+  doc description = spiritual defense for the statblock,
+},
+{
+  doc name = deflect,
+  doc description = deflect for the statblock,
+},
+{
+  doc name = movement,
+  doc description = movement speed for the statblock,
+},
+{
+  doc name = senses,
+  doc description = senses range for the statblock,
+},
+{
+  doc name = immunities,
+  doc description = {immunities for the statblock \textit{(eg. Pierce, Immobilised)}},
+},
+{
+  doc name = physSkills,
+  doc description = {physical skills for the statblock \textit{(eg. Heavy Weaponry +9)}},
+},
+{
+  doc name = cogSkills,
+  doc description = {cognitive skills for the statblock \textit{(eg. Discipline +5)}},
+},
+{
+  doc name = spiSkills,
+  doc description = {spiritual skills for the statblock \textit{(eg. Insight +7)}},
+},
+{
+  doc name = surgeSkills,
+  doc description = surge skills for the statblock,
+},
+{
+  doc name = maSkills,
+  doc description = metallic art skills for the statblock,
+},
+{
+  doc name = languages,
+  doc description = known languages for the statblock,
+},
+{
+  doc name = features,
+  doc description = features for the statblock,
+},
+{
+  doc name = actions,
+  doc description = actions for the statblock,
+},
+{
+  doc name = oandcs,
+  doc description = extra uses for opportunities and complications,
+},
+{
+  doc name = charCosmere,
+  doc description = use Cosmere terminology for the statblock,
+}
+}
+\end{docKeys}
+
+\newpage
 
 \section{Tables}
 Tables can be created using \dispred{plotable}. This uses \disptxt{nicematrix} under the hood. See the \disptxt{nicematrix} documentation for more information.
@@ -319,7 +928,7 @@ Generates a page character sheet. Each value is set by a key-value pair that is 
   doc description = physical defense bonus,
 },
 {
-  doc name = cogDefenseBonus,
+  doc name = menDefenseBonus,
   doc description = cognitive defense bonus,
 },
 {
@@ -407,7 +1016,7 @@ Generates a page character sheet. Each value is set by a key-value pair that is 
   doc description = optional physical stat ranks,
 },
 {
-  doc name = cogStatName,
+  doc name = menStatName,
   doc description = optional cognitive stat name,
 },
 {
@@ -415,11 +1024,11 @@ Generates a page character sheet. Each value is set by a key-value pair that is 
   doc description = optional physical stat base,
 },
 {
-  doc name = cogStatRanks,
+  doc name = menStatRanks,
   doc description = optional cognitive stat ranks,
 },
 {
-  doc name = cogStatBase,
+  doc name = menStatBase,
   doc description = optional cognitive stat base,
 },
 {
