@@ -125,7 +125,7 @@
 
 \ifmistborn
     \RequirePackage[mistborn]{plotweaver-icons}
-    \RequirePackage[mistborn]{plotweaver-mistborn}
+    \RequirePackage{plotweaver-mistborn}
     
     \colorlet{cspapercolor}{rustingpaper}
     \colorlet{cstextcolor}{rustingink}
