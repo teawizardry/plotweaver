@@ -23,7 +23,6 @@
 \documentclass[article,stormlight,timeline,statblock]{plotweaver}
 \usepackage{plotweaver-mistborn}
 \usepackage[colorlinks=true]{hyperref}
-\usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage[base]{babel}
 \usetikzlibrary{chains, backgrounds}
@@ -131,6 +130,14 @@ Icons are also provided for the metals (both allomantic and feruchemical) in Mis
 
 \subsection{Feature Boxes}
 Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, \texttt{rightBox}, \texttt{calloutBox}, \texttt{altcalloutBox}, and \texttt{paperBox}. You can also use the command \texttt{\textbackslash statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
+
+\subsection{Lists}
+Lists can be made using the \texttt{itemize} environment. They will automatically use the matching color scheme.
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+    \item Item 3
+\end{itemize}
 
 \subsection{Statblocks}
 Statblocks can be made using the \texttt{\textbackslash MakeStatBlock} command. Similar to the character sheet command, you pass in the attributes, features, and actions for the statblock as key-value pairs. This command currently does not calculate derived attributes, as those tend to not follow the derivation formulae as strictly. You can also change the number of columns in the statblock. Thanks to \texttt{cosmicducks} for contributing this command!
@@ -249,8 +256,6 @@ TikZ is used to make the talent paths. You can add a photo as the background, if
 \end{tcolorbox}
 \vspace{\baselineskip}
 \end{center}
-
-\newpage
 
 You can also have a callout box that will float next to the text. To do this, you need to use the \texttt{wrapfig} package. Set the width in the \texttt{wrapfigure} environment and then let the \texttt{tcolorbox} fill the total width.
 

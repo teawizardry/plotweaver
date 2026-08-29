@@ -227,6 +227,10 @@
 \else
 \fi
 
+
+\RequirePackage{enumitem}
+\setlist[itemize,1]{itemsep=0.1ex,label={\tikz[baseline=-0.75ex]{\draw[fill=cscolor] (0,0) -- (0.5ex,0.5ex) -- (1ex,0) -- (0.5ex,-0.5ex) -- cycle;}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%             TITLE & SECTIONS              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
