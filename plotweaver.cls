@@ -15,9 +15,10 @@
 %
 % This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
 % plotweaver-character-sheet.sty, plotweaver-colors.sty,
-% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
-% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
-% plotweaver.pdf, nomodan.png, and README.md.
+% plotweaver-icons.sty, plotweaver-mistborn.sty, plotweaver-stormlight.sty,
+% plotweaver-timeline.sty, character-sheet.tex, character-sheet.pdf, 
+% example.tex, example.pdf, plotweaver.tex, plotweaver.pdf, nomodan.png, 
+% and README.md.
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{plotweaver}[2026 LaTeX Plotweaver class]
@@ -106,6 +107,7 @@
 \RequirePackage[x11names]{xcolor}
 \ifstormlight
     \RequirePackage[stormlight]{plotweaver-icons}
+    \RequirePackage{plotweaver-stormlight}
 
     \colorlet{cspapercolor}{stormingpaper}
     \colorlet{cstextcolor}{stormingink}

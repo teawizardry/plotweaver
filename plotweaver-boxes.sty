@@ -15,9 +15,10 @@
 %
 % This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
 % plotweaver-character-sheet.sty, plotweaver-colors.sty,
-% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
-% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
-% plotweaver.pdf, nomodan.png, and README.md.
+% plotweaver-icons.sty, plotweaver-mistborn.sty, plotweaver-stormlight.sty,
+% plotweaver-timeline.sty, character-sheet.tex, character-sheet.pdf, 
+% example.tex, example.pdf, plotweaver.tex, plotweaver.pdf, nomodan.png, 
+% and README.md.
 
 \ProvidesPackage{plotweaver-boxes}[2026-09-01 Plotweaver Boxes]
 \RequirePackage{plotweaver-colors}
@@ -69,6 +70,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tcbset{
+    shield externalize,
+    %
     featureBox/.style={
         enhanced,
         sharp corners,

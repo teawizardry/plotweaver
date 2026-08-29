@@ -15,9 +15,10 @@
 %
 % This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
 % plotweaver-character-sheet.sty, plotweaver-colors.sty,
-% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
-% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
-% plotweaver.pdf, nomodan.png, and README.md.
+% plotweaver-icons.sty, plotweaver-mistborn.sty, plotweaver-stormlight.sty,
+% plotweaver-timeline.sty, character-sheet.tex, character-sheet.pdf, 
+% example.tex, example.pdf, plotweaver.tex, plotweaver.pdf, nomodan.png, 
+% and README.md.
 
 \documentclass[article,stormlight,timeline,statblock]{plotweaver}
 \usepackage{plotweaver-mistborn}
@@ -31,6 +32,7 @@
 \pgfsetlayers{background,lines,main,foreground}
 \usepackage{wrapfig}
 \setlength{\intextsep}{0.25em}
+\usepackage{subcaption}
 \usepackage{lipsum}
   
 \title{Plotweaver \LaTeX~Document Class}
@@ -69,43 +71,69 @@ The complication commands can take a number or be left blank. Numbers look like 
     \complicationDice\space \complicationDice[2] \complicationDice[4]
 \end{center}
 
-\begin{table}
-    \caption{Mistborn Symbols}
-    \begin{plotable}{ccl}
-        Steel & Terris & Meaning \\
-        \alLerasium & \feLerasium & Lerasium (A)\\
-        \alIron & \feIron & Iron (B)\\
-        \alUnknownC & \feUnknownC & Unknown C (C)\\
-        \alCopper & \feCopper & Copper (D)\\
-        \alTin & \feTin & Tin (E)\\
-        \alMalatium & \feMalatium & Malatium (F)\\
-        \alCadmium & \feCadmium & Cadmium (G)\\
-        \alUnknownH & \feUnknownH & Unknown H (H)\\
-        \alUnknownJ & \feUnknownJ & Unknown J (J)\\
-        \alBendalloy & \feBendalloy & Bendalloy (K)\\
-        \alZinc & \feZinc & Zinc (L)\\
-        \alGold & \feGold & Gold (M)\\
-        \alElectrum & \feElectrum & Electrum (N)\\
-        \alPewter & \fePewter & Pewter (O)\\
-        \alSteel & \feSteel & Steel (P)\\
-        \alBrass & \feBrass & Brass (R)\\
-        \alDuralumin & \feDuralumin & Duralumin (S)\\
-        \alBronze & \feBronze & Bronze (T)\\
-        \alAtium & \feAtium & Atium (V)\\
-        \alChromium & \feChromium & Chromium (W)\\
-        \alUnknownX & \feUnknownX & Unknown X (X)\\
-        \alNicrosil & \feNicrosil & Nicrosil (Y)\\
-        \alAluminum & \feAluminum & Aluminum (Z)\\
-        \alEttmetal & \feEttmetal & Ettmetal\\
-        \alZero & -- & Zero (0)\\
-    \end{plotable}
-\end{table}
+Icons are also provided for the metals (both allomantic and feruchemical) in Mistborn and the radiant orders (along with their corresponding surges) in Stormlight Archive. Examples can be seen in Table~\ref{tab:icons}. The matching set of icons will be loaded with the chosen color scheme, but you can also manually load each icon package.
+
+\begin{figure}[h]
+\captionsetup[subfigure]{labelformat=empty}
+\captionsetup{labelformat=empty}
+\centering
+\caption{Samples of the Mistborn and Stormlight icons.}
+\begin{subfigure}{0.45\textwidth}
+\caption{Mistborn Symbols}
+\begin{plotable}{ccl}
+    Steel & Terris & Meaning \\
+    \alLerasium & \feLerasium & Lerasium (A)\\
+    \alIron & \feIron & Iron (B)\\
+    \alUnknownC & \feUnknownC & Unknown C (C)\\
+    \alCopper & \feCopper & Copper (D)\\
+    \alTin & \feTin & Tin (E)\\
+    \alMalatium & \feMalatium & Malatium (F)\\
+    \alCadmium & \feCadmium & Cadmium (G)\\
+    \alUnknownH & \feUnknownH & Unknown H (H)\\
+    \alUnknownJ & \feUnknownJ & Unknown J (J)\\
+    \alBendalloy & \feBendalloy & Bendalloy (K)\\
+    \alZinc & \feZinc & Zinc (L)\\
+    \alGold & \feGold & Gold (M)\\
+    \alElectrum & \feElectrum & Electrum (N)\\
+    \alPewter & \fePewter & Pewter (O)\\
+    \alSteel & \feSteel & Steel (P)\\
+    \alBrass & \feBrass & Brass (R)\\
+    \alDuralumin & \feDuralumin & Duralumin (S)\\
+    \alBronze & \feBronze & Bronze (T)\\
+    \alAtium & \feAtium & Atium (V)\\
+    \alChromium & \feChromium & Chromium (W)\\
+    \alUnknownX & \feUnknownX & Unknown X (X)\\
+    \alNicrosil & \feNicrosil & Nicrosil (Y)\\
+    \alAluminum & \feAluminum & Aluminum (Z)\\
+    \alEttmetal & \feEttmetal & Ettmetal\\
+    \alZero & -- & Zero (0)\\
+\end{plotable}
+\end{subfigure}% 
+\hfil
+\begin{subfigure}{0.45\textwidth}
+\caption{Stormlight Symbols}
+\begin{plotable}{cccl}
+    \Block[c]{1-2}{Surges} & & \Block[c]{1-2}{Radiant Order} & \\
+    \adhesion & \gravitation & \windrunner & Windrunners\\
+    \gravitation & \division & \skybreaker & Skybreakers\\
+    \division & \abrasion & \dustbringer & Dustbringers\\
+    \abrasion & \progression & \edgedancer & Edgedancers\\
+    \progression & \illumination & \truthwatcher & Truthwatchers\\
+    \illumination & \transformation & \lightweaver & Lightweavers\\
+    \transformation & \transportation & \elsecaller & Elsecallers\\
+    \transportation & \cohesion & \willshaper & Willshapers\\
+    \cohesion & \tension & \stoneward & Stonewards\\
+    \tension & \adhesion & \bondsmith & Bondsmiths\\
+\end{plotable}
+\end{subfigure}
+\label{tab:icons}
+\end{figure}
 
 \subsection{Feature Boxes}
 Three feature boxes are specified using \texttt{tcolorbox}. They are \texttt{featureBox}, \texttt{leftBox}, \texttt{rightBox}, \texttt{calloutBox}, \texttt{altcalloutBox}, and \texttt{paperBox}. You can also use the command \texttt{\textbackslash statBox} to nicely align a left and right box. These boxes support upper and lower content, but you don't have to specify both.
 
 \subsection{Statblocks}
-Statblocks can be made using the \texttt{\textbackslash MakeStatBlock} command. Similar to the character sheet command, you pass in the attributes, features, and actions for the statblock as key-value pairs. This command currently does not calculate derived attributes. You can also change the number of columns in the statblock. Thanks to \texttt{cosmicducks} for contributing this command!
+Statblocks can be made using the \texttt{\textbackslash MakeStatBlock} command. Similar to the character sheet command, you pass in the attributes, features, and actions for the statblock as key-value pairs. This command currently does not calculate derived attributes, as those tend to not follow the derivation formulae as strictly. You can also change the number of columns in the statblock. Thanks to \texttt{cosmicducks} for contributing this command!
 
 % If you don't want any entry to appear (eg. deflect, Opportunities and Complications) leave that field empty
 % Numbers / field entries used here are for purely illustrative purposes, I haven't worked out whether they make sense
@@ -234,6 +262,7 @@ You can also have a callout box that will float next to the text. To do this, yo
 
 \lipsum[1]
 
+\vspace{0.5\baselineskip}
 \begin{tcolorbox}[paperBox, title={Torn Paper Box}]
     \lipsum[1]
 \end{tcolorbox}
@@ -322,5 +351,10 @@ Timelines can be created using the \texttt{timeline} environment if \texttt{time
         \event{year=1757}{Another important event happened here.}
     \end{timeline}
 \end{figure}
+
+\section{A Note on Compilation Times}
+For basic document, the compilation time with this document class should be fairly low. I have tried to keep all of the icon definitions separated off into their own setting specific packages to help with compilation times. The character sheet command is in its own separate package for that same reason. Slower compilation times are expected for documents that make heavy use of all of the various design elements provided. I have experimented with \texttt{memoize}, but it has compatibility issues with \texttt{tcolorbox} and requires additional setup on the user end. I have also experimented with \texttt{tikzexternalize}, but found its compilation times to be slower than without externalization.
+
+There are a few other packages and strategies I may explore once this package is in a more mature state. If someone else has a successful strategy for improving compilation times, I am all ears. Otherwise, there are some caching strategies that can be implemented on the user end, though those are beyond the scope of my own documentation.
 
 \end{document}

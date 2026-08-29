@@ -15,13 +15,15 @@
 %
 % This work consists of the files plotweaver.cls, plotweaver-boxes.sty,
 % plotweaver-character-sheet.sty, plotweaver-colors.sty,
-% plotweaver-icons.sty, plotweaver-timeline.sty, character-sheet.tex, 
-% character-sheet.pdf, example.tex, example.pdf, plotweaver.tex,
-% plotweaver.pdf, nomodan.png, and README.md.
+% plotweaver-icons.sty, plotweaver-mistborn.sty, plotweaver-stormlight.sty,
+% plotweaver-timeline.sty, character-sheet.tex, character-sheet.pdf, 
+% example.tex, example.pdf, plotweaver.tex, plotweaver.pdf, nomodan.png, 
+% and README.md.
 
 \PassOptionsToPackage{all}{tcolorbox}
 \documentclass[article,ariandor]{plotweaver}
 \usepackage{plotweaver-mistborn}
+\usepackage{plotweaver-stormlight}
 \usepackage{listings}
 \usepackage{lipsum}
 \usepackage{graphicx}
@@ -36,6 +38,10 @@
     marginparsep=0.125in,
     right=1in,
     includeheadfoot,
+}
+
+\hypersetup{
+    colorlinks=true,
 }
 
 \renewcommand*{\tcbdocupdated}[1]{%
@@ -65,6 +71,9 @@
 
 \begin{document}
 \maketitle
+
+% \tableofcontents
+% \newpage
 
 Documentation for the Plotweaver \LaTeX~document class. See \disptxt{example.tex} and \disptxt{character-sheet.tex} for sample usage. Thanks to everyone who has contributed commands and feedback to this project! 
 
@@ -157,12 +166,12 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \section{Mistborn Icon Commands}
-These commands produce commonly used icons and are provided by \dispred{plotweaver-mistborn.sty}. This package will be automatically loaded if the \disptxt{mistborn} option is passed to the document class. Otherwise, it must be loaded separately. All of the icons are implemented using \disptxt{TikZ} and will match the current text color. For example: \textcolor{red}{\alBronze} \textcolor{blue}{\alBronze} \textcolor{green}{\alBronze}. Icons size can also be alted with an optional argument: \feElectrum[0.5] \feElectrum[0.3] \feElectrum[0.1].
+These commands produce commonly used icons and are provided by \dispred{plotweaver-mistborn.sty}. This package will be automatically loaded if the \disptxt{mistborn} option is passed to the document class. Otherwise, it must be loaded separately. All of the icons are implemented using \disptxt{TikZ} and will match the current text color. For example: \textcolor{red}{\alBronze} \textcolor{blue}{\alBronze} \textcolor{green}{\alBronze}. Icons size will generally match the current font size, but can also be altered with an optional argument: \feElectrum[0.5] \feElectrum[0.3] \feElectrum[0.1].
 
 \subsection{The Steel Alphabet}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alAluminum,
     doc description = { \alAluminum },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -171,7 +180,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alAtium,
     doc description = { \alAtium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -180,7 +189,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alBendalloy,
     doc description = { \alBendalloy },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -189,7 +198,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alBrass,
     doc description = { \alBrass },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -198,7 +207,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alBronze,
     doc description = { \alBronze },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -207,7 +216,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alCadmium,
     doc description = { \alCadmium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -216,7 +225,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alChromium,
     doc description = { \alChromium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -225,7 +234,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alCopper,
     doc description = { \alCopper },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -234,7 +243,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alDuralumin,
     doc description = { \alDuralumin },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -243,7 +252,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alElectrum,
     doc description = { \alElectrum },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -252,7 +261,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alEttmetal,
     doc description = { \alEttmetal },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -261,7 +270,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alGold,
     doc description = { \alGold },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -270,7 +279,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alIron,
     doc description = { \alIron },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -279,7 +288,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alLerasium,
     doc description = { \alLerasium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -288,7 +297,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alMalatium,
     doc description = { \alMalatium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -297,7 +306,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alNicrosil,
     doc description = { \alNicrosil },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -306,7 +315,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alPewter,
     doc description = { \alPewter },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -315,7 +324,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alSteel,
     doc description = { \alSteel },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -324,7 +333,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alTin,
     doc description = { \alTin },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -333,7 +342,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alUnknownC,
     doc description = { \alUnknownC },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -342,7 +351,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alUnknownH,
     doc description = { \alUnknownH },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -351,7 +360,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alUnknownJ,
     doc description = { \alUnknownJ },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -360,7 +369,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alUnknownX,
     doc description = { \alUnknownX },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -369,7 +378,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alZero,
     doc description = { \alZero },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -378,7 +387,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = alZinc,
     doc description = { \alZinc },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -389,7 +398,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \subsection{The Terris Alphabet}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feAluminum,
     doc description = { \feAluminum },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -398,7 +407,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feAtium,
     doc description = { \feAtium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -407,7 +416,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feBendalloy,
     doc description = { \feBendalloy },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -416,7 +425,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feBrass,
     doc description = { \feBrass },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -425,7 +434,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feBronze,
     doc description = { \feBronze },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -434,7 +443,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feCadmium,
     doc description = { \feCadmium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -443,7 +452,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feChromium,
     doc description = { \feChromium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -452,7 +461,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feCopper,
     doc description = { \feCopper },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -461,7 +470,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feDuralumin,
     doc description = { \feDuralumin },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -470,7 +479,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feElectrum,
     doc description = { \feElectrum },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -479,7 +488,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feEttmetal,
     doc description = { \feEttmetal },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -488,7 +497,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feGold,
     doc description = { \feGold },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -497,7 +506,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feIron,
     doc description = { \feIron },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -506,7 +515,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feLerasium,
     doc description = { \feLerasium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -515,7 +524,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feMalatium,
     doc description = { \feMalatium },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -524,7 +533,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feNicrosil,
     doc description = { \feNicrosil },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -533,7 +542,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = fePewter,
     doc description = { \fePewter },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -542,7 +551,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feSteel,
     doc description = { \feSteel },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -551,7 +560,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feTin,
     doc description = { \feTin },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -560,7 +569,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feUnknownC,
     doc description = { \feUnknownC },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -569,7 +578,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feUnknownH,
     doc description = { \feUnknownH },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -578,7 +587,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feUnknownJ,
     doc description = { \feUnknownJ },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -587,7 +596,7 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feUnknownX,
     doc description = { \feUnknownX },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
@@ -596,12 +605,199 @@ These commands produce commonly used icons and are provided by \dispred{plotweav
 \end{docCommand}
 
 \begin{docCommand}[
-    doc name        = action,
+    doc name        = feZinc,
     doc description = { \feZinc },
     doc parameter   = \oarg{scale},
     doc new     = 2026-08-26,
   ]{}{}
   This command produces the \feZinc icon.
+\end{docCommand}
+
+\section{Stormlight Icon Commands}
+These commands produce commonly used icons and are provided by \dispred{plotweaver-stormlight.sty}. This package will be automatically loaded if the \disptxt{stormlight} option is passed to the document class. Otherwise, it must be loaded separately. All of the icons are implemented using \disptxt{TikZ}. The surge icons will match the current text color. For example: \textcolor{red}{\progression} \textcolor{blue}{\progression} \textcolor{green}{\progression}. The radiant order icons will match their order's color, unless specified otherwise. For example: \windrunner \windrunner[0.05em][complicationred]. Icons size will generally match the font size, but can also be altered with an optional argument: \division[0.6] \division[0.4] \division[0.2].
+
+\subsection{The Surges}
+
+\begin{docCommand}[
+    doc name        = abrasion,
+    doc description = { \abrasion },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \abrasion icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = adhesion,
+    doc description = { \adhesion },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \adhesion icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = cohesion,
+    doc description = { \cohesion },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \cohesion icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = division,
+    doc description = { \division },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \division icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = gravitation,
+    doc description = { \gravitation },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \gravitation icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = illumination,
+    doc description = { \illumination },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \illumination icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = progression,
+    doc description = { \progression },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \progression icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = tension,
+    doc description = { \tension },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \tension icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = transformation,
+    doc description = { \transformation },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \transformation icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = transportation,
+    doc description = { \transportation },
+    doc parameter   = \oarg{scale},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \transportation icon.
+\end{docCommand}
+
+\subsection{The Radiant Orders}
+
+\begin{docCommand}[
+    doc name        = windrunner,
+    doc description = { \windrunner },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \windrunner icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = skybreaker,
+    doc description = { \skybreaker },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \skybreaker icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = dustbringer,
+    doc description = { \dustbringer },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \dustbringer icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = edgedancer,
+    doc description = { \edgedancer },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \edgedancer icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = truthwatcher,
+    doc description = { \truthwatcher },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \truthwatcher icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = lightweaver,
+    doc description = { \lightweaver },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \lightweaver icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = elsecaller,
+    doc description = { \elsecaller },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \elsecaller icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = willshaper,
+    doc description = { \willshaper },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \willshaper icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = stoneward,
+    doc description = { \stoneward },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \stoneward icon.
+\end{docCommand}
+
+\begin{docCommand}[
+    doc name        = bondsmith,
+    doc description = { \bondsmith },
+    doc parameter   = \oarg{scale}\oarg{color},
+    doc new     = 2026-08-29,
+  ]{}{}
+  This command produces the \bondsmith icon.
 \end{docCommand}
 
 \section{Feature Boxes}
