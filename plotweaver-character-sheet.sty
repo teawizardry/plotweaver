@@ -105,6 +105,7 @@
     spiStatBase     .store = \charSpiStatBase,
     spiStatBase     .initial:n = 0,
     image   .store = \charImage,
+    image   .initial:n = { },
     hideBlanks.if = charHideBlanks,
     stormlight.if = charStormlight,
     mistborn.if = charMistborn,
@@ -516,7 +517,7 @@
         }
 
         \posterbox[featureBox={Appearance},square]{name=appearance,column=1,span=2,below=character}{
-            \IfValueT{\charImage}{
+            \expandafter\IfBlankF\expandafter{\charImage}{
                 \includegraphics[width=\linewidth]{\charImage}
             }
         }
