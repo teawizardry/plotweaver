@@ -12,3 +12,4 @@ character_sheet_sffamily.pdf
 *.tcbtemp
 *.synctex*
 figures/
+*.toc

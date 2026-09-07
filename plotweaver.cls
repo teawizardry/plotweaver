@@ -229,8 +229,8 @@
 
 
 \RequirePackage{enumitem}
-\setlist[itemize,1]{itemsep=0.1ex,label={\tikz[baseline=-0.75ex]{\draw[fill=cscolor] (0,0) -- (0.5ex,0.5ex) -- (1ex,0) -- (0.5ex,-0.5ex) -- cycle;}}}
-\setlist[description]{font=\bfseries\color{cscolor}}
+\setlist[itemize,1]{leftmargin=*,labelsep=1em,itemsep=0.1ex,label={\tikz[baseline=-0.75ex]{\draw[fill=cscolor] (0,0) -- (0.5ex,0.5ex) -- (1ex,0) -- (0.5ex,-0.5ex) -- cycle;}}}
+\setlist[description]{leftmargin=1.5em,itemsep=0.1ex,font=\bfseries\color{cscolor}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%             TITLE & SECTIONS              %%
@@ -352,3 +352,17 @@
     \renewcommand{\arraystretch}{1.5}
 \else
 \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                    TOC                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{tocloft}
+
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\cfttoctitlefont}{\color{cscolor}\sffamily\bfseries\Large}
+\renewcommand{\cftsecfont}{\color{cscolor}\sffamily\bfseries}
+\renewcommand{\cftsubsecfont}{\color{cstextcolor}\sffamily}
+\renewcommand{\cftsecpagefont}{\color{cscolor}\sffamily\bfseries}
+\renewcommand{\cftsubsecpagefont}{\color{cstextcolor}\sffamily}
+\renewcommand{\cftsecleader}{\color{cscolor}\bfseries\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{3}

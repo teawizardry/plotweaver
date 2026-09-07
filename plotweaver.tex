@@ -30,19 +30,15 @@
 \reversemarginpar
 \usepackage{geometry}
 \geometry{
-    paper=letterpaper,
-    top=1in,
-    bottom=1in,
-    left=1in,
-    marginparwidth=0.75in,
-    marginparsep=0.125in,
-    right=1in,
-    includeheadfoot,
-}
-
-\hypersetup{
-    colorlinks=true,
-}
+  paper=letterpaper,
+  top=1in,
+  bottom=1in,
+  left=1in,
+  marginparwidth=0.75in,
+  marginparsep=0.125in,
+  right=1in,
+  includeheadfoot,
+  }
 
 \renewcommand*{\tcbdocupdated}[1]{%
   \textcolor{ariandorcrimson}{\textbf{\textsf{U:}}} #1%
@@ -69,13 +65,15 @@
 \author{}
 \date{}
 
+
+\hypersetup{hidelinks}
+
 \begin{document}
 \maketitle
 
-% \tableofcontents
-% \newpage
-
 Documentation for the Plotweaver \LaTeX~document class. See \disptxt{example.tex} and \disptxt{character-sheet.tex} for sample usage. Thanks to everyone who has contributed commands and feedback to this project! 
+
+\tableofcontents
 
 \section{Plotweaver Icon Commands}
 These commands produce commonly used icons and are provided by \dispred{plotweaver-icons.sty}. All of the icons are implemented using \disptxt{TikZ}. The icons created by \dispcmd{action}, \dispcmd{doubleAction}, \dispcmd{tripleAction}, \dispcmd{freeAction}, \dispcmd{reaction}, \dispcmd{forever}, and \dispcmd{key} will match the current text color. For example: \textcolor{red}{\action} \textcolor{blue}{\action} \textcolor{green}{\action}. Icons will also respect font size: {\Large\action} \action {\scriptsize\;\action}.
