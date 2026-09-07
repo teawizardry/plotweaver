@@ -338,7 +338,11 @@
         \sffamily
         \begin{NiceTabular}{#1}[#2]
             \CodeBefore
-                \rowcolor{cscolor}{1}
+                \ifmistborn
+                    \rowcolor{csdim}{1}
+                \else
+                    \rowcolor{cscolor}{1}
+                \fi
                 \rowcolors{2}{cstblrowa}{cstblrowb}
             \Body
             \RowStyle[nb-rows=1,color=white]{\bfseries}
