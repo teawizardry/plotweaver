@@ -136,8 +136,11 @@ Lists can be made using the \texttt{itemize} environment. They will automaticall
 \begin{itemize}[align=left]
     \item Item 1
     \item Item 2
-    \item[\textcolor{cscolor}{\textbf{Hanging Subheading:}}] You can also use the \texttt{itemize} environment to create short subheadings with a hanging indent. See the \texttt{enumitem} package documentation for more details.
+    \item Item 3
 \end{itemize}
+\begin{description}
+    \item[Hanging Subheading:] You can also use the \texttt{description} environment to create short subheadings with a hanging indent. See the \texttt{enumitem} package documentation for more details.
+\end{description}
 
 \subsection{Statblocks}
 Statblocks can be made using the \texttt{\textbackslash MakeStatBlock} command. Similar to the character sheet command, you pass in the attributes, features, and actions for the statblock as key-value pairs. This command currently does not calculate derived attributes, as those tend to not follow the derivation formulae as strictly. You can also change the number of columns in the statblock. Thanks to \texttt{cosmicducks} for contributing this command!
